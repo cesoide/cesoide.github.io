@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft — Copilot + PCs · Cesar Barbosa</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+    <!-- Cesoi Design System -->
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="colors_and_type.css">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: var(--font-display, 'Poppins'), system-ui, sans-serif;
+            background: var(--color-paper, #fff);
+            color:      var(--color-ink, #0e0e0e);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar { display: none; }
+        a { color: inherit; text-decoration: none; }
+
+        :root { --pad: clamp(1.5rem, 5vw, 4rem); }
+
+        /* ── NAV ─────────────────────────────────────────── */
+        nav.site-nav {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem var(--pad);
+            color: #fff;
+            font-size: 0.75rem;
+            letter-spacing: 0.06em;
+            font-weight: 400;
+        }
+        nav.site-nav .brand { font-weight: 500; letter-spacing: 0.02em; }
+        nav.site-nav .brand .slash { color: rgba(255,255,255,0.5); margin: 0 .35em; }
+        nav.site-nav .nav-links { display: flex; gap: 2.25rem; align-items: center; }
+        nav.site-nav .nav-links a { transition: color .2s, opacity .2s; opacity: 0.85; }
+        nav.site-nav .nav-links a:hover { color: var(--color-accent); opacity: 1; }
+        nav.site-nav .nav-links a.email {
+            color: var(--color-accent);
+            text-transform: uppercase;
+            opacity: 1;
+            letter-spacing: 0.08em;
+        }
+        nav.site-nav .nav-links a.email:hover { opacity: 0.7; }
+
+
+        /* ── HERO ────────────────────────────────────────── */
+        .case-hero {
+            position: relative;
+            width: 100%;
+            min-height: 78svh;
+            background: var(--color-dark-surface);
+            color: #fff;
+            overflow: hidden;
+        }
+        .case-hero img.bg {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: 0;
+        }
+        .case-hero::before {
+            content: "";
+            position: absolute; inset: 0;
+            background:
+                linear-gradient(180deg, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.05) 30%, rgba(10,10,10,0.05) 60%, rgba(10,10,10,0.55) 100%);
+            z-index: 1;
+        }
+        .case-meta {
+            position: absolute;
+            top: 5.5rem; left: 0; right: 0;
+            z-index: 3;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            padding: 0 var(--pad);
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.55);
+            font-variant-numeric: tabular-nums;
+        }
+        .case-meta .meta-center { text-align: center; }
+        .case-meta .meta-right  { text-align: right; }
+
+        .case-hero-content {
+            position: relative;
+            z-index: 2;
+            min-height: 78svh;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 var(--pad) clamp(3rem, 6vw, 5rem);
+        }
+        .case-hero-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: var(--text-case-hero);
+            font-weight: 500;
+            line-height: var(--leading-hero);
+            letter-spacing: var(--tracking-tight);
+            color: #fff;
+        }
+        .case-hero-title em {
+            font-style: italic;
+            font-weight: 400;
+            color: rgba(255,255,255,0.85);
+        }
+        .case-hero-title .dash {
+            color: rgba(255,255,255,0.5);
+            font-weight: 300;
+            margin: 0 .15em;
+        }
+
+
+        /* ── INTRO BLOCK ─────────────────────────────────── */
+        .intro {
+            padding: var(--space-2xl) var(--pad);
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .intro-eyebrow {
+            display: flex; align-items: center; gap: 0.6rem;
+            font-size: var(--text-label);
+            letter-spacing: var(--tracking-caps);
+            text-transform: uppercase;
+            color: var(--color-muted-55);
+            font-weight: 500;
+            margin-bottom: var(--space-md);
+        }
+        .intro-eyebrow::before {
+            content: "";
+            display: inline-block;
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--color-accent);
+        }
+        .intro-eyebrow .star { color: var(--color-accent); margin-left: 0.4em; }
+        .intro-text {
+            font-size: var(--text-body-xl);
+            line-height: var(--leading-normal);
+            color: var(--color-muted-55);
+            font-weight: 300;
+            max-width: 68ch;
+        }
+
+
+        /* ── VIDEO PLAYER (with play button) ─────────────── */
+        .video-block {
+            position: relative;
+            width: 100%;
+            background: #000;
+            line-height: 0;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .video-block video {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+        .video-block .poster {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            transition: opacity .4s var(--ease-out);
+        }
+        .video-block .play-btn {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110px; height: 110px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 2;
+            transition: transform .4s var(--ease-out), background .3s, opacity .4s;
+        }
+        .video-block:hover .play-btn {
+            transform: translate(-50%, -50%) scale(1.08);
+            background: rgba(255,255,255,0.18);
+        }
+        .video-block .play-btn::after {
+            content: "";
+            display: block;
+            width: 0; height: 0;
+            border-style: solid;
+            border-width: 14px 0 14px 22px;
+            border-color: transparent transparent transparent #fff;
+            margin-left: 6px;
+        }
+        .video-block .video-label {
+            position: absolute;
+            bottom: 1.5rem; right: 1.5rem;
+            z-index: 2;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            transition: opacity .4s;
+        }
+        .video-block.playing .poster,
+        .video-block.playing .play-btn,
+        .video-block.playing .video-label { opacity: 0; pointer-events: none; }
+
+
+        /* Auto-loop video (no controls) */
+        .case-video {
+            position: relative;
+            width: 100%;
+            background: #000;
+            line-height: 0;
+        }
+        .case-video video {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+
+        /* ── SECTION (Illumination, Budapest…) ───────────── */
+        .case-section {
+            padding: var(--space-3xl) var(--pad) var(--space-2xl);
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .case-section h2 {
+            font-size: var(--text-h2);
+            font-weight: 500;
+            letter-spacing: -0.025em;
+            line-height: var(--leading-snug);
+            margin-bottom: var(--space-md);
+            color: var(--color-ink);
+        }
+        .case-section p {
+            font-size: var(--text-body-xl);
+            line-height: var(--leading-normal);
+            color: var(--color-muted-55);
+            font-weight: 300;
+            max-width: 68ch;
+        }
+        .case-section .external-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: var(--space-md);
+            padding-bottom: 0.35rem;
+            border-bottom: 1px solid var(--color-accent);
+            color: var(--color-accent);
+            font-size: var(--text-label);
+            letter-spacing: var(--tracking-caps);
+            text-transform: uppercase;
+            font-weight: var(--weight-medium);
+            transition: gap .25s var(--ease-out), opacity .25s;
+        }
+        .case-section .external-link:hover { gap: 0.85rem; opacity: 0.85; }
+        .case-section .external-link::after { content: "→"; font-weight: 400; }
+
+
+        /* ── GALLERY (staggered single items) ────────────── */
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            gap: var(--gallery-gap);
+            padding: 0 var(--pad) var(--space-3xl);
+            max-width: 1440px;
+            margin: 0 auto;
+            align-items: stretch;
+        }
+        .gallery.tight { gap: clamp(2rem, 4vw, 3rem); }
+
+        .gallery-item {
+            line-height: 0;
+            overflow: hidden;
+        }
+        .gallery-item img,
+        .gallery-item video {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform .8s var(--ease-out);
+        }
+        /* Opt-in horizontal crop (only when grouping images of mixed orientations) */
+        .gallery-item.crop-16-9 { aspect-ratio: 16 / 9; }
+        .gallery-item.crop-3-2  { aspect-ratio: 3 / 2; }
+        .gallery-item.crop-4-3  { aspect-ratio: 4 / 3; }
+        .gallery-item.crop-16-9 img,
+        .gallery-item.crop-16-9 video,
+        .gallery-item.crop-3-2 img,
+        .gallery-item.crop-3-2 video,
+        .gallery-item.crop-4-3 img,
+        .gallery-item.crop-4-3 video {
+            height: 100%;
+            object-fit: cover;
+        }
+        /* Row cells: stretch + cover so grid rows align naturally */
+        .row .gallery-item img,
+        .row .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .gallery-item:hover img,
+        .gallery-item:hover video { transform: scale(1.02); }
+
+        /* Position helpers */
+        .pos-left   { align-self: flex-start; }
+        .pos-center { align-self: center; }
+        .pos-right  { align-self: flex-end; }
+
+        /* Width helpers */
+        .w-25 { max-width: 25%; }
+        .w-30 { max-width: 30%; }
+        .w-35 { max-width: 35%; }
+        .w-40 { max-width: 40%; }
+        .w-45 { max-width: 45%; }
+        .w-50 { max-width: 50%; }
+        .w-55 { max-width: 55%; }
+        .w-60 { max-width: 60%; }
+        .w-65 { max-width: 65%; }
+        .w-70 { max-width: 70%; }
+        .w-75 { max-width: 75%; }
+        .w-80 { max-width: 80%; }
+        .w-82 { max-width: 82%; }
+        .w-88 { max-width: 88%; }
+        .w-100{ max-width: 100%; }
+
+
+        /* ── ROW LAYOUTS ─────────────────────────────────── */
+        .row {
+            display: grid;
+            gap: clamp(1rem, 2vw, 1.5rem);
+            padding: 0 var(--pad);
+            max-width: 1440px;
+            margin: 0 auto;
+            margin-bottom: var(--gallery-gap);
+        }
+        .row.twoup   { grid-template-columns: 1fr 1fr; }
+        .row.threeup { grid-template-columns: 1fr 1fr 1fr; }
+        .row.split-6040 { grid-template-columns: 6fr 4fr; }
+        .row.split-4060 { grid-template-columns: 4fr 6fr; }
+        .row.split-7030 { grid-template-columns: 7fr 3fr; }
+        .row.split-3070 { grid-template-columns: 3fr 7fr; }
+        .row.equal-h { align-items: stretch; }
+
+
+        /* ── MEDIA-TO-MEDIA SPACING ──────────────────────── */
+        /* Rule: no image or video touches another. Bridges the gap when one
+           media block (without bottom padding/margin) is immediately followed
+           by another media block. */
+        .case-video + .case-video,
+        .case-video + .video-block,
+        .case-video + .gallery,
+        .case-video + .row,
+        .video-block + .case-video,
+        .video-block + .video-block,
+        .video-block + .gallery,
+        .video-block + .row {
+            margin-top: var(--gallery-gap);
+        }
+
+
+        /* ── NEXT PROJECT ────────────────────────────────── */
+        .next-project {
+            background: var(--color-dark-surface);
+            color: #fff;
+            padding: var(--space-3xl) var(--pad);
+            border-bottom: var(--border-dark-subtle);
+        }
+        .next-project a {
+            display: block;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .next-project .label {
+            color: var(--color-accent);
+            font-size: var(--text-label);
+            letter-spacing: var(--tracking-caps);
+            text-transform: uppercase;
+            margin-bottom: var(--space-md);
+        }
+        .next-project h2 {
+            font-size: var(--text-h1);
+            font-weight: 500;
+            letter-spacing: var(--tracking-tighter);
+            line-height: var(--leading-tight);
+            transition: color .3s;
+        }
+        .next-project h2 em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--color-accent);
+        }
+        .next-project a:hover h2 { color: var(--color-accent); }
+
+
+        /* ── FOOTER ──────────────────────────────────────── */
+        footer.case-footer {
+            background: var(--color-dark-surface);
+            color: #fff;
+            padding: clamp(4rem, 8vw, 8rem) var(--pad) 3rem;
+        }
+        .case-footer-inner { max-width: 1440px; margin: 0 auto; }
+        .footer-heading {
+            font-size: clamp(3rem, 9vw, 8rem);
+            font-weight: 700;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            margin-bottom: clamp(3rem, 6vw, 6rem);
+        }
+        .footer-heading em { color: var(--color-accent); font-style: italic; font-weight: 300; }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
+            border-top: var(--border-dark-subtle);
+            padding-top: 2.5rem;
+            font-size: 0.6875rem;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+        .footer-col-label {
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        .footer-grid a, .footer-grid p {
+            color: rgba(255,255,255,.55);
+            display: block;
+            line-height: 2;
+            transition: color .2s;
+            font-weight: 400;
+        }
+        .footer-grid a:hover { color: var(--color-accent); }
+        .footer-grid .footer-email {
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
+            text-transform: none;
+            color: rgba(255,255,255,.8);
+            border-bottom: 1px solid rgba(255,255,255,.15);
+            padding-bottom: 0.35rem;
+            display: inline-block;
+        }
+        .footer-grid .footer-email:hover { color: var(--color-accent); border-color: var(--color-accent); }
+        .footer-location {
+            text-transform: none;
+            letter-spacing: 0.03em;
+            font-weight: 300;
+            color: rgba(255,255,255,.4);
+            line-height: 1.8;
+        }
+        .footer-copy {
+            color: rgba(255,255,255,.2);
+            margin-top: 0.75rem;
+            font-size: 0.6rem;
+        }
+
+
+        /* ── CREDITS ─────────────────────────────────────── */
+        .case-credits {
+            background: var(--color-dark-surface);
+            padding: var(--space-3xl) var(--pad);
+            border-top: var(--border-dark-subtle);
+        }
+        .credits-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .credits-group {
+            margin-bottom: var(--space-2xl);
+        }
+        .credits-category {
+            font-size: var(--text-caps);
+            letter-spacing: var(--tracking-caps-lg);
+            text-transform: uppercase;
+            color: var(--color-accent);
+            font-weight: var(--weight-semibold);
+            margin-bottom: var(--space-sm);
+        }
+        .credits-table {
+            display: flex;
+            flex-direction: column;
+        }
+        .cr-row {
+            display: grid;
+            grid-template-columns: 220px 1fr 220px 1fr;
+            gap: 0 var(--space-md);
+            padding: 10px 0;
+            border-top: var(--border-dark-subtle);
+            align-items: baseline;
+        }
+        .cr-role {
+            font-size: var(--text-caps);
+            letter-spacing: var(--tracking-caps);
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            font-weight: var(--weight-regular);
+            line-height: var(--leading-relaxed);
+        }
+        .cr-name {
+            font-size: var(--text-label);
+            color: rgba(255,255,255,0.85);
+            font-weight: var(--weight-light);
+            line-height: var(--leading-relaxed);
+        }
+        .cr-name .cr-highlight { color: var(--color-accent); }
+        @media (max-width: 768px) {
+            .cr-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+                padding: var(--space-sm) 0;
+            }
+            .cr-role { margin-top: var(--space-xs); }
+        }
+
+
+        /* ── REVEAL ──────────────────────────────────────── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .75s var(--ease-out), transform .75s var(--ease-out);
+        }
+        .reveal.visible { opacity: 1; transform: none; }
+
+
+        /* ── RESPONSIVE ──────────────────────────────────── */
+        @media (max-width: 768px) {
+            nav.site-nav .nav-links { gap: 1.25rem; font-size: 0.7rem; }
+            nav.site-nav .nav-links a:nth-child(2),
+            nav.site-nav .nav-links a:nth-child(3) { display: none; }
+            .gallery { gap: 64px; }
+            .w-25,.w-30,.w-35,.w-40,.w-45,.w-50,.w-55,.w-60,.w-65,.w-70,.w-75,.w-80 { max-width: 100% !important; }
+            .pos-left, .pos-center, .pos-right { align-self: stretch; }
+            .row.twoup, .row.threeup,
+            .row.split-6040, .row.split-4060,
+            .row.split-7030, .row.split-3070 { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .video-block .play-btn { width: 80px; height: 80px; }
+            .video-block .play-btn::after { border-width: 10px 0 10px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+
+<!-- ───────────────────────────────────────────────────── HERO -->
+<section class="case-hero">
+
+    <img class="bg" src="assets/Microsoft/1e3c68232311467.689a190ce3d62.png" alt="Microsoft Copilot+ PC" />
+
+    <nav class="site-nav">
+        <a href="index.html" class="brand">Cesar Barbosa <span class="slash">/</span> cesoi.de</a>
+        <div class="nav-links">
+            <a href="index.html#works">Works</a>
+            <a href="index.html#about">About</a>
+            <a href="mailto:cesar@cesoi.de" class="email">cesar@cesoi.de</a>
+        </div>
+    </nav>
+
+    <div class="case-meta">
+        <span class="meta-left">São Paulo / BR</span>
+        <span class="meta-center">Available — Q2 2026</span>
+        <span class="meta-right" id="local-clock">--:--:-- BRT</span>
+    </div>
+
+    <div class="case-hero-content">
+        <h1 class="case-hero-title">
+            Microsoft <span class="dash">—</span> <em>Copilot + PCs</em>
+        </h1>
+    </div>
+
+</section>
+
+
+<!-- ───────────────────── INTRO -->
+<section class="intro reveal">
+    <div class="intro-eyebrow">
+        Microsoft Copilot+ PCs <span class="star">✦</span>
+    </div>
+    <p class="intro-text">
+        Microsoft is bringing Copilot+ PCs to schools, students and creators everywhere. The campaign celebrates a new generation of devices designed around AI — fast, intelligent and built for the way people actually work. We collaborated with BUCK to deliver a series of design-driven CGI films, blending hyper-real product hero shots with playful, character-led visual systems.
+    </p>
+</section>
+
+
+<!-- ───────────────────── PRIMARY VIDEO (click-to-play) -->
+<div class="video-block" id="video-buck25">
+    <video
+        src="assets/Microsoft/Microsoft%20Copilot%20PCs%20BUCK-25.mp4"
+        preload="metadata"
+        playsinline></video>
+    <img class="poster" src="assets/Microsoft/cdb568232311467.689a0eb57e8b8.png" alt="Play main film" />
+    <button class="play-btn" aria-label="Play video"></button>
+    <span class="video-label">Play Main Film</span>
+</div>
+
+
+<!-- ───────────────────── ILLUMINATION -->
+<section class="case-section reveal">
+    <h2>Illumination</h2>
+    <p>
+        The lighting story of the campaign starts with a single beam of warm light cutting across glossy aluminum and translucent surfaces. We developed a custom lookdev pipeline in Redshift that allowed us to push the contrast between the cool, almost surgical environment and the warm Copilot key — making it the unmistakable hero of every frame.
+    </p>
+    <a class="external-link" href="https://buck.co/work/microsoft-copilot-pcs" target="_blank" rel="noopener noreferrer">Full Project Case</a>
+</section>
+
+
+<!-- ───────────────────── SECONDARY VIDEO (autoplay loop) -->
+<section class="case-video">
+    <video
+        src="assets/Microsoft/microsoft_copilot_pcs_buck-15%20%281080p%29.mp4"
+        poster="assets/Microsoft/thumb.png"
+        autoplay muted loop playsinline></video>
+</section>
+
+
+<!-- ───────────────────── BUCK-24 VIDEO -->
+<div class="gallery">
+    <div class="gallery-item pos-left w-80 reveal">
+        <video
+            src="assets/Microsoft/Microsoft-Copilot-PCs-BUCK-24.mp4"
+            autoplay muted loop playsinline></video>
+    </div>
+</div>
+
+
+<!-- ───────────────────── GALLERY GROUP 1 -->
+
+<!-- Two-up split -->
+<div class="row twoup reveal">
+    <div class="gallery-item"><img src="assets/Microsoft/0a5263232311467.689a0eb634c91.png" alt="Closed laptop with glow" /></div>
+    <div class="gallery-item"><img src="assets/Microsoft/df5bfa232311467.689a0eb634821.png" alt="NPU chip detail" /></div>
+</div>
+
+<!-- Single offset right (medium) -->
+<div class="gallery">
+    <div class="gallery-item pos-right w-70 reveal">
+        <img src="assets/Microsoft/f93e05232311467.689a0eb57e39e.png" alt="Keyboard with orange glow" />
+    </div>
+</div>
+
+<!-- Three-up tight -->
+<div class="row threeup reveal">
+    <div class="gallery-item"><img src="assets/Microsoft/89104c232311467.689a23e390fae.png" alt="Laptop opening close-up" /></div>
+    <div class="gallery-item"><img src="assets/Microsoft/ce700d232311467.689a0eb63525a.png" alt="Camera detail" /></div>
+    <div class="gallery-item"><img src="assets/Microsoft/2da530232311467.689a190eed656.png" alt="Keyboard chunks" /></div>
+</div>
+
+<!-- Single big offset left -->
+<div class="gallery">
+    <div class="gallery-item pos-left w-70 reveal">
+        <img src="assets/Microsoft/e6eb30232311467.689a190d7ea1c.png" alt="Laptop tablet mode" />
+    </div>
+</div>
+
+<!-- 60/40 split -->
+<div class="row split-6040 reveal">
+    <div class="gallery-item"><img src="assets/Microsoft/0c1a2d232311467.689a23e4d8c28.png" alt="Detail 01" /></div>
+    <div class="gallery-item"><img src="assets/Microsoft/10ba01232311467.689a23e4d92d7.png" alt="Detail 02" /></div>
+</div>
+
+<!-- Centered medium -->
+<div class="gallery">
+    <div class="gallery-item pos-center w-65 reveal">
+        <img src="assets/Microsoft/1157d8232311467.689a23e25445f.png" alt="Detail 03" />
+    </div>
+</div>
+
+<!-- Two-up -->
+<div class="row twoup reveal">
+    <div class="gallery-item"><img src="assets/Microsoft/250535232311467.689a190c4c2b0.png" alt="Detail 05" /></div>
+    <div class="gallery-item"><img src="assets/Microsoft/2613af232311467.689a23e6bb9b9.png" alt="Detail 06" /></div>
+</div>
+
+<!-- Side by side: small left + big right -->
+<div class="row split-3070 reveal">
+    <div class="gallery-item"><img src="assets/Microsoft/28048d232311467.689a190ce3796.png" alt="Detail 07" /></div>
+    <div class="gallery-item"><img src="assets/Microsoft/327d27232311467.689a23e2e8fd5.png" alt="Detail 08" /></div>
+</div>
+
+
+<!-- ───────────────────── BUDAPEST -->
+<section class="case-section reveal">
+    <h2>Budapest Lifestyle Photography</h2>
+    <p>
+        For the launch films we joined the BUCK production team in Budapest. The lifestyle plates were shot on location with a small crew and integrated back into our CG pipeline — matching real environments, lighting and depth of field. Every device hero shot was rebuilt in 3D so we could control every reflection, every UI moment and every soft cast of light from the OLED.
+    </p>
+</section>
+
+
+<!-- ───────────────────── GALLERY GROUP 2 (Budapest) -->
+
+<!-- Two-up landscape -->
+<div class="row twoup reveal">
+    <div class="gallery-item"><img src="assets/Microsoft/43df58232311467.689a0eb9b60c3.png" alt="Person at laptop 01" /></div>
+    <div class="gallery-item"><img src="assets/Microsoft/4e4329232311467.689a190e2897c.png" alt="Person at laptop 02" /></div>
+</div>
+
+<!-- Single big -->
+<div class="gallery">
+    <div class="gallery-item pos-center w-88 reveal">
+        <img src="assets/Microsoft/47c682232311467.689a23e5efb0e.png" alt="Lifestyle scene 01" />
+    </div>
+</div>
+
+<!-- 40/60 split -->
+<div class="row split-4060 reveal">
+    <div class="gallery-item"><img src="assets/Microsoft/48eb25232311467.689a23e5f00c4.png" alt="Lifestyle scene 02" /></div>
+    <div class="gallery-item"><img src="assets/Microsoft/4aac87232311467.689a23e437b67.png" alt="Lifestyle scene 03" /></div>
+</div>
+
+<!-- Three-up tight -->
+<div class="row threeup reveal">
+    <div class="gallery-item"><img src="assets/Microsoft/51bf52232311467.689a0eb8eec29.png" alt="Detail 09" /></div>
+    <div class="gallery-item"><img src="assets/Microsoft/58a1bb232311467.689a190eedc15.png" alt="Detail 10" /></div>
+    <div class="gallery-item"><img src="assets/Microsoft/64f460232311467.689a23e4d857b.png" alt="Detail 11" /></div>
+</div>
+
+<!-- Right offset medium -->
+<div class="gallery">
+    <div class="gallery-item pos-right w-65 reveal">
+        <img src="assets/Microsoft/66a63d232311467.689a0eb85a3aa.png" alt="Detail 12" />
+    </div>
+</div>
+
+
+<!-- ───────────────────── TERTIARY VIDEO (side-by-side) -->
+<section class="case-video">
+    <video
+        src="assets/Microsoft/sidebyside_01%20%281080p%29.mp4"
+        poster="assets/Microsoft/thumb.png"
+        autoplay muted loop playsinline></video>
+</section>
+
+
+<!-- ───────────────────── GALLERY GROUP 3 (closing) -->
+
+<!-- Three-up tight after spacing -->
+<div class="row threeup reveal">
+    <div class="gallery-item"><img src="assets/Microsoft/6c725c232311467.689a0eb85aa23.png" alt="Detail 13" /></div>
+    <div class="gallery-item"><img src="assets/Microsoft/8ab4a8232311467.689a190eee4bf.png" alt="Detail 14" /></div>
+    <div class="gallery-item"><img src="assets/Microsoft/8e944e232311467.689a23e5ef472.png" alt="Detail 15" /></div>
+</div>
+
+<!-- Big centered -->
+<div class="gallery">
+    <div class="gallery-item pos-center w-82 reveal">
+        <img src="assets/Microsoft/968c2e232311467.689a23e43801f.png" alt="Final environment" />
+    </div>
+</div>
+
+<!-- 70/30 split -->
+<div class="row split-7030 reveal">
+    <div class="gallery-item"><img src="assets/Microsoft/a019cf232311467.689a23e2e942a.png" alt="Wide shot" /></div>
+    <div class="gallery-item"><img src="assets/Microsoft/a76d4e232311467.689a190e290ae.png" alt="Detail" /></div>
+</div>
+
+<!-- Single offset left -->
+<div class="gallery">
+    <div class="gallery-item pos-left w-55 reveal">
+        <img src="assets/Microsoft/c632fd232311467.689a23e6bc127.png" alt="Detail 16" />
+    </div>
+</div>
+
+<!-- Two-up -->
+<div class="row twoup reveal">
+    <div class="gallery-item"><img src="assets/Microsoft/d1d2dc232311467.689a190eecfba.png" alt="Person at laptop 03" /></div>
+    <div class="gallery-item"><img src="assets/Microsoft/e9d038232311467.689a23e390b23.png" alt="Detail 17" /></div>
+</div>
+
+<!-- Animated GIF + 2 stills row -->
+<div class="row threeup reveal">
+    <div class="gallery-item"><img src="assets/Microsoft/324fae232311467.689a190e2821a.gif" alt="Animated detail" /></div>
+    <div class="gallery-item"><img src="assets/Microsoft/f26e6e232311467.689a190d7f11d.png" alt="Detail 18" /></div>
+    <div class="gallery-item"><img src="assets/Microsoft/fc73e9232311467.689a23e6bc8e9.png" alt="Detail 19" /></div>
+</div>
+
+<!-- Final big -->
+<div class="gallery">
+    <div class="gallery-item pos-center w-100 reveal">
+        <img src="assets/Microsoft/fe856b232311467.689a23e254a7d.png" alt="Closing shot" />
+    </div>
+</div>
+
+
+<!-- ───────────────────── CREDITS -->
+<section class="case-credits reveal">
+    <div class="credits-inner">
+
+        <div class="credits-group">
+            <p class="credits-category">Buck</p>
+            <div class="credits-table">
+                <div class="cr-row">
+                    <span class="cr-role">Group Creative Director</span>
+                    <span class="cr-name">Thomas Schmid</span>
+                    <span class="cr-role">Executive Producer</span>
+                    <span class="cr-name">Russell Greene</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Associate Creative Director</span>
+                    <span class="cr-name">Ana Gomez Bernaus</span>
+                    <span class="cr-role">Art Director</span>
+                    <span class="cr-name">Twisha Patni, Arielle Casale</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Producer</span>
+                    <span class="cr-name">Luke Proctor, Mark Groeschner, Melissa Louis-Jacques</span>
+                    <span class="cr-role">Associate Producer</span>
+                    <span class="cr-name">Nina Randall</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Head of Strategy</span>
+                    <span class="cr-name">Marla Moore</span>
+                    <span class="cr-role">Copywriter</span>
+                    <span class="cr-name">Charlie Short</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Designer</span>
+                    <span class="cr-name">Darius Maghen, Emilia Tonello, Javier Tommasi, Nachei Sánchez, Seba Morales, Simon Ronnerdag, Jesseter Wang</span>
+                    <span class="cr-role">Technical Director</span>
+                    <span class="cr-name">Ben Rohel, Jens Lindgren</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Head of 3D</span>
+                    <span class="cr-name">Bill Dorais</span>
+                    <span class="cr-role">3D Supervisor</span>
+                    <span class="cr-name">Hogan Williams</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">3D Lead</span>
+                    <span class="cr-name">Shane O'Hara</span>
+                    <span class="cr-role">3D Animation Lead</span>
+                    <span class="cr-name">Taylor James</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">3D Designer / Animator</span>
+                    <span class="cr-name"><span class="cr-highlight">Cesar Barbosa</span>, Danesh Taraporevala, Jesseter Wang</span>
+                    <span class="cr-role">3D Animator</span>
+                    <span class="cr-name">Andy Hahn, Daniel Marin, Duncan DeMichiel, Gabriel Barbosa, Isaac Taracks, Pier Paolo, Will Burkart, Adam Webber, Jesseter Wang</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Compositor</span>
+                    <span class="cr-name">Navid Bagherzadeh</span>
+                    <span class="cr-role">Creative Technology Director</span>
+                    <span class="cr-name">Cameron Browning</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Editor</span>
+                    <span class="cr-name">Billy Kostka, Brian Dieck, Cameron Kelly, Marianne Karaan, Talia Mazzarella</span>
+                    <span class="cr-role"></span>
+                    <span class="cr-name"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="credits-group">
+            <p class="credits-category">Microsoft</p>
+            <div class="credits-table">
+                <div class="cr-row">
+                    <span class="cr-role">Creative Director</span>
+                    <span class="cr-name">Samuel Clarke</span>
+                    <span class="cr-role">Windows Producer</span>
+                    <span class="cr-name">Summer Zimmerman</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Surface Producer</span>
+                    <span class="cr-name">Allie Gibbs</span>
+                    <span class="cr-role">Director of Windows &amp; Surface</span>
+                    <span class="cr-name">Karina Vivas</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Art Director</span>
+                    <span class="cr-name">JJ Miller, Michelle Lin</span>
+                    <span class="cr-role"></span>
+                    <span class="cr-name"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="credits-group">
+            <p class="credits-category">Audio</p>
+            <div class="credits-table">
+                <div class="cr-row">
+                    <span class="cr-role">Sound Design &amp; Mix</span>
+                    <span class="cr-name">Ambrose Yu, Joe Basile</span>
+                    <span class="cr-role"></span>
+                    <span class="cr-name"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="credits-group">
+            <p class="credits-category">Live Action</p>
+            <div class="credits-table">
+                <div class="cr-row">
+                    <span class="cr-role">Art Director</span>
+                    <span class="cr-name">Arielle Casale</span>
+                    <span class="cr-role">Photographer</span>
+                    <span class="cr-name">Charlie Schuck</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Line Producer</span>
+                    <span class="cr-name">Kyle McGuiness</span>
+                    <span class="cr-role"></span>
+                    <span class="cr-name"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="credits-group">
+            <p class="credits-category">Ditroit</p>
+            <div class="credits-table">
+                <div class="cr-row">
+                    <span class="cr-role">Creative Director</span>
+                    <span class="cr-name">Salvatore Giunta</span>
+                    <span class="cr-role">Creative Producer</span>
+                    <span class="cr-name">Irene Costantini</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Designer</span>
+                    <span class="cr-name">Claudio Gasparollo, Alessandro Nobile, Matteo Nicoli, Marco Serracca, Alessandra Sartori, Mantas Bardauskas, Davide Rubini, Steward Lupercio, Pietro Furbatto</span>
+                    <span class="cr-role"></span>
+                    <span class="cr-name"></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ───────────────────── NEXT PROJECT -->
+<section class="next-project reveal">
+    <a href="index.html#works">
+        <p class="label">Next Project</p>
+        <h2>7up <em>— New 7up, Same 7up</em></h2>
+    </a>
+</section>
+
+
+<!-- ───────────────────── FOOTER -->
+<footer class="case-footer">
+    <div class="case-footer-inner">
+        <h2 class="footer-heading reveal">
+            Let's render<br>
+            <em>something.</em>
+        </h2>
+        <div class="footer-grid reveal">
+            <div>
+                <span class="footer-col-label">Get in touch</span>
+                <a href="mailto:cesar@cesoi.de" class="footer-email">cesar@cesoi.de</a>
+            </div>
+            <div>
+                <span class="footer-col-label">Social</span>
+                <a href="https://www.instagram.com/cesoi.de/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="https://www.behance.net/cesoide" target="_blank" rel="noopener noreferrer">Behance</a>
+                <a href="https://www.linkedin.com/in/cesoide/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+            <div>
+                <span class="footer-col-label">Index</span>
+                <a href="index.html#works">Works</a>
+                <a href="index.html#about">About</a>
+                <a href="mailto:cesar@cesoi.de">Contact</a>
+            </div>
+            <div>
+                <span class="footer-col-label">Studio</span>
+                <p class="footer-location">São Paulo, BR<br>UTC −3</p>
+                <p class="footer-copy" style="margin-top:1.5rem;">© 2026 Cesar Barbosa</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script>
+    /* Live local clock — São Paulo */
+    (function () {
+        const el = document.getElementById('local-clock');
+        if (!el) return;
+        const fmt = new Intl.DateTimeFormat('en-GB', {
+            timeZone: 'America/Sao_Paulo',
+            hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+        });
+        const tick = () => { el.textContent = fmt.format(new Date()) + ' BRT'; };
+        tick(); setInterval(tick, 1000);
+    })();
+
+    /* Click-to-play primary video */
+    (function () {
+        const block = document.getElementById('video-buck25');
+        if (!block) return;
+        const video = block.querySelector('video');
+        block.addEventListener('click', () => {
+            if (block.classList.contains('playing')) {
+                if (video.paused) { video.play(); }
+                else { video.pause(); block.classList.remove('playing'); }
+                return;
+            }
+            block.classList.add('playing');
+            video.controls = true;
+            video.play();
+        });
+        video.addEventListener('pause', () => {
+            if (video.currentTime > 0 && !video.ended) {
+                // keep "playing" class if user paused, so controls stay visible
+            }
+        });
+    })();
+
+    /* Reveal on scroll */
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+        });
+    }, { threshold: 0.07 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

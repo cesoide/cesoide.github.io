@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eBay — A-Z of Authenticity · Cesar Barbosa</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+    <!-- Cesoi Design System -->
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="colors_and_type.css">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: var(--font-display, 'Poppins'), system-ui, sans-serif;
+            background: var(--color-paper, #fff);
+            color:      var(--color-ink, #0e0e0e);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar { display: none; }
+        a { color: inherit; text-decoration: none; }
+
+        :root { --pad: clamp(1.5rem, 5vw, 4rem); }
+
+        /* ── NAV ─────────────────────────────────────────── */
+        nav.site-nav {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem var(--pad);
+            color: #fff;
+            font-size: 0.75rem;
+            letter-spacing: 0.06em;
+            font-weight: 400;
+        }
+        nav.site-nav .brand { font-weight: 500; letter-spacing: 0.02em; }
+        nav.site-nav .brand .slash { color: rgba(255,255,255,0.5); margin: 0 .35em; }
+        nav.site-nav .nav-links { display: flex; gap: 2.25rem; align-items: center; }
+        nav.site-nav .nav-links a { transition: color .2s, opacity .2s; opacity: 0.85; }
+        nav.site-nav .nav-links a:hover { color: var(--color-accent); opacity: 1; }
+        nav.site-nav .nav-links a.email {
+            color: var(--color-accent);
+            text-transform: uppercase;
+            opacity: 1;
+            letter-spacing: 0.08em;
+        }
+        nav.site-nav .nav-links a.email:hover { opacity: 0.7; }
+
+
+        /* ── HERO ────────────────────────────────────────── */
+        .case-hero {
+            position: relative;
+            width: 100%;
+            min-height: 78svh;
+            background: var(--color-dark-surface);
+            color: #fff;
+            overflow: hidden;
+        }
+        .case-hero img.bg {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: 0;
+        }
+        .case-hero::before {
+            content: "";
+            position: absolute; inset: 0;
+            background:
+                linear-gradient(180deg, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.05) 30%, rgba(10,10,10,0.05) 60%, rgba(10,10,10,0.55) 100%);
+            z-index: 1;
+        }
+        .case-meta {
+            position: absolute;
+            top: 5.5rem; left: 0; right: 0;
+            z-index: 3;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            padding: 0 var(--pad);
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.55);
+            font-variant-numeric: tabular-nums;
+        }
+        .case-meta .meta-center { text-align: center; }
+        .case-meta .meta-right  { text-align: right; }
+
+        .case-hero-content {
+            position: relative;
+            z-index: 2;
+            min-height: 78svh;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 var(--pad) clamp(3rem, 6vw, 5rem);
+        }
+        .case-hero-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: var(--text-case-hero);
+            font-weight: 500;
+            line-height: var(--leading-hero);
+            letter-spacing: var(--tracking-tight);
+            color: #fff;
+        }
+        .case-hero-title em {
+            font-style: italic;
+            font-weight: 400;
+            color: rgba(255,255,255,0.85);
+        }
+        .case-hero-title .dash {
+            color: rgba(255,255,255,0.5);
+            font-weight: 300;
+            margin: 0 .15em;
+        }
+
+
+        /* ── INTRO BLOCK ─────────────────────────────────── */
+        .intro {
+            padding: var(--space-2xl) var(--pad);
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .intro-eyebrow {
+            display: flex; align-items: center; gap: 0.6rem;
+            font-size: var(--text-label);
+            letter-spacing: var(--tracking-caps);
+            text-transform: uppercase;
+            color: var(--color-muted-55);
+            font-weight: 500;
+            margin-bottom: var(--space-md);
+        }
+        .intro-eyebrow::before {
+            content: "";
+            display: inline-block;
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--color-accent);
+        }
+        .intro-eyebrow .star { color: var(--color-accent); margin-left: 0.4em; }
+        .intro-text {
+            font-size: var(--text-body-xl);
+            line-height: var(--leading-normal);
+            color: var(--color-muted-55);
+            font-weight: 300;
+            max-width: 68ch;
+        }
+
+
+        /* ── VIDEO PLAYER (with play button) ─────────────── */
+        .video-block {
+            position: relative;
+            width: 100%;
+            background: #000;
+            line-height: 0;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .video-block video {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+        .video-block .play-btn {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110px; height: 110px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 2;
+            transition: transform .4s var(--ease-out), background .3s, opacity .4s;
+        }
+        .video-block:hover .play-btn {
+            transform: translate(-50%, -50%) scale(1.08);
+            background: rgba(255,255,255,0.18);
+        }
+        .video-block .play-btn::after {
+            content: "";
+            display: block;
+            width: 0; height: 0;
+            border-style: solid;
+            border-width: 14px 0 14px 22px;
+            border-color: transparent transparent transparent #fff;
+            margin-left: 6px;
+        }
+        .video-block .video-label {
+            position: absolute;
+            bottom: 1.5rem; right: 1.5rem;
+            z-index: 2;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            transition: opacity .4s;
+        }
+        .video-block.playing .play-btn,
+        .video-block.playing .video-label { opacity: 0; pointer-events: none; }
+
+
+        /* Auto-loop video (no controls) */
+        .case-video {
+            position: relative;
+            width: 100%;
+            background: #000;
+            line-height: 0;
+        }
+        .case-video video {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+
+        /* ── SECTION (Overview…) ─────────────────────────── */
+        .case-section {
+            padding: var(--space-3xl) var(--pad) var(--space-2xl);
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .case-section h2 {
+            font-size: var(--text-h2);
+            font-weight: 500;
+            letter-spacing: -0.025em;
+            line-height: var(--leading-snug);
+            margin-bottom: var(--space-md);
+            color: var(--color-ink);
+        }
+        .case-section p {
+            font-size: var(--text-body-xl);
+            line-height: var(--leading-normal);
+            color: var(--color-muted-55);
+            font-weight: 300;
+            max-width: 68ch;
+        }
+        .case-section p + p { margin-top: var(--space-sm); }
+
+
+        /* ── GALLERY (staggered single items) ────────────── */
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            gap: var(--gallery-gap);
+            padding: 0 var(--pad) var(--space-3xl);
+            max-width: 1440px;
+            margin: 0 auto;
+            align-items: stretch;
+        }
+        .gallery.tight { gap: clamp(2rem, 4vw, 3rem); }
+
+        .gallery-item {
+            line-height: 0;
+            overflow: hidden;
+        }
+        .gallery-item img,
+        .gallery-item video {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform .8s var(--ease-out);
+        }
+        /* Opt-in horizontal crop */
+        .gallery-item.crop-16-9 { aspect-ratio: 16 / 9; }
+        .gallery-item.crop-3-2  { aspect-ratio: 3 / 2; }
+        .gallery-item.crop-4-3  { aspect-ratio: 4 / 3; }
+        .gallery-item.crop-1-1  { aspect-ratio: 1 / 1; }
+        .gallery-item.crop-16-9 img,
+        .gallery-item.crop-16-9 video,
+        .gallery-item.crop-3-2 img,
+        .gallery-item.crop-3-2 video,
+        .gallery-item.crop-4-3 img,
+        .gallery-item.crop-4-3 video,
+        .gallery-item.crop-1-1 img,
+        .gallery-item.crop-1-1 video {
+            height: 100%;
+            object-fit: cover;
+        }
+        /* Row cells */
+        .row .gallery-item img,
+        .row .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .gallery-item:hover img,
+        .gallery-item:hover video { transform: scale(1.02); }
+
+        /* Position helpers */
+        .pos-left   { align-self: flex-start; }
+        .pos-center { align-self: center; }
+        .pos-right  { align-self: flex-end; }
+
+        /* Width helpers */
+        .w-25 { max-width: 25%; }
+        .w-30 { max-width: 30%; }
+        .w-35 { max-width: 35%; }
+        .w-40 { max-width: 40%; }
+        .w-45 { max-width: 45%; }
+        .w-50 { max-width: 50%; }
+        .w-55 { max-width: 55%; }
+        .w-60 { max-width: 60%; }
+        .w-65 { max-width: 65%; }
+        .w-70 { max-width: 70%; }
+        .w-75 { max-width: 75%; }
+        .w-80 { max-width: 80%; }
+        .w-82 { max-width: 82%; }
+        .w-88 { max-width: 88%; }
+        .w-100{ max-width: 100%; }
+
+
+        /* ── ROW LAYOUTS ─────────────────────────────────── */
+        .row {
+            display: grid;
+            gap: clamp(1rem, 2vw, 1.5rem);
+            padding: 0 var(--pad);
+            max-width: 1440px;
+            margin: 0 auto;
+            margin-bottom: var(--gallery-gap);
+        }
+        .row.twoup   { grid-template-columns: 1fr 1fr; }
+        .row.threeup { grid-template-columns: 1fr 1fr 1fr; }
+        .row.split-6040 { grid-template-columns: 6fr 4fr; }
+        .row.split-4060 { grid-template-columns: 4fr 6fr; }
+        .row.split-7030 { grid-template-columns: 7fr 3fr; }
+        .row.split-3070 { grid-template-columns: 3fr 7fr; }
+        .row.equal-h { align-items: stretch; }
+
+
+        /* ── MEDIA-TO-MEDIA SPACING ──────────────────────── */
+        .case-video + .case-video,
+        .case-video + .video-block,
+        .case-video + .gallery,
+        .case-video + .row,
+        .video-block + .case-video,
+        .video-block + .video-block,
+        .video-block + .gallery,
+        .video-block + .row {
+            margin-top: var(--gallery-gap);
+        }
+
+
+        /* ── NEXT PROJECT ────────────────────────────────── */
+        .next-project {
+            background: var(--color-dark-surface);
+            color: #fff;
+            padding: var(--space-3xl) var(--pad);
+            border-bottom: var(--border-dark-subtle);
+        }
+        .next-project a {
+            display: block;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .next-project .label {
+            color: var(--color-accent);
+            font-size: var(--text-label);
+            letter-spacing: var(--tracking-caps);
+            text-transform: uppercase;
+            margin-bottom: var(--space-md);
+        }
+        .next-project h2 {
+            font-size: var(--text-h1);
+            font-weight: 500;
+            letter-spacing: var(--tracking-tighter);
+            line-height: var(--leading-tight);
+            transition: color .3s;
+        }
+        .next-project h2 em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--color-accent);
+        }
+        .next-project a:hover h2 { color: var(--color-accent); }
+
+
+        /* ── CREDITS ─────────────────────────────────────── */
+        .case-credits {
+            background: var(--color-dark-surface);
+            padding: var(--space-3xl) var(--pad);
+            border-top: var(--border-dark-subtle);
+        }
+        .credits-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .credits-group {
+            margin-bottom: var(--space-2xl);
+        }
+        .credits-category {
+            font-size: var(--text-caps);
+            letter-spacing: var(--tracking-caps-lg);
+            text-transform: uppercase;
+            color: var(--color-accent);
+            font-weight: var(--weight-semibold);
+            margin-bottom: var(--space-sm);
+        }
+        .credits-table {
+            display: flex;
+            flex-direction: column;
+        }
+        .cr-row {
+            display: grid;
+            grid-template-columns: 220px 1fr 220px 1fr;
+            gap: 0 var(--space-md);
+            padding: 10px 0;
+            border-top: var(--border-dark-subtle);
+            align-items: baseline;
+        }
+        .cr-role {
+            font-size: var(--text-caps);
+            letter-spacing: var(--tracking-caps);
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            font-weight: var(--weight-regular);
+            line-height: var(--leading-relaxed);
+        }
+        .cr-name {
+            font-size: var(--text-label);
+            color: rgba(255,255,255,0.85);
+            font-weight: var(--weight-light);
+            line-height: var(--leading-relaxed);
+        }
+        .cr-name .cr-highlight { color: var(--color-accent); }
+        @media (max-width: 768px) {
+            .cr-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+                padding: var(--space-sm) 0;
+            }
+            .cr-role { margin-top: var(--space-xs); }
+        }
+
+
+        /* ── FOOTER ──────────────────────────────────────── */
+        footer.case-footer {
+            background: var(--color-dark-surface);
+            color: #fff;
+            padding: clamp(4rem, 8vw, 8rem) var(--pad) 3rem;
+        }
+        .case-footer-inner { max-width: 1440px; margin: 0 auto; }
+        .footer-heading {
+            font-size: clamp(3rem, 9vw, 8rem);
+            font-weight: 700;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            margin-bottom: clamp(3rem, 6vw, 6rem);
+        }
+        .footer-heading em { color: var(--color-accent); font-style: italic; font-weight: 300; }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
+            border-top: var(--border-dark-subtle);
+            padding-top: 2.5rem;
+            font-size: 0.6875rem;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+        .footer-col-label {
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        .footer-grid a, .footer-grid p {
+            color: rgba(255,255,255,.55);
+            display: block;
+            line-height: 2;
+            transition: color .2s;
+            font-weight: 400;
+        }
+        .footer-grid a:hover { color: var(--color-accent); }
+        .footer-grid .footer-email {
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
+            text-transform: none;
+            color: rgba(255,255,255,.8);
+            border-bottom: 1px solid rgba(255,255,255,.15);
+            padding-bottom: 0.35rem;
+            display: inline-block;
+        }
+        .footer-grid .footer-email:hover { color: var(--color-accent); border-color: var(--color-accent); }
+        .footer-location {
+            text-transform: none;
+            letter-spacing: 0.03em;
+            font-weight: 300;
+            color: rgba(255,255,255,.4);
+            line-height: 1.8;
+        }
+        .footer-copy {
+            color: rgba(255,255,255,.2);
+            margin-top: 0.75rem;
+            font-size: 0.6rem;
+        }
+
+
+        /* ── REVEAL ──────────────────────────────────────── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .75s var(--ease-out), transform .75s var(--ease-out);
+        }
+        .reveal.visible { opacity: 1; transform: none; }
+
+
+        /* ── RESPONSIVE ──────────────────────────────────── */
+        @media (max-width: 768px) {
+            nav.site-nav .nav-links { gap: 1.25rem; font-size: 0.7rem; }
+            nav.site-nav .nav-links a:nth-child(2),
+            nav.site-nav .nav-links a:nth-child(3) { display: none; }
+            .gallery { gap: 64px; }
+            .w-25,.w-30,.w-35,.w-40,.w-45,.w-50,.w-55,.w-60,.w-65,.w-70,.w-75,.w-80,.w-82,.w-88 { max-width: 100% !important; }
+            .pos-left, .pos-center, .pos-right { align-self: stretch; }
+            .row.twoup, .row.threeup,
+            .row.split-6040, .row.split-4060,
+            .row.split-7030, .row.split-3070 { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .video-block .play-btn { width: 80px; height: 80px; }
+            .video-block .play-btn::after { border-width: 10px 0 10px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+
+<!-- ───────────────────────────────────────────────────── HERO -->
+<section class="case-hero">
+
+    <img class="bg" src="assets/ebay/1f89c6127593699.6144c1d891bf3.jpg" alt="eBay — A-Z of Authenticity" />
+
+    <nav class="site-nav">
+        <a href="index.html" class="brand">Cesar Barbosa <span class="slash">/</span> cesoi.de</a>
+        <div class="nav-links">
+            <a href="index.html#works">Works</a>
+            <a href="index.html#about">About</a>
+            <a href="mailto:cesar@cesoi.de" class="email">cesar@cesoi.de</a>
+        </div>
+    </nav>
+
+    <div class="case-meta">
+        <span class="meta-left">São Paulo / BR</span>
+        <span class="meta-center">NotReal × eBay — 2021</span>
+        <span class="meta-right" id="local-clock">--:--:-- BRT</span>
+    </div>
+
+    <div class="case-hero-content">
+        <h1 class="case-hero-title">
+            eBay <span class="dash">—</span> <em>A-Z of Authenticity</em>
+        </h1>
+    </div>
+
+</section>
+
+
+<!-- ───────────────────── INTRO -->
+<section class="intro reveal">
+    <div class="intro-eyebrow">
+        eBay · Authenticity Guarantee <span class="star">✦</span>
+    </div>
+    <p class="intro-text">
+        NotReal directed eBay's "A to Z of Authenticity" — an alphabet-driven film celebrating the platform's authentication promise. We joined the team for 3D animation and CG simulations, helping bring the live-action plates and product transitions to life across a frame-by-frame visual journey.
+    </p>
+</section>
+
+
+<!-- ───────────────────── PRIMARY VIDEO (click-to-play) -->
+<div class="video-block" id="video-ebay-main">
+    <video
+        src="assets/ebay/ebay_-_the_a_to_z_for_a.g.%20%281080p%29.mp4"
+        preload="auto"
+        playsinline></video>
+    <button class="play-btn" aria-label="Play video"></button>
+    <span class="video-label">Play Main Film</span>
+</div>
+
+
+<!-- ───────────────────── OVERVIEW -->
+<section class="case-section reveal">
+    <h2>Overview</h2>
+    <p>
+        We contributed to the 3D animation and CG simulations on a film built from the ground up around the alphabet — twenty-six product moments, a relentless rhythm, and live-action plates threaded together by tactile CG transitions. Each letter became its own micro-set, with hero objects rebuilt in 3D so reflections, surfaces and motion could match the precision of the campaign idea.
+    </p>
+    <p>
+        The result is a fast, joyful piece of brand storytelling that earns eBay's authenticity claim through detail rather than declaration.
+    </p>
+</section>
+
+
+<!-- ───────────────────── GALLERY GROUP 1 -->
+
+<!-- Big single -->
+<div class="gallery">
+    <div class="gallery-item pos-center w-80 reveal">
+        <img src="assets/ebay/14806b127593699.6144c1d8906f7.jpg" alt="A-Z of Authenticity — frame 01" />
+    </div>
+</div>
+
+<!-- Two-up -->
+<div class="row twoup reveal">
+    <div class="gallery-item"><img src="assets/ebay/168ea7127593699.6144cc08406c7.jpg" alt="Frame 02" /></div>
+    <div class="gallery-item"><img src="assets/ebay/2d190a127593699.6144cc7816dac.jpg" alt="Frame 03" /></div>
+</div>
+
+<!-- Three-up GIFs -->
+<div class="row threeup reveal">
+    <div class="gallery-item"><img src="assets/ebay/16ae56127593699.6144c5b0f06a2.gif" alt="Animation 01" /></div>
+    <div class="gallery-item"><img src="assets/ebay/4488b0127593699.6144ce32c292b.gif" alt="Animation 02" /></div>
+    <div class="gallery-item"><img src="assets/ebay/4b9332127593699.6144c1d6de8f8.gif" alt="Animation 03" /></div>
+</div>
+
+<!-- Single -->
+<div class="gallery">
+    <div class="gallery-item pos-right w-65 reveal">
+        <img src="assets/ebay/2e411d127593699.6144c5b380295.jpg" alt="Frame 04" />
+    </div>
+</div>
+
+
+<!-- ───────────────────── GALLERY GROUP 2 -->
+
+<!-- 60/40 split -->
+<div class="row split-6040 reveal">
+    <div class="gallery-item"><img src="assets/ebay/3134c9127593699.6144c5b381000.jpg" alt="Frame 05" /></div>
+    <div class="gallery-item"><img src="assets/ebay/31ba24127593699.6144c1d88f70e.jpg" alt="Frame 06" /></div>
+</div>
+
+<!-- Three-up -->
+<div class="row threeup reveal">
+    <div class="gallery-item"><img src="assets/ebay/3befb2127593699.6144c11f64406.jpg" alt="Frame 07" /></div>
+    <div class="gallery-item"><img src="assets/ebay/341e52127593699.6144cc7817710.jpg" alt="Frame 08" /></div>
+    <div class="gallery-item"><img src="assets/ebay/415bb8127593699.6144c1d88ffed.jpg" alt="Frame 09" /></div>
+</div>
+
+<!-- Single -->
+<div class="gallery">
+    <div class="gallery-item pos-left w-70 reveal">
+        <img src="assets/ebay/50860d127593699.6144c1d892872.jpg" alt="Frame 10" />
+    </div>
+</div>
+
+<!-- Two-up -->
+<div class="row twoup reveal">
+    <div class="gallery-item"><img src="assets/ebay/529e54127593699.6144c5b37dd3a.jpg" alt="Frame 11" /></div>
+    <div class="gallery-item"><img src="assets/ebay/5e8adb127593699.6144cbc64a43e.jpg" alt="Frame 12" /></div>
+</div>
+
+
+<!-- ───────────────────── GALLERY GROUP 3 -->
+
+<!-- Three-up GIFs -->
+<div class="row threeup reveal">
+    <div class="gallery-item"><img src="assets/ebay/524e03127593699.6144c5ae36b2c.gif" alt="Animation 04" /></div>
+    <div class="gallery-item"><img src="assets/ebay/648af1127593699.6144c1d6de4b3.gif" alt="Animation 05" /></div>
+    <div class="gallery-item"><img src="assets/ebay/b57dd4127593699.6144c5b0effe6.gif" alt="Animation 06" /></div>
+</div>
+
+<!-- 30/70 split -->
+<div class="row split-3070 reveal">
+    <div class="gallery-item"><img src="assets/ebay/781d23127593699.6144c1d891617.jpg" alt="Frame 13" /></div>
+    <div class="gallery-item"><img src="assets/ebay/8c8517127593699.6144c5b37c754.jpg" alt="Frame 14" /></div>
+</div>
+
+<!-- Single big -->
+<div class="gallery">
+    <div class="gallery-item pos-center w-82 reveal">
+        <img src="assets/ebay/90531f127593699.6144c5b37cd21.jpg" alt="Frame 15" />
+    </div>
+</div>
+
+<!-- Two-up -->
+<div class="row twoup reveal">
+    <div class="gallery-item"><img src="assets/ebay/9204fe127593699.6144c5b38082d.jpg" alt="Frame 16" /></div>
+    <div class="gallery-item"><img src="assets/ebay/9b712d127593699.6144c5b37ef72.jpg" alt="Frame 17" /></div>
+</div>
+
+
+<!-- ───────────────────── GALLERY GROUP 4 -->
+
+<!-- Three-up -->
+<div class="row threeup reveal">
+    <div class="gallery-item"><img src="assets/ebay/9ce693127593699.6144c5af951a8.jpg" alt="Frame 18" /></div>
+    <div class="gallery-item"><img src="assets/ebay/a83650127593699.6144c2e6b0480.jpg" alt="Frame 19" /></div>
+    <div class="gallery-item"><img src="assets/ebay/ad86a0127593699.6144c1d8921df.jpg" alt="Frame 20" /></div>
+</div>
+
+<!-- Two-up -->
+<div class="row twoup reveal">
+    <div class="gallery-item"><img src="assets/ebay/b20ac5127593699.6144c11f630d2.jpg" alt="Frame 21" /></div>
+    <div class="gallery-item"><img src="assets/ebay/bb49ae127593699.6144c5b37f517.jpg" alt="Frame 22" /></div>
+</div>
+
+<!-- Three-up GIFs -->
+<div class="row threeup reveal">
+    <div class="gallery-item"><img src="assets/ebay/bc8fcf127593699.6144c5b2424fc.gif" alt="Animation 07" /></div>
+    <div class="gallery-item"><img src="assets/ebay/cb803e127593699.6144c5af9494f.gif" alt="Animation 08" /></div>
+    <div class="gallery-item"><img src="assets/ebay/e14ff4127593699.6144ce33cf76b.gif" alt="Animation 09" /></div>
+</div>
+
+<!-- Single -->
+<div class="gallery">
+    <div class="gallery-item pos-right w-70 reveal">
+        <img src="assets/ebay/d7a404127593699.6144c33ab448e.jpg" alt="Frame 23" />
+    </div>
+</div>
+
+
+<!-- ───────────────────── GALLERY GROUP 5 — Closing -->
+
+<!-- Two-up -->
+<div class="row twoup reveal">
+    <div class="gallery-item"><img src="assets/ebay/dca710127593699.6144c5b37b32f.jpg" alt="Frame 24" /></div>
+    <div class="gallery-item"><img src="assets/ebay/e185cf127593699.6144c5b381d8f.jpg" alt="Frame 25" /></div>
+</div>
+
+<!-- Single -->
+<div class="gallery">
+    <div class="gallery-item pos-center w-75 reveal">
+        <img src="assets/ebay/e5b723127593699.6144c5b37d540.jpg" alt="Frame 26" />
+    </div>
+</div>
+
+<!-- Two-up -->
+<div class="row twoup reveal">
+    <div class="gallery-item"><img src="assets/ebay/eea14c127593699.6144c1d890f9a.jpg" alt="Frame 27" /></div>
+    <div class="gallery-item"><img src="assets/ebay/f0d32c127593699.6144c5b37bf60.jpg" alt="Frame 28" /></div>
+</div>
+
+<!-- Final big -->
+<div class="gallery">
+    <div class="gallery-item pos-center w-100 reveal">
+        <img src="assets/ebay/f83da3127593699.6144c5b3815a9.jpg" alt="Closing frame" />
+    </div>
+</div>
+
+
+<!-- ───────────────────── CREDITS -->
+<section class="case-credits reveal">
+    <div class="credits-inner">
+
+        <div class="credits-group">
+            <p class="credits-category">NotReal</p>
+            <div class="credits-table">
+                <div class="cr-row">
+                    <span class="cr-role">Directed by</span>
+                    <span class="cr-name">NotReal</span>
+                    <span class="cr-role">Creative Direction</span>
+                    <span class="cr-name">Valeria Moreiro &amp; Milton Gonzalez</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Executive Production</span>
+                    <span class="cr-name">Roberto Connolly</span>
+                    <span class="cr-role">Art Direction</span>
+                    <span class="cr-name">Valeria Moreiro</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Animation Direction</span>
+                    <span class="cr-name">Milton Gonzalez</span>
+                    <span class="cr-role">Assistant Direction</span>
+                    <span class="cr-name">Joana Cabrera</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Line Producer</span>
+                    <span class="cr-name">Lucila Mansur</span>
+                    <span class="cr-role">Storyboarding</span>
+                    <span class="cr-name">Joana Cabrera, Martín Orza, Lucas Orueta (pitch)</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Assistant Art Director</span>
+                    <span class="cr-name">Flor Tasso</span>
+                    <span class="cr-role">2D Design</span>
+                    <span class="cr-name">Octavio Pollono, Malena De Luca, Luján Borzi, Manuela Cáceres (pitch), Valeria Moreiro</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">3D Design</span>
+                    <span class="cr-name">Flor Tasso, Linus Zoll, Jordi Pages, Marcio Flausino, Carolina Carballo, Luján Borzi</span>
+                    <span class="cr-role">2D Animation</span>
+                    <span class="cr-name">Eduardo Altarriba, Joana Cabrera, Milton Gonzalez</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">3D Animation</span>
+                    <span class="cr-name">Juampi Sciaccaluga, <span class="cr-highlight">Cesar Barbosa</span>, Milton Gonzalez, Sergio Fuego, Hernán Lindembaum</span>
+                    <span class="cr-role">CG Simulations</span>
+                    <span class="cr-name"><span class="cr-highlight">Cesar Barbosa</span>, Jordi Pages</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Post-Production Supervisor</span>
+                    <span class="cr-name">Roberto Connolly</span>
+                    <span class="cr-role">CG Compositing Supervisor</span>
+                    <span class="cr-name">Milton Gonzalez, Valeria Moreiro</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Rendering</span>
+                    <span class="cr-name">Sergio Fuego</span>
+                    <span class="cr-role">Live-Action Compositing</span>
+                    <span class="cr-name">Leandro Vazquez, Pimba VFX (Humberto Paytuvi, María Recondo, Milton Maguna), Nicolás Zinzer, Roberto Connolly</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">CG Compositing</span>
+                    <span class="cr-name">Hernán Lindenbaum, Milton Gonzalez</span>
+                    <span class="cr-role">Rotoscoping</span>
+                    <span class="cr-name">RotoArt, Global Technologies</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Color Grading</span>
+                    <span class="cr-name">Anahí Piccinin, Hernán Lindenbaum, Milton Gonzalez, Roberto Connolly</span>
+                    <span class="cr-role">Music &amp; Sound Design</span>
+                    <span class="cr-name">Facundo Capece</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Soundtrack Supervisor</span>
+                    <span class="cr-name">Roberto Connolly</span>
+                    <span class="cr-role">Making Of</span>
+                    <span class="cr-name">Roberto Connolly</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Accounting</span>
+                    <span class="cr-name">Eugenia García Montaldo</span>
+                    <span class="cr-role"></span>
+                    <span class="cr-name"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="credits-group">
+            <p class="credits-category">JOJX — Associate Production Company</p>
+            <div class="credits-table">
+                <div class="cr-row">
+                    <span class="cr-role">Creative EP</span>
+                    <span class="cr-name">Jackson Morton</span>
+                    <span class="cr-role">Executive Producer</span>
+                    <span class="cr-name">Joe Care</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">On Set Director</span>
+                    <span class="cr-name">Lindsay Sunada</span>
+                    <span class="cr-role">Line Producer</span>
+                    <span class="cr-name">Brenda Blair</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Director of Photography</span>
+                    <span class="cr-name">Stacy Toyama</span>
+                    <span class="cr-role">Production Designer</span>
+                    <span class="cr-name">Gary Matteson</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Production Managers</span>
+                    <span class="cr-name">Mary Katherine Wise, Jonathan Burns</span>
+                    <span class="cr-role">1st Assistant Director</span>
+                    <span class="cr-name">Mike Parziale</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Casting Director</span>
+                    <span class="cr-name">Linda Teglovic</span>
+                    <span class="cr-role">Stage Managers</span>
+                    <span class="cr-name">Arthur Martinez, Aurelio Barragan</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">1st AC</span>
+                    <span class="cr-name">Luis Suarez</span>
+                    <span class="cr-role">2nd AC</span>
+                    <span class="cr-name">Alex Macat</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">DIT</span>
+                    <span class="cr-name">Zak Sanburg</span>
+                    <span class="cr-role">VTR</span>
+                    <span class="cr-name">John Placencia</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Still Photographer</span>
+                    <span class="cr-name">Adam Rose</span>
+                    <span class="cr-role">Gaffer</span>
+                    <span class="cr-name">Flint Ellsworth</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">BBE</span>
+                    <span class="cr-name">Hitoshi Tomonori</span>
+                    <span class="cr-role">Key Grip</span>
+                    <span class="cr-name">John Brunold</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">BBG</span>
+                    <span class="cr-name">Paul Salmi</span>
+                    <span class="cr-role">Set Decorator</span>
+                    <span class="cr-name">Jennifer Campbell</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Prop Master</span>
+                    <span class="cr-name">Matt Myers</span>
+                    <span class="cr-role">Prop Asst</span>
+                    <span class="cr-name">Annie Grafe</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Leadman</span>
+                    <span class="cr-name">Michael King</span>
+                    <span class="cr-role">Set Dressers</span>
+                    <span class="cr-name">Julian Velazquez, Luis Barajas</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Wardrobe Stylist</span>
+                    <span class="cr-name">Angelique Rousset</span>
+                    <span class="cr-role">Hands Make-up</span>
+                    <span class="cr-name">Genevieve Garner</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Covid Compliance Officer</span>
+                    <span class="cr-name">Sam Craven-Griffiths</span>
+                    <span class="cr-role">CCO Assistant</span>
+                    <span class="cr-name">Alex Santiago</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">PA</span>
+                    <span class="cr-name">Alex Walker (truck), Wesley Hayes, Patrick Emralino</span>
+                    <span class="cr-role">Craft Services</span>
+                    <span class="cr-name">Magaly Contreras, Jills Craft Service</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Hand Talents</span>
+                    <span class="cr-name">Brielle Strickland, Fatma Dabo, Royal Binon</span>
+                    <span class="cr-role"></span>
+                    <span class="cr-name"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="credits-group">
+            <p class="credits-category">Edelman — Agency</p>
+            <div class="credits-table">
+                <div class="cr-row">
+                    <span class="cr-role">SVP Group Creative Director</span>
+                    <span class="cr-name">Bengt Asplund</span>
+                    <span class="cr-role">SVP</span>
+                    <span class="cr-name">Kristin Oke</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Executive Producer</span>
+                    <span class="cr-name">Rebecca Jean-Louis</span>
+                    <span class="cr-role">Senior Producer</span>
+                    <span class="cr-name">Derek Gannon</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Senior Art Director</span>
+                    <span class="cr-name">Kaleah Horton</span>
+                    <span class="cr-role">VO Talent</span>
+                    <span class="cr-name">Law Roach</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ───────────────────── NEXT PROJECT -->
+<section class="next-project reveal">
+    <a href="estee-lauder.html">
+        <p class="label">Next Project</p>
+        <h2>Estée Lauder <em>— Hydroplump</em></h2>
+    </a>
+</section>
+
+
+<!-- ───────────────────── FOOTER -->
+<footer class="case-footer">
+    <div class="case-footer-inner">
+        <h2 class="footer-heading reveal">
+            Let's render<br>
+            <em>something.</em>
+        </h2>
+        <div class="footer-grid reveal">
+            <div>
+                <span class="footer-col-label">Get in touch</span>
+                <a href="mailto:cesar@cesoi.de" class="footer-email">cesar@cesoi.de</a>
+            </div>
+            <div>
+                <span class="footer-col-label">Social</span>
+                <a href="https://www.instagram.com/cesoi.de/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="https://www.behance.net/cesoide" target="_blank" rel="noopener noreferrer">Behance</a>
+                <a href="https://www.linkedin.com/in/cesoide/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+            <div>
+                <span class="footer-col-label">Index</span>
+                <a href="index.html#works">Works</a>
+                <a href="index.html#about">About</a>
+                <a href="mailto:cesar@cesoi.de">Contact</a>
+            </div>
+            <div>
+                <span class="footer-col-label">Studio</span>
+                <p class="footer-location">São Paulo, BR<br>UTC −3</p>
+                <p class="footer-copy" style="margin-top:1.5rem;">© 2026 Cesar Barbosa</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script>
+    /* Live local clock — São Paulo */
+    (function () {
+        const el = document.getElementById('local-clock');
+        if (!el) return;
+        const fmt = new Intl.DateTimeFormat('en-GB', {
+            timeZone: 'America/Sao_Paulo',
+            hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+        });
+        const tick = () => { el.textContent = fmt.format(new Date()) + ' BRT'; };
+        tick(); setInterval(tick, 1000);
+    })();
+
+    /* Click-to-play primary video — uses a mid-video frame as the visible poster */
+    (function () {
+        const block = document.getElementById('video-ebay-main');
+        if (!block) return;
+        const video = block.querySelector('video');
+
+        let started = false;
+        const seekToPoster = () => {
+            if (started || !isFinite(video.duration) || video.duration <= 0) return;
+            const t = Math.min(video.duration * 0.30, 12);
+            try { video.currentTime = t; } catch (e) {}
+        };
+        video.addEventListener('loadedmetadata', seekToPoster);
+        video.addEventListener('canplay', seekToPoster);
+
+        block.addEventListener('click', () => {
+            if (block.classList.contains('playing')) {
+                if (video.paused) { video.play(); }
+                else { video.pause(); block.classList.remove('playing'); }
+                return;
+            }
+            block.classList.add('playing');
+            started = true;
+            video.controls = true;
+            video.currentTime = 0;
+            video.play();
+        });
+    })();
+
+    /* Reveal on scroll */
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+        });
+    }, { threshold: 0.07 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

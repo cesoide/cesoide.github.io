@@ -1,0 +1,44 @@
+/*
+  shared.css — Cesoi.de global typography & color tokens
+  Source of truth: matches Cesoi.de Portfolio.html
+  Include in ALL pages via: <link rel="stylesheet" href="shared.css">
+  Import fonts BEFORE this file:
+    Poppins: wght 300;400;500;600;700 (italic 400;500;600)
+*/
+
+:root {
+  --ink:    #0e0e0e;
+  --paper:  #ffffff;
+  --muted:  rgba(14,14,14,0.45);
+  --accent: oklch(0.72 0.19 45); /* orange */
+  --mono:   "Poppins", sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: "Poppins", system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+::selection {
+  background: oklch(0.72 0.19 45);
+  color: #0e0e0e;
+}
+
+/* Mono utility */
+.mono {
+  font-family: var(--mono);
+}
+
+/* Gallery image placeholder bg matches paper */
+.gallery-img-wrap {
+  background: #f0f0f0;
+}

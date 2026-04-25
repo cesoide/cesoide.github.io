@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samsung — Cheil Screensavers · Cesar Barbosa</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+    <!-- Cesoi Design System -->
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="colors_and_type.css">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: var(--font-display, 'Poppins'), system-ui, sans-serif;
+            background: var(--color-paper, #fff);
+            color:      var(--color-ink, #0e0e0e);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar { display: none; }
+        a { color: inherit; text-decoration: none; }
+
+        :root { --pad: clamp(1.5rem, 5vw, 4rem); }
+
+        /* ── NAV ─────────────────────────────────────────── */
+        nav.site-nav {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem var(--pad);
+            color: #fff;
+            font-size: 0.75rem;
+            letter-spacing: 0.06em;
+            font-weight: 400;
+        }
+        nav.site-nav .brand { font-weight: 500; letter-spacing: 0.02em; }
+        nav.site-nav .brand .slash { color: rgba(255,255,255,0.5); margin: 0 .35em; }
+        nav.site-nav .nav-links { display: flex; gap: 2.25rem; align-items: center; }
+        nav.site-nav .nav-links a { transition: color .2s, opacity .2s; opacity: 0.85; }
+        nav.site-nav .nav-links a:hover { color: var(--color-accent); opacity: 1; }
+        nav.site-nav .nav-links a.email {
+            color: var(--color-accent);
+            text-transform: uppercase;
+            opacity: 1;
+            letter-spacing: 0.08em;
+        }
+        nav.site-nav .nav-links a.email:hover { opacity: 0.7; }
+
+
+        /* ── HERO ────────────────────────────────────────── */
+        .case-hero {
+            position: relative;
+            width: 100%;
+            min-height: 78svh;
+            background: var(--color-dark-surface);
+            color: #fff;
+            overflow: hidden;
+        }
+        .case-hero img.bg {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: 0;
+        }
+        .case-hero::before {
+            content: "";
+            position: absolute; inset: 0;
+            background:
+                linear-gradient(180deg, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.05) 30%, rgba(10,10,10,0.05) 60%, rgba(10,10,10,0.55) 100%);
+            z-index: 1;
+        }
+        .case-meta {
+            position: absolute;
+            top: 5.5rem; left: 0; right: 0;
+            z-index: 3;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            padding: 0 var(--pad);
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.55);
+            font-variant-numeric: tabular-nums;
+        }
+        .case-meta .meta-center { text-align: center; }
+        .case-meta .meta-right  { text-align: right; }
+
+        .case-hero-content {
+            position: relative;
+            z-index: 2;
+            min-height: 78svh;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 var(--pad) clamp(3rem, 6vw, 5rem);
+        }
+        .case-hero-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: var(--text-case-hero);
+            font-weight: 500;
+            line-height: var(--leading-hero);
+            letter-spacing: var(--tracking-tight);
+            color: #fff;
+        }
+        .case-hero-title em {
+            font-style: italic;
+            font-weight: 400;
+            color: rgba(255,255,255,0.85);
+        }
+        .case-hero-title .dash {
+            color: rgba(255,255,255,0.5);
+            font-weight: 300;
+            margin: 0 .15em;
+        }
+
+
+        /* ── INTRO BLOCK ─────────────────────────────────── */
+        .intro {
+            padding: var(--space-2xl) var(--pad);
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .intro-eyebrow {
+            display: flex; align-items: center; gap: 0.6rem;
+            font-size: var(--text-label);
+            letter-spacing: var(--tracking-caps);
+            text-transform: uppercase;
+            color: var(--color-muted-55);
+            font-weight: 500;
+            margin-bottom: var(--space-md);
+        }
+        .intro-eyebrow::before {
+            content: "";
+            display: inline-block;
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--color-accent);
+        }
+        .intro-eyebrow .star { color: var(--color-accent); margin-left: 0.4em; }
+        .intro-text {
+            font-size: var(--text-body-xl);
+            line-height: var(--leading-normal);
+            color: var(--color-muted-55);
+            font-weight: 300;
+            max-width: 68ch;
+        }
+
+
+        /* ── VIDEO PLAYER (with play button) ─────────────── */
+        .video-block {
+            position: relative;
+            width: 100%;
+            background: #000;
+            line-height: 0;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .video-block video {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+        .video-block .play-btn {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110px; height: 110px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 2;
+            transition: transform .4s var(--ease-out), background .3s, opacity .4s;
+        }
+        .video-block:hover .play-btn {
+            transform: translate(-50%, -50%) scale(1.08);
+            background: rgba(255,255,255,0.18);
+        }
+        .video-block .play-btn::after {
+            content: "";
+            display: block;
+            width: 0; height: 0;
+            border-style: solid;
+            border-width: 14px 0 14px 22px;
+            border-color: transparent transparent transparent #fff;
+            margin-left: 6px;
+        }
+        .video-block .video-label {
+            position: absolute;
+            bottom: 1.5rem; right: 1.5rem;
+            z-index: 2;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            transition: opacity .4s;
+        }
+        .video-block.playing .play-btn,
+        .video-block.playing .video-label { opacity: 0; pointer-events: none; }
+
+
+        /* Auto-loop video (no controls) */
+        .case-video {
+            position: relative;
+            width: 100%;
+            background: #000;
+            line-height: 0;
+        }
+        .case-video video {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+
+        /* ── SECTION (Overview…) ─────────────────────────── */
+        .case-section {
+            padding: var(--space-3xl) var(--pad) var(--space-2xl);
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .case-section h2 {
+            font-size: var(--text-h2);
+            font-weight: 500;
+            letter-spacing: -0.025em;
+            line-height: var(--leading-snug);
+            margin-bottom: var(--space-md);
+            color: var(--color-ink);
+        }
+        .case-section p {
+            font-size: var(--text-body-xl);
+            line-height: var(--leading-normal);
+            color: var(--color-muted-55);
+            font-weight: 300;
+            max-width: 68ch;
+        }
+        .case-section p + p { margin-top: var(--space-sm); }
+
+
+        /* ── GALLERY (staggered single items) ────────────── */
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            gap: var(--gallery-gap);
+            padding: 0 var(--pad) var(--space-3xl);
+            max-width: 1440px;
+            margin: 0 auto;
+            align-items: stretch;
+        }
+        .gallery.tight { gap: clamp(2rem, 4vw, 3rem); }
+
+        .gallery-item {
+            line-height: 0;
+            overflow: hidden;
+        }
+        .gallery-item img,
+        .gallery-item video {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform .8s var(--ease-out);
+        }
+        .gallery-item.crop-16-9 { aspect-ratio: 16 / 9; }
+        .gallery-item.crop-3-2  { aspect-ratio: 3 / 2; }
+        .gallery-item.crop-4-3  { aspect-ratio: 4 / 3; }
+        .gallery-item.crop-1-1  { aspect-ratio: 1 / 1; }
+        .gallery-item.crop-16-9 img,
+        .gallery-item.crop-16-9 video,
+        .gallery-item.crop-3-2 img,
+        .gallery-item.crop-3-2 video,
+        .gallery-item.crop-4-3 img,
+        .gallery-item.crop-4-3 video,
+        .gallery-item.crop-1-1 img,
+        .gallery-item.crop-1-1 video {
+            height: 100%;
+            object-fit: cover;
+        }
+        .row .gallery-item img,
+        .row .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .gallery-item:hover img,
+        .gallery-item:hover video { transform: scale(1.02); }
+
+        .pos-left   { align-self: flex-start; }
+        .pos-center { align-self: center; }
+        .pos-right  { align-self: flex-end; }
+
+        .w-25 { max-width: 25%; }
+        .w-30 { max-width: 30%; }
+        .w-35 { max-width: 35%; }
+        .w-40 { max-width: 40%; }
+        .w-45 { max-width: 45%; }
+        .w-50 { max-width: 50%; }
+        .w-55 { max-width: 55%; }
+        .w-60 { max-width: 60%; }
+        .w-65 { max-width: 65%; }
+        .w-70 { max-width: 70%; }
+        .w-75 { max-width: 75%; }
+        .w-80 { max-width: 80%; }
+        .w-82 { max-width: 82%; }
+        .w-88 { max-width: 88%; }
+        .w-100{ max-width: 100%; }
+
+
+        /* ── ROW LAYOUTS ─────────────────────────────────── */
+        .row {
+            display: grid;
+            gap: clamp(1rem, 2vw, 1.5rem);
+            padding: 0 var(--pad);
+            max-width: 1440px;
+            margin: 0 auto;
+            margin-bottom: var(--gallery-gap);
+        }
+        .row.twoup   { grid-template-columns: 1fr 1fr; }
+        .row.threeup { grid-template-columns: 1fr 1fr 1fr; }
+        .row.fourup  { grid-template-columns: 1fr 1fr 1fr 1fr; }
+        .row.split-6040 { grid-template-columns: 6fr 4fr; }
+        .row.split-4060 { grid-template-columns: 4fr 6fr; }
+        .row.split-7030 { grid-template-columns: 7fr 3fr; }
+        .row.split-3070 { grid-template-columns: 3fr 7fr; }
+        .row.equal-h { align-items: stretch; }
+
+
+        /* ── MEDIA-TO-MEDIA SPACING ──────────────────────── */
+        .case-video + .case-video,
+        .case-video + .video-block,
+        .case-video + .gallery,
+        .case-video + .row,
+        .video-block + .case-video,
+        .video-block + .video-block,
+        .video-block + .gallery,
+        .video-block + .row {
+            margin-top: var(--gallery-gap);
+        }
+
+
+        /* ── NEXT PROJECT ────────────────────────────────── */
+        .next-project {
+            background: var(--color-dark-surface);
+            color: #fff;
+            padding: var(--space-3xl) var(--pad);
+            border-bottom: var(--border-dark-subtle);
+        }
+        .next-project a {
+            display: block;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .next-project .label {
+            color: var(--color-accent);
+            font-size: var(--text-label);
+            letter-spacing: var(--tracking-caps);
+            text-transform: uppercase;
+            margin-bottom: var(--space-md);
+        }
+        .next-project h2 {
+            font-size: var(--text-h1);
+            font-weight: 500;
+            letter-spacing: var(--tracking-tighter);
+            line-height: var(--leading-tight);
+            transition: color .3s;
+        }
+        .next-project h2 em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--color-accent);
+        }
+        .next-project a:hover h2 { color: var(--color-accent); }
+
+
+        /* ── CREDITS ─────────────────────────────────────── */
+        .case-credits {
+            background: var(--color-dark-surface);
+            padding: var(--space-3xl) var(--pad);
+            border-top: var(--border-dark-subtle);
+        }
+        .credits-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .credits-group {
+            margin-bottom: var(--space-2xl);
+        }
+        .credits-category {
+            font-size: var(--text-caps);
+            letter-spacing: var(--tracking-caps-lg);
+            text-transform: uppercase;
+            color: var(--color-accent);
+            font-weight: var(--weight-semibold);
+            margin-bottom: var(--space-sm);
+        }
+        .credits-table {
+            display: flex;
+            flex-direction: column;
+        }
+        .cr-row {
+            display: grid;
+            grid-template-columns: 220px 1fr 220px 1fr;
+            gap: 0 var(--space-md);
+            padding: 10px 0;
+            border-top: var(--border-dark-subtle);
+            align-items: baseline;
+        }
+        .cr-role {
+            font-size: var(--text-caps);
+            letter-spacing: var(--tracking-caps);
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            font-weight: var(--weight-regular);
+            line-height: var(--leading-relaxed);
+        }
+        .cr-name {
+            font-size: var(--text-label);
+            color: rgba(255,255,255,0.85);
+            font-weight: var(--weight-light);
+            line-height: var(--leading-relaxed);
+        }
+        .cr-name .cr-highlight { color: var(--color-accent); }
+        @media (max-width: 768px) {
+            .cr-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+                padding: var(--space-sm) 0;
+            }
+            .cr-role { margin-top: var(--space-xs); }
+        }
+
+
+        /* ── FOOTER ──────────────────────────────────────── */
+        footer.case-footer {
+            background: var(--color-dark-surface);
+            color: #fff;
+            padding: clamp(4rem, 8vw, 8rem) var(--pad) 3rem;
+        }
+        .case-footer-inner { max-width: 1440px; margin: 0 auto; }
+        .footer-heading {
+            font-size: clamp(3rem, 9vw, 8rem);
+            font-weight: 700;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            margin-bottom: clamp(3rem, 6vw, 6rem);
+        }
+        .footer-heading em { color: var(--color-accent); font-style: italic; font-weight: 300; }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
+            border-top: var(--border-dark-subtle);
+            padding-top: 2.5rem;
+            font-size: 0.6875rem;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+        .footer-col-label {
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        .footer-grid a, .footer-grid p {
+            color: rgba(255,255,255,.55);
+            display: block;
+            line-height: 2;
+            transition: color .2s;
+            font-weight: 400;
+        }
+        .footer-grid a:hover { color: var(--color-accent); }
+        .footer-grid .footer-email {
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
+            text-transform: none;
+            color: rgba(255,255,255,.8);
+            border-bottom: 1px solid rgba(255,255,255,.15);
+            padding-bottom: 0.35rem;
+            display: inline-block;
+        }
+        .footer-grid .footer-email:hover { color: var(--color-accent); border-color: var(--color-accent); }
+        .footer-location {
+            text-transform: none;
+            letter-spacing: 0.03em;
+            font-weight: 300;
+            color: rgba(255,255,255,.4);
+            line-height: 1.8;
+        }
+        .footer-copy {
+            color: rgba(255,255,255,.2);
+            margin-top: 0.75rem;
+            font-size: 0.6rem;
+        }
+
+
+        /* ── REVEAL ──────────────────────────────────────── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .75s var(--ease-out), transform .75s var(--ease-out);
+        }
+        .reveal.visible { opacity: 1; transform: none; }
+
+
+        /* ── RESPONSIVE ──────────────────────────────────── */
+        @media (max-width: 768px) {
+            nav.site-nav .nav-links { gap: 1.25rem; font-size: 0.7rem; }
+            nav.site-nav .nav-links a:nth-child(2),
+            nav.site-nav .nav-links a:nth-child(3) { display: none; }
+            .gallery { gap: 64px; }
+            .w-25,.w-30,.w-35,.w-40,.w-45,.w-50,.w-55,.w-60,.w-65,.w-70,.w-75,.w-80,.w-82,.w-88 { max-width: 100% !important; }
+            .pos-left, .pos-center, .pos-right { align-self: stretch; }
+            .row.twoup, .row.threeup, .row.fourup,
+            .row.split-6040, .row.split-4060,
+            .row.split-7030, .row.split-3070 { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .video-block .play-btn { width: 80px; height: 80px; }
+            .video-block .play-btn::after { border-width: 10px 0 10px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+
+<!-- ───────────────────────────────────────────────────── HERO -->
+<section class="case-hero">
+
+    <img class="bg" src="assets/Samsung_wallpapers/1a453b193482389.6644e8c034271.jpg" alt="Samsung — Cheil Screensavers" />
+
+    <nav class="site-nav">
+        <a href="index.html" class="brand">Cesar Barbosa <span class="slash">/</span> cesoi.de</a>
+        <div class="nav-links">
+            <a href="index.html#works">Works</a>
+            <a href="index.html#about">About</a>
+            <a href="mailto:cesar@cesoi.de" class="email">cesar@cesoi.de</a>
+        </div>
+    </nav>
+
+    <div class="case-meta">
+        <span class="meta-left">São Paulo / BR</span>
+        <span class="meta-center">FutureDeluxe × Samsung — 2024</span>
+        <span class="meta-right" id="local-clock">--:--:-- BRT</span>
+    </div>
+
+    <div class="case-hero-content">
+        <h1 class="case-hero-title">
+            Samsung <span class="dash">—</span> <em>Cheil Screensavers</em>
+        </h1>
+    </div>
+
+</section>
+
+
+<!-- ───────────────────── INTRO -->
+<section class="intro reveal">
+    <div class="intro-eyebrow">
+        Samsung · Galaxy S Lockscreens <span class="star">✦</span>
+    </div>
+    <p class="intro-text">
+        FutureDeluxe partnered with Samsung's Cheil agency to develop a screensaver system for the Galaxy S series — abstract, hero-grade lockscreen visuals built to define the device's identity. We contributed motion design across a library of looping, frame-perfect wallpapers exploring light, motion and material in 1:1.
+    </p>
+</section>
+
+
+<!-- ───────────────────── PRIMARY VIDEO (click-to-play) -->
+<div class="video-block" id="video-samsung-main">
+    <video
+        src="assets/Samsung_wallpapers/samsung_galaxy_s_screensavers_rnd_reel%20%281080p%29.mp4"
+        preload="auto"
+        playsinline></video>
+    <button class="play-btn" aria-label="Play video"></button>
+    <span class="video-label">Play R&amp;D Reel</span>
+</div>
+
+
+<!-- ───────────────────── OVERVIEW -->
+<section class="case-section reveal">
+    <h2>Overview</h2>
+    <p>
+        We crafted a series of square lockscreen visuals exploring light, ribbon, fluid and crystalline motifs — each built to read clearly on the Galaxy S display while sustaining a calm, premium presence over time. Every wallpaper was authored as a frame-perfect loop, optimized for low-power always-on rendering.
+    </p>
+</section>
+
+
+<!-- ───────────────────── GALLERY GROUP 1 -->
+
+<!-- Big single -->
+<div class="gallery">
+    <div class="gallery-item pos-center w-65 reveal">
+        <img src="assets/Samsung_wallpapers/b3eb10193482389.6644e8c0310dd.jpg" alt="Screensaver — crystal" />
+    </div>
+</div>
+
+<!-- Three-up -->
+<div class="row threeup reveal">
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/06a711193482389.6644e8c032557.png" alt="Screensaver 02" /></div>
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/108ef0193482389.6644e8c035c7f.png" alt="Screensaver 03" /></div>
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/14a510193482389.6644e8c030875.png" alt="Screensaver 04" /></div>
+</div>
+
+<!-- Three-up -->
+<div class="row threeup reveal">
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/211ff4193482389.6644e8bd4d579.png" alt="Screensaver 05" /></div>
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/2385a4193482389.6644e8bd4d155.png" alt="Screensaver 06" /></div>
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/2760ff193482389.6644e8c032f1f.png" alt="Screensaver 07" /></div>
+</div>
+
+<!-- Two-up -->
+<div class="row twoup reveal">
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/ddaf95193482389.6644e8c02b17b.jpg" alt="Screensaver 08" /></div>
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/ee8b96193482389.6644e8c02fe9c.jpg" alt="Screensaver 09" /></div>
+</div>
+
+
+<!-- ───────────────────── GALLERY GROUP 2 -->
+
+<!-- Three-up -->
+<div class="row threeup reveal">
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/3a7b7b193482389.6644e8c034d60.png" alt="Screensaver 10" /></div>
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/4189a7193482389.6644e8c0317b7.png" alt="Screensaver 11" /></div>
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/4417f8193482389.6644e8bd4cc7a.png" alt="Screensaver 12" /></div>
+</div>
+
+<!-- Three-up -->
+<div class="row threeup reveal">
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/45c004193482389.6644e8c0374a1.png" alt="Screensaver 13" /></div>
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/6af30c193482389.6644e8c02981d.png" alt="Screensaver 14" /></div>
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/7abaf9193482389.6644e8bd4e1b2.png" alt="Screensaver 15" /></div>
+</div>
+
+<!-- Three-up -->
+<div class="row threeup reveal">
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/7dc7ba193482389.6644e8c033d75.png" alt="Screensaver 16" /></div>
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/7edee4193482389.6644e8c0362f5.png" alt="Screensaver 17" /></div>
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/816604193482389.6644e8c0335b7.png" alt="Screensaver 18" /></div>
+</div>
+
+<!-- Two-up -->
+<div class="row twoup reveal">
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/eef32d193482389.6644e8c02a558.jpg" alt="Screensaver 19" /></div>
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/85452a193482389.6644e8c035460.png" alt="Screensaver 20" /></div>
+</div>
+
+
+<!-- ───────────────────── GALLERY GROUP 3 -->
+
+<!-- Three-up -->
+<div class="row threeup reveal">
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/97ce09193482389.6644e8bbcfc3b.png" alt="Screensaver 21" /></div>
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/af700c193482389.6644e8bbd00c3.png" alt="Screensaver 22" /></div>
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/c962f7193482389.6644e8bbcf605.png" alt="Screensaver 23" /></div>
+</div>
+
+<!-- Three-up -->
+<div class="row threeup reveal">
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/e09928193482389.6644e8bd4d95e.png" alt="Screensaver 24" /></div>
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/eccb06193482389.6644e8c0347a9.png" alt="Screensaver 25" /></div>
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/f305db193482389.6644e8c03202e.png" alt="Screensaver 26" /></div>
+</div>
+
+<!-- Closing two-up: still + animated GIF -->
+<div class="row twoup reveal">
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/fb77b2193482389.6644e8c036b33.png" alt="Screensaver 27" /></div>
+    <div class="gallery-item"><img src="assets/Samsung_wallpapers/be2bd0193482389.6644e8ba812e3.gif" alt="Screensaver — looping motion" /></div>
+</div>
+
+
+<!-- ───────────────────── CREDITS -->
+<section class="case-credits reveal">
+    <div class="credits-inner">
+
+        <div class="credits-group">
+            <p class="credits-category">FutureDeluxe</p>
+            <div class="credits-table">
+                <div class="cr-row">
+                    <span class="cr-role">Production</span>
+                    <span class="cr-name">FutureDeluxe</span>
+                    <span class="cr-role">ECD</span>
+                    <span class="cr-name">Ant Baena</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Creative Direction</span>
+                    <span class="cr-name">Luke Parker</span>
+                    <span class="cr-role">EP</span>
+                    <span class="cr-name">Ellis Garrod</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Producers</span>
+                    <span class="cr-name">Tif Brathwaite, Anne Deslauriers</span>
+                    <span class="cr-role">Motion Design</span>
+                    <span class="cr-name">Chris Harrison, Jake Wyand, <span class="cr-highlight">Cesar Barbosa</span>, Seba Morales, Morad Enyet, Matt Dippenaar, Leonardo Bortolussi, Annie Ngo, Matt Hopkins, Dobromir Dyankov, Miguel Rato, Martin Cusano, Sam Cividanis, Luke Parker</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Edit / Composite / Color</span>
+                    <span class="cr-name">Luke Parker</span>
+                    <span class="cr-role">Titles</span>
+                    <span class="cr-name">Luke Parker</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ───────────────────── NEXT PROJECT -->
+<section class="next-project reveal">
+    <a href="betterment.html">
+        <p class="label">Next Project</p>
+        <h2>Betterment <em>— Cash Reserve</em></h2>
+    </a>
+</section>
+
+
+<!-- ───────────────────── FOOTER -->
+<footer class="case-footer">
+    <div class="case-footer-inner">
+        <h2 class="footer-heading reveal">
+            Let's render<br>
+            <em>something.</em>
+        </h2>
+        <div class="footer-grid reveal">
+            <div>
+                <span class="footer-col-label">Get in touch</span>
+                <a href="mailto:cesar@cesoi.de" class="footer-email">cesar@cesoi.de</a>
+            </div>
+            <div>
+                <span class="footer-col-label">Social</span>
+                <a href="https://www.instagram.com/cesoi.de/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="https://www.behance.net/cesoide" target="_blank" rel="noopener noreferrer">Behance</a>
+                <a href="https://www.linkedin.com/in/cesoide/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+            <div>
+                <span class="footer-col-label">Index</span>
+                <a href="index.html#works">Works</a>
+                <a href="index.html#about">About</a>
+                <a href="mailto:cesar@cesoi.de">Contact</a>
+            </div>
+            <div>
+                <span class="footer-col-label">Studio</span>
+                <p class="footer-location">São Paulo, BR<br>UTC −3</p>
+                <p class="footer-copy" style="margin-top:1.5rem;">© 2026 Cesar Barbosa</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script>
+    /* Live local clock — São Paulo */
+    (function () {
+        const el = document.getElementById('local-clock');
+        if (!el) return;
+        const fmt = new Intl.DateTimeFormat('en-GB', {
+            timeZone: 'America/Sao_Paulo',
+            hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+        });
+        const tick = () => { el.textContent = fmt.format(new Date()) + ' BRT'; };
+        tick(); setInterval(tick, 1000);
+    })();
+
+    /* Click-to-play primary video — uses a mid-video frame as the visible poster */
+    (function () {
+        const block = document.getElementById('video-samsung-main');
+        if (!block) return;
+        const video = block.querySelector('video');
+
+        let started = false;
+        const seekToPoster = () => {
+            if (started || !isFinite(video.duration) || video.duration <= 0) return;
+            const t = Math.min(video.duration * 0.30, 8);
+            try { video.currentTime = t; } catch (e) {}
+        };
+        video.addEventListener('loadedmetadata', seekToPoster);
+        video.addEventListener('canplay', seekToPoster);
+
+        block.addEventListener('click', () => {
+            if (block.classList.contains('playing')) {
+                if (video.paused) { video.play(); }
+                else { video.pause(); block.classList.remove('playing'); }
+                return;
+            }
+            block.classList.add('playing');
+            started = true;
+            video.controls = true;
+            video.currentTime = 0;
+            video.play();
+        });
+    })();
+
+    /* Reveal on scroll */
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+        });
+    }, { threshold: 0.07 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

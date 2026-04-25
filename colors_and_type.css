@@ -1,0 +1,161 @@
+/*
+  colors_and_type.css — Cesoi.de Design System
+  Full CSS custom property system.
+  Import this file + Poppins from Google Fonts.
+
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
+*/
+
+/* ─────────────────────────────────────────────
+   BASE TOKENS
+   ───────────────────────────────────────────── */
+:root {
+  /* Surfaces */
+  --color-paper:        #ffffff;
+  --color-ink:          #0e0e0e;
+  --color-ink-dark:     #0a0a0a;      /* used in dark sections */
+  --color-dark-surface: #0a0a0a;      /* hero, footer, credits bg */
+
+  /* Accent — default orange; override per palette */
+  --color-accent:       oklch(0.72 0.19 45);
+
+  /* Accent palette options */
+  --accent-orange:      oklch(0.72 0.19 45);
+  --accent-electric:    oklch(0.68 0.22 258);
+  --accent-acid:        oklch(0.85 0.22 125);
+  --accent-fuchsia:     oklch(0.68 0.26 340);
+  --accent-terracotta:  oklch(0.58 0.14 30);
+  --accent-dark:        oklch(0.75 0.18 55);
+
+  /* Muted / subtle */
+  --color-muted-55:     rgba(14,14,14,0.55);
+  --color-muted-45:     rgba(14,14,14,0.45);
+  --color-muted-40:     rgba(14,14,14,0.40);
+  --color-muted-30:     rgba(14,14,14,0.30);
+
+  /* Borders (light context) */
+  --border-subtle:      1px solid rgba(14,14,14,0.08);
+  --border-mid:         1px solid rgba(14,14,14,0.15);
+  --border-strong:      1px solid rgba(14,14,14,0.20);
+
+  /* Borders (dark context) */
+  --border-dark-subtle: 1px solid rgba(255,255,255,0.10);
+  --border-dark-mid:    1px solid rgba(255,255,255,0.15);
+
+  /* ─── Typography ─── */
+  --font-display: "Poppins", system-ui, sans-serif;
+  --font-label:   "Poppins", sans-serif;   /* caps labels, metadata */
+
+  /* ─── Type scale ─── */
+  --text-hero:       clamp(40px, 6.65vw, 118px);  /* portfolio hero */
+  --text-case-hero:  clamp(56px, 9vw, 160px);     /* case study hero */
+  --text-h1:         clamp(40px, 5.5vw, 96px);    /* section headings */
+  --text-h2-large:   clamp(36px, 4.6vw, 76px);    /* about heading */
+  --text-h2:         clamp(28px, 3.2vw, 48px);    /* case text blocks */
+  --text-project:    28px;                          /* project titles in gallery */
+  --text-body-xl:    19px;
+  --text-body:       18px;
+  --text-body-sm:    16px;
+  --text-nav:        13px;
+  --text-label:      12px;
+  --text-label-sm:   11px;
+  --text-caps:       10px;
+
+  /* ─── Font weights ─── */
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* ─── Tracking ─── */
+  --tracking-tight:    -0.035em;
+  --tracking-tighter:  -0.03em;
+  --tracking-normal:   0;
+  --tracking-nav:      0.04em;
+  --tracking-label:    0.1em;
+  --tracking-caps:     2px;          /* pixel tracking for small caps */
+  --tracking-caps-lg:  3px;
+
+  /* ─── Line heights ─── */
+  --leading-hero:   0.92;
+  --leading-tight:  0.95;
+  --leading-snug:   1.1;
+  --leading-normal: 1.45;
+  --leading-relaxed:1.6;
+
+  /* ─── Spacing ─── */
+  --space-xs:   12px;
+  --space-sm:   20px;
+  --space-md:   32px;
+  --space-lg:   48px;
+  --space-xl:   80px;
+  --space-2xl:  96px;
+  --space-3xl:  128px;
+  --space-4xl:  140px;
+
+  /* ─── Gallery ─── */
+  --gallery-gap:      128px;
+  --gallery-padding:  48px;
+  --section-padding:  96px;
+
+  /* ─── Animation ─── */
+  --ease-out:         cubic-bezier(.2,.8,.2,1);
+  --duration-fast:    0.2s;
+  --duration-base:    0.3s;
+  --duration-slow:    0.5s;
+  --ticker-duration:  60s;
+
+  /* ─── Border radius ─── */
+  --radius: 0;   /* sharp edges everywhere */
+
+  /* ─── Shadows ─── */
+  --shadow-panel: 0 24px 48px rgba(14,14,14,0.13);
+}
+
+/* ─────────────────────────────────────────────
+   SEMANTIC ROLES
+   ───────────────────────────────────────────── */
+:root {
+  /* Background layers */
+  --bg-page:        var(--color-paper);
+  --bg-section-alt: var(--color-dark-surface);  /* dark alternate section */
+  --bg-hero:        var(--color-dark-surface);
+
+  /* Foreground */
+  --fg-primary:     var(--color-ink);
+  --fg-on-dark:     #ffffff;
+  --fg-muted:       var(--color-muted-55);
+  --fg-subtle:      var(--color-muted-40);
+  --fg-accent:      var(--color-accent);
+
+  /* Nav */
+  --nav-logo-size:     var(--text-nav);
+  --nav-logo-weight:   var(--weight-medium);
+  --nav-logo-tracking: var(--tracking-nav);
+  --nav-link-size:     var(--text-label);
+  --nav-link-weight:   var(--weight-medium);
+
+  /* Section label (caps dot marker) */
+  --label-size:        var(--text-label);
+  --label-tracking:    var(--tracking-label);
+  --label-opacity:     0.55;
+  --label-dot-size:    8px;
+}
+
+/* ─────────────────────────────────────────────
+   UTILITY CLASSES
+   ───────────────────────────────────────────── */
+.text-hero         { font-size: var(--text-hero);       font-weight: var(--weight-medium); letter-spacing: var(--tracking-tight);  line-height: var(--leading-hero); }
+.text-case-hero    { font-size: var(--text-case-hero);  font-weight: var(--weight-medium); letter-spacing: var(--tracking-tight);  line-height: var(--leading-hero); }
+.text-h1           { font-size: var(--text-h1);         font-weight: var(--weight-medium); letter-spacing: var(--tracking-tighter);line-height: var(--leading-tight);}
+.text-h2           { font-size: var(--text-h2);         font-weight: var(--weight-medium); letter-spacing: -0.025em;              line-height: 1.1; }
+.text-body-xl      { font-size: var(--text-body-xl);    font-weight: var(--weight-regular); line-height: var(--leading-normal); }
+.text-body         { font-size: var(--text-body);       font-weight: var(--weight-light);   line-height: var(--leading-relaxed); }
+.text-label        { font-size: var(--text-label);      letter-spacing: var(--tracking-caps); text-transform: uppercase; opacity: 0.55; }
+.text-caps         { font-size: var(--text-caps);       letter-spacing: var(--tracking-caps); text-transform: uppercase; font-weight: var(--weight-regular); }
+
+.accent            { color: var(--color-accent); }
+.accent-italic     { color: var(--color-accent); font-style: italic; }
+.ink               { color: var(--color-ink); }
+.muted             { opacity: 0.55; }

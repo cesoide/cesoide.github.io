@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7UP — New 7UP, Same 7UP · Cesar Barbosa</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+    <!-- Cesoi Design System -->
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="colors_and_type.css">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: var(--font-display, 'Poppins'), system-ui, sans-serif;
+            background: var(--color-paper, #fff);
+            color:      var(--color-ink, #0e0e0e);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar { display: none; }
+        a { color: inherit; text-decoration: none; }
+
+        :root { --pad: clamp(1.5rem, 5vw, 4rem); }
+
+        /* ── NAV ─────────────────────────────────────────── */
+        nav.site-nav {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem var(--pad);
+            color: #fff;
+            font-size: 0.75rem;
+            letter-spacing: 0.06em;
+            font-weight: 400;
+        }
+        nav.site-nav .brand { font-weight: 500; letter-spacing: 0.02em; }
+        nav.site-nav .brand .slash { color: rgba(255,255,255,0.5); margin: 0 .35em; }
+        nav.site-nav .nav-links { display: flex; gap: 2.25rem; align-items: center; }
+        nav.site-nav .nav-links a { transition: color .2s, opacity .2s; opacity: 0.85; }
+        nav.site-nav .nav-links a:hover { color: var(--color-accent); opacity: 1; }
+        nav.site-nav .nav-links a.email {
+            color: var(--color-accent);
+            text-transform: uppercase;
+            opacity: 1;
+            letter-spacing: 0.08em;
+        }
+        nav.site-nav .nav-links a.email:hover { opacity: 0.7; }
+
+
+        /* ── HERO ────────────────────────────────────────── */
+        .case-hero {
+            position: relative;
+            width: 100%;
+            min-height: 78svh;
+            background: var(--color-dark-surface);
+            color: #fff;
+            overflow: hidden;
+        }
+        .case-hero img.bg {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: 0;
+        }
+        .case-hero::before {
+            content: "";
+            position: absolute; inset: 0;
+            background:
+                linear-gradient(180deg, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.05) 30%, rgba(10,10,10,0.05) 60%, rgba(10,10,10,0.55) 100%);
+            z-index: 1;
+        }
+        .case-meta {
+            position: absolute;
+            top: 5.5rem; left: 0; right: 0;
+            z-index: 3;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            padding: 0 var(--pad);
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.55);
+            font-variant-numeric: tabular-nums;
+        }
+        .case-meta .meta-center { text-align: center; }
+        .case-meta .meta-right  { text-align: right; }
+
+        .case-hero-content {
+            position: relative;
+            z-index: 2;
+            min-height: 78svh;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 var(--pad) clamp(3rem, 6vw, 5rem);
+        }
+        .case-hero-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: var(--text-case-hero);
+            font-weight: 500;
+            line-height: var(--leading-hero);
+            letter-spacing: var(--tracking-tight);
+            color: #fff;
+        }
+        .case-hero-title em {
+            font-style: italic;
+            font-weight: 400;
+            color: rgba(255,255,255,0.85);
+        }
+        .case-hero-title .dash {
+            color: rgba(255,255,255,0.5);
+            font-weight: 300;
+            margin: 0 .15em;
+        }
+
+
+        /* ── INTRO BLOCK ─────────────────────────────────── */
+        .intro {
+            padding: var(--space-2xl) var(--pad);
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .intro-eyebrow {
+            display: flex; align-items: center; gap: 0.6rem;
+            font-size: var(--text-label);
+            letter-spacing: var(--tracking-caps);
+            text-transform: uppercase;
+            color: var(--color-muted-55);
+            font-weight: 500;
+            margin-bottom: var(--space-md);
+        }
+        .intro-eyebrow::before {
+            content: "";
+            display: inline-block;
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--color-accent);
+        }
+        .intro-eyebrow .star { color: var(--color-accent); margin-left: 0.4em; }
+        .intro-text {
+            font-size: var(--text-body-xl);
+            line-height: var(--leading-normal);
+            color: var(--color-muted-55);
+            font-weight: 300;
+            max-width: 68ch;
+        }
+
+
+        /* ── VIDEO PLAYER (with play button) ─────────────── */
+        .video-block {
+            position: relative;
+            width: 100%;
+            background: #000;
+            line-height: 0;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .video-block video {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+        .video-block .poster {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            transition: opacity .4s var(--ease-out);
+        }
+        .video-block .play-btn {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110px; height: 110px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 2;
+            transition: transform .4s var(--ease-out), background .3s, opacity .4s;
+        }
+        .video-block:hover .play-btn {
+            transform: translate(-50%, -50%) scale(1.08);
+            background: rgba(255,255,255,0.18);
+        }
+        .video-block .play-btn::after {
+            content: "";
+            display: block;
+            width: 0; height: 0;
+            border-style: solid;
+            border-width: 14px 0 14px 22px;
+            border-color: transparent transparent transparent #fff;
+            margin-left: 6px;
+        }
+        .video-block .video-label {
+            position: absolute;
+            bottom: 1.5rem; right: 1.5rem;
+            z-index: 2;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            transition: opacity .4s;
+        }
+        .video-block.playing .poster,
+        .video-block.playing .play-btn,
+        .video-block.playing .video-label { opacity: 0; pointer-events: none; }
+
+
+        /* Auto-loop video (no controls) */
+        .case-video {
+            position: relative;
+            width: 100%;
+            background: #000;
+            line-height: 0;
+        }
+        .case-video video {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+
+        /* ── SECTION (Overview…) ─────────────────────────── */
+        .case-section {
+            padding: var(--space-3xl) var(--pad) var(--space-2xl);
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .case-section h2 {
+            font-size: var(--text-h2);
+            font-weight: 500;
+            letter-spacing: -0.025em;
+            line-height: var(--leading-snug);
+            margin-bottom: var(--space-md);
+            color: var(--color-ink);
+        }
+        .case-section p {
+            font-size: var(--text-body-xl);
+            line-height: var(--leading-normal);
+            color: var(--color-muted-55);
+            font-weight: 300;
+            max-width: 68ch;
+        }
+        .case-section p + p { margin-top: var(--space-sm); }
+        .case-section .external-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: var(--space-md);
+            padding-bottom: 0.35rem;
+            border-bottom: 1px solid var(--color-accent);
+            color: var(--color-accent);
+            font-size: var(--text-label);
+            letter-spacing: var(--tracking-caps);
+            text-transform: uppercase;
+            font-weight: var(--weight-medium);
+            transition: gap .25s var(--ease-out), opacity .25s;
+        }
+        .case-section .external-link:hover { gap: 0.85rem; opacity: 0.85; }
+        .case-section .external-link::after { content: "→"; font-weight: 400; }
+
+
+        /* ── GALLERY (staggered single items) ────────────── */
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            gap: var(--gallery-gap);
+            padding: 0 var(--pad) var(--space-3xl);
+            max-width: 1440px;
+            margin: 0 auto;
+            align-items: stretch;
+        }
+        .gallery.tight { gap: clamp(2rem, 4vw, 3rem); }
+
+        .gallery-item {
+            line-height: 0;
+            overflow: hidden;
+        }
+        .gallery-item img,
+        .gallery-item video {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform .8s var(--ease-out);
+        }
+        /* Opt-in horizontal crop (only when grouping images of mixed orientations) */
+        .gallery-item.crop-16-9 { aspect-ratio: 16 / 9; }
+        .gallery-item.crop-3-2  { aspect-ratio: 3 / 2; }
+        .gallery-item.crop-4-3  { aspect-ratio: 4 / 3; }
+        .gallery-item.crop-16-9 img,
+        .gallery-item.crop-16-9 video,
+        .gallery-item.crop-3-2 img,
+        .gallery-item.crop-3-2 video,
+        .gallery-item.crop-4-3 img,
+        .gallery-item.crop-4-3 video {
+            height: 100%;
+            object-fit: cover;
+        }
+        /* Row cells: stretch + cover so grid rows align naturally */
+        .row .gallery-item img,
+        .row .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .gallery-item:hover img,
+        .gallery-item:hover video { transform: scale(1.02); }
+
+        /* Position helpers */
+        .pos-left   { align-self: flex-start; }
+        .pos-center { align-self: center; }
+        .pos-right  { align-self: flex-end; }
+
+        /* Width helpers */
+        .w-25 { max-width: 25%; }
+        .w-30 { max-width: 30%; }
+        .w-35 { max-width: 35%; }
+        .w-40 { max-width: 40%; }
+        .w-45 { max-width: 45%; }
+        .w-50 { max-width: 50%; }
+        .w-55 { max-width: 55%; }
+        .w-60 { max-width: 60%; }
+        .w-65 { max-width: 65%; }
+        .w-70 { max-width: 70%; }
+        .w-75 { max-width: 75%; }
+        .w-80 { max-width: 80%; }
+        .w-82 { max-width: 82%; }
+        .w-88 { max-width: 88%; }
+        .w-100{ max-width: 100%; }
+
+
+        /* ── ROW LAYOUTS ─────────────────────────────────── */
+        .row {
+            display: grid;
+            gap: clamp(1rem, 2vw, 1.5rem);
+            padding: 0 var(--pad);
+            max-width: 1440px;
+            margin: 0 auto;
+            margin-bottom: var(--gallery-gap);
+        }
+        .row.twoup   { grid-template-columns: 1fr 1fr; }
+        .row.threeup { grid-template-columns: 1fr 1fr 1fr; }
+        .row.split-6040 { grid-template-columns: 6fr 4fr; }
+        .row.split-4060 { grid-template-columns: 4fr 6fr; }
+        .row.split-7030 { grid-template-columns: 7fr 3fr; }
+        .row.split-3070 { grid-template-columns: 3fr 7fr; }
+        .row.equal-h { align-items: stretch; }
+
+
+        /* ── MEDIA-TO-MEDIA SPACING ──────────────────────── */
+        /* Rule: no image or video touches another. Bridges the gap when one
+           media block (without bottom padding/margin) is immediately followed
+           by another media block. */
+        .case-video + .case-video,
+        .case-video + .video-block,
+        .case-video + .gallery,
+        .case-video + .row,
+        .video-block + .case-video,
+        .video-block + .video-block,
+        .video-block + .gallery,
+        .video-block + .row {
+            margin-top: var(--gallery-gap);
+        }
+
+
+        /* ── NEXT PROJECT ────────────────────────────────── */
+        .next-project {
+            background: var(--color-dark-surface);
+            color: #fff;
+            padding: var(--space-3xl) var(--pad);
+            border-bottom: var(--border-dark-subtle);
+        }
+        .next-project a {
+            display: block;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .next-project .label {
+            color: var(--color-accent);
+            font-size: var(--text-label);
+            letter-spacing: var(--tracking-caps);
+            text-transform: uppercase;
+            margin-bottom: var(--space-md);
+        }
+        .next-project h2 {
+            font-size: var(--text-h1);
+            font-weight: 500;
+            letter-spacing: var(--tracking-tighter);
+            line-height: var(--leading-tight);
+            transition: color .3s;
+        }
+        .next-project h2 em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--color-accent);
+        }
+        .next-project a:hover h2 { color: var(--color-accent); }
+
+
+        /* ── CREDITS ─────────────────────────────────────── */
+        .case-credits {
+            background: var(--color-dark-surface);
+            padding: var(--space-3xl) var(--pad);
+            border-top: var(--border-dark-subtle);
+        }
+        .credits-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .credits-group {
+            margin-bottom: var(--space-2xl);
+        }
+        .credits-category {
+            font-size: var(--text-caps);
+            letter-spacing: var(--tracking-caps-lg);
+            text-transform: uppercase;
+            color: var(--color-accent);
+            font-weight: var(--weight-semibold);
+            margin-bottom: var(--space-sm);
+        }
+        .credits-table {
+            display: flex;
+            flex-direction: column;
+        }
+        .cr-row {
+            display: grid;
+            grid-template-columns: 220px 1fr 220px 1fr;
+            gap: 0 var(--space-md);
+            padding: 10px 0;
+            border-top: var(--border-dark-subtle);
+            align-items: baseline;
+        }
+        .cr-role {
+            font-size: var(--text-caps);
+            letter-spacing: var(--tracking-caps);
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            font-weight: var(--weight-regular);
+            line-height: var(--leading-relaxed);
+        }
+        .cr-name {
+            font-size: var(--text-label);
+            color: rgba(255,255,255,0.85);
+            font-weight: var(--weight-light);
+            line-height: var(--leading-relaxed);
+        }
+        .cr-name .cr-highlight { color: var(--color-accent); }
+        @media (max-width: 768px) {
+            .cr-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+                padding: var(--space-sm) 0;
+            }
+            .cr-role { margin-top: var(--space-xs); }
+        }
+
+
+        /* ── FOOTER ──────────────────────────────────────── */
+        footer.case-footer {
+            background: var(--color-dark-surface);
+            color: #fff;
+            padding: clamp(4rem, 8vw, 8rem) var(--pad) 3rem;
+        }
+        .case-footer-inner { max-width: 1440px; margin: 0 auto; }
+        .footer-heading {
+            font-size: clamp(3rem, 9vw, 8rem);
+            font-weight: 700;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            margin-bottom: clamp(3rem, 6vw, 6rem);
+        }
+        .footer-heading em { color: var(--color-accent); font-style: italic; font-weight: 300; }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
+            border-top: var(--border-dark-subtle);
+            padding-top: 2.5rem;
+            font-size: 0.6875rem;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+        .footer-col-label {
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        .footer-grid a, .footer-grid p {
+            color: rgba(255,255,255,.55);
+            display: block;
+            line-height: 2;
+            transition: color .2s;
+            font-weight: 400;
+        }
+        .footer-grid a:hover { color: var(--color-accent); }
+        .footer-grid .footer-email {
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
+            text-transform: none;
+            color: rgba(255,255,255,.8);
+            border-bottom: 1px solid rgba(255,255,255,.15);
+            padding-bottom: 0.35rem;
+            display: inline-block;
+        }
+        .footer-grid .footer-email:hover { color: var(--color-accent); border-color: var(--color-accent); }
+        .footer-location {
+            text-transform: none;
+            letter-spacing: 0.03em;
+            font-weight: 300;
+            color: rgba(255,255,255,.4);
+            line-height: 1.8;
+        }
+        .footer-copy {
+            color: rgba(255,255,255,.2);
+            margin-top: 0.75rem;
+            font-size: 0.6rem;
+        }
+
+
+        /* ── REVEAL ──────────────────────────────────────── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .75s var(--ease-out), transform .75s var(--ease-out);
+        }
+        .reveal.visible { opacity: 1; transform: none; }
+
+
+        /* ── RESPONSIVE ──────────────────────────────────── */
+        @media (max-width: 768px) {
+            nav.site-nav .nav-links { gap: 1.25rem; font-size: 0.7rem; }
+            nav.site-nav .nav-links a:nth-child(2),
+            nav.site-nav .nav-links a:nth-child(3) { display: none; }
+            .gallery { gap: 64px; }
+            .w-25,.w-30,.w-35,.w-40,.w-45,.w-50,.w-55,.w-60,.w-65,.w-70,.w-75,.w-80,.w-82,.w-88 { max-width: 100% !important; }
+            .pos-left, .pos-center, .pos-right { align-self: stretch; }
+            .row.twoup, .row.threeup,
+            .row.split-6040, .row.split-4060,
+            .row.split-7030, .row.split-3070 { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .video-block .play-btn { width: 80px; height: 80px; }
+            .video-block .play-btn::after { border-width: 10px 0 10px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+
+<!-- ───────────────────────────────────────────────────── HERO -->
+<section class="case-hero">
+
+    <img class="bg" src="assets/7up/7up_images/eef43e207810213.66e3bacb604e8.jpg" alt="7UP — New 7UP, Same 7UP" />
+
+    <nav class="site-nav">
+        <a href="index.html" class="brand">Cesar Barbosa <span class="slash">/</span> cesoi.de</a>
+        <div class="nav-links">
+            <a href="index.html#works">Works</a>
+            <a href="index.html#about">About</a>
+            <a href="mailto:cesar@cesoi.de" class="email">cesar@cesoi.de</a>
+        </div>
+    </nav>
+
+    <div class="case-meta">
+        <span class="meta-left">São Paulo / BR</span>
+        <span class="meta-center">BUCK × 7UP — 2024</span>
+        <span class="meta-right" id="local-clock">--:--:-- BRT</span>
+    </div>
+
+    <div class="case-hero-content">
+        <h1 class="case-hero-title">
+            7UP <span class="dash">—</span> <em>New 7UP, Same 7UP</em>
+        </h1>
+    </div>
+
+</section>
+
+
+<!-- ───────────────────── INTRO -->
+<section class="intro reveal">
+    <div class="intro-eyebrow">
+        7UP × BUCK <span class="star">✦</span>
+    </div>
+    <p class="intro-text">
+        Buck partnered with 7UP to UPlift and refresh their brand identity. We united CG visuals with a bold photographic language, revitalizing the brand across all major touchpoints in a way that feels distinctly 7UP.
+    </p>
+</section>
+
+
+<!-- ───────────────────── PRIMARY VIDEO (click-to-play) -->
+<div class="video-block" id="video-7up-main">
+    <video
+        src="assets/7up/new_get_up_same_7up%20%281080p%29.mp4"
+        preload="auto"
+        playsinline></video>
+    <button class="play-btn" aria-label="Play video"></button>
+    <span class="video-label">Play Main Film</span>
+</div>
+
+
+<!-- ───────────────────── OVERVIEW -->
+<section class="case-section reveal">
+    <h2>Overview</h2>
+    <p>
+        We maintained the iconic 7UP green to stay true to the brand, and weaved in fun, zesty elements throughout still and motion assets to add vibrance to the new identity. We amplified the idea of "UPliftment" through fluid upward camera movements and transformative CG visuals set against a warm, sunlit sky.
+    </p>
+    <p>
+        Our goal was to create a motion identity that takes the recognizable 7UP brand and translates it into a crisp visual language that entices consumers across the globe.
+    </p>
+    <p>
+        We infused this confident and bubbly visual language into our live-action video, photography design elements, CG, and overall feel to create a bright, uplifting campaign that evolves the 7UP brand.
+    </p>
+    <p>
+        This project was an extensive journey of discovery and creative exploration as we worked to capture freshness in our visual language, but it was an incredibly invigorating experience along the way.
+    </p>
+    <a class="external-link" href="https://buck.co/work/7up" target="_blank" rel="noopener noreferrer">Full Project Case</a>
+</section>
+
+
+<!-- ───────────────────── GALLERY GROUP 1 — CG Hero Shots -->
+
+<!-- Big single -->
+<div class="gallery">
+    <div class="gallery-item pos-center w-80 reveal">
+        <img src="assets/7up/7up_images/86a184207810213.66e3c174915a8.jpg" alt="7UP can with glass on tile" />
+    </div>
+</div>
+
+<!-- Single landscape -->
+<div class="gallery">
+    <div class="gallery-item pos-left w-70 reveal">
+        <img src="assets/7up/7up_images/b8b614207810213.66e3c174910dc.jpg" alt="7UP lifestyle moment" />
+    </div>
+</div>
+
+<!-- Single landscape -->
+<div class="gallery">
+    <div class="gallery-item pos-right w-70 reveal">
+        <img src="assets/7up/7up_images/739ea6207810213.66e3b8a8132f5.jpg" alt="7UP can in the sky" />
+    </div>
+</div>
+
+<!-- Three-up squares -->
+<div class="row threeup reveal">
+    <div class="gallery-item"><img src="assets/7up/7up_images/7ddaae207810213.66e45e1344b98.png" alt="7UP can with ice" /></div>
+    <div class="gallery-item"><img src="assets/7up/7up_images/45bade207810213.66e3bacc25b78.jpg" alt="7UP bottle close-up" /></div>
+    <div class="gallery-item"><img src="assets/7up/7up_images/79b2aa207810213.66e3bacc25193.jpg" alt="7UP can with lemons" /></div>
+</div>
+
+
+<!-- ───────────────────── SECONDARY VIDEO (autoplay loop) -->
+<section class="case-video">
+    <video
+        src="assets/7up/7up_zero_sugar%20%281080p%29.mp4"
+        autoplay muted loop playsinline></video>
+</section>
+
+
+<!-- ───────────────────── GALLERY GROUP 2 — Brand & Photography -->
+
+<!-- Two portraits side-by-side -->
+<div class="row twoup reveal">
+    <div class="gallery-item"><img src="assets/7up/7up_images/2a60ef207810213.66e3b8a4dc01e.jpg" alt="Taste That Lifts You Up poster" /></div>
+    <div class="gallery-item"><img src="assets/7up/7up_images/b24efe207810213.66e3bacb5fcf7.jpg" alt="7UP bottles on green" /></div>
+</div>
+
+<!-- Single big landscape -->
+<div class="gallery">
+    <div class="gallery-item pos-center w-82 reveal">
+        <img src="assets/7up/7up_images/b05293207810213.66e3bacc26243.jpg" alt="7UP bottles in sky" />
+    </div>
+</div>
+
+<!-- Single offset left -->
+<div class="gallery">
+    <div class="gallery-item pos-left w-65 reveal">
+        <img src="assets/7up/7up_images/cd94c0207810213.66e3c1749093d.jpg" alt="7UP detail" />
+    </div>
+</div>
+
+
+<!-- ───────────────────── GALLERY GROUP 3 — Motion / Social GIFs -->
+
+<!-- Three-up GIFs -->
+<div class="row threeup reveal">
+    <div class="gallery-item"><img src="assets/7up/7up_images/09a9dc207810213.66e3d55106640.gif" alt="Motion detail 01" /></div>
+    <div class="gallery-item"><img src="assets/7up/7up_images/2bc72d207810213.66e3d54c9a19c.gif" alt="Motion detail 02" /></div>
+    <div class="gallery-item"><img src="assets/7up/7up_images/5535fe207810213.66e3d55106e34.gif" alt="Motion detail 03" /></div>
+</div>
+
+<!-- Three-up GIFs -->
+<div class="row threeup reveal">
+    <div class="gallery-item"><img src="assets/7up/7up_images/57b899207810213.66e3c170798bb.gif" alt="Motion detail 04" /></div>
+    <div class="gallery-item"><img src="assets/7up/7up_images/5c8608207810213.66e3c1728dc07.gif" alt="Motion detail 05" /></div>
+    <div class="gallery-item"><img src="assets/7up/7up_images/7d790e207810213.66e3c1728ea60.gif" alt="Motion detail 06" /></div>
+</div>
+
+<!-- Two-up GIFs -->
+<div class="row twoup reveal">
+    <div class="gallery-item"><img src="assets/7up/7up_images/bf2869207810213.66e3d54c99ad5.gif" alt="Motion detail 07" /></div>
+    <div class="gallery-item"><img src="assets/7up/7up_images/e2fa6f207810213.66e3da6091dc5.gif" alt="Motion detail 08" /></div>
+</div>
+
+
+<!-- ───────────────────── TERTIARY VIDEO (autoplay loop) -->
+<section class="case-video">
+    <video
+        src="assets/7up/new_7_same_up%20%281080p%29.mp4"
+        autoplay muted loop playsinline></video>
+</section>
+
+
+<!-- ───────────────────── GALLERY GROUP 4 — Closing -->
+
+<!-- Two-up GIFs -->
+<div class="row twoup reveal">
+    <div class="gallery-item"><img src="assets/7up/7up_images/5cebec207810213.66e45e14bdf0e.gif" alt="Motion detail 09" /></div>
+    <div class="gallery-item"><img src="assets/7up/7up_images/ea9188207810213.66e3dabaa07f0.gif" alt="Motion detail 10" /></div>
+</div>
+
+
+<!-- ───────────────────── CREDITS -->
+<section class="case-credits reveal">
+    <div class="credits-inner">
+
+        <div class="credits-group">
+            <p class="credits-category">Buck</p>
+            <div class="credits-table">
+                <div class="cr-row">
+                    <span class="cr-role">Executive Creative Director</span>
+                    <span class="cr-name">Ben Langsfeld, Enrique Mosqueda</span>
+                    <span class="cr-role">Executive Producer</span>
+                    <span class="cr-name">Kim Stephens</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Group Creative Director</span>
+                    <span class="cr-name">Camille Chu, Dan Marsh</span>
+                    <span class="cr-role">Associate Creative Director</span>
+                    <span class="cr-name">Cecilia Chang Lee</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Producer</span>
+                    <span class="cr-name">Adam Hughes, Jack Williams</span>
+                    <span class="cr-role">Associate Producer</span>
+                    <span class="cr-name">Chloe Soares</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Senior Producer</span>
+                    <span class="cr-name">Monica Lynn</span>
+                    <span class="cr-role">Head of 3D / 3D Supervisor</span>
+                    <span class="cr-name">Bill Dorais, Chris Phillips</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Art Director</span>
+                    <span class="cr-name">Stephen Bader, Hyung Soon Joo</span>
+                    <span class="cr-role">Lead 3D Artist</span>
+                    <span class="cr-name">Hogan Williams</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">3D Design</span>
+                    <span class="cr-name"><span class="cr-highlight">Cesar Barbosa</span>, Daniel Whitaker, Hernan Lindenbaum, Johana Kroft, Josefina Llano, Ryan Musselman, Wing Sze Lee, Ylli Orana, Will Burkart</span>
+                    <span class="cr-role">3D Animation</span>
+                    <span class="cr-name">Anthony Enos, Anton Tokar, Arran Bish, Auron Luxe, Chris Ribar, Dan Darling, Duncan DeMichiel, Jacky Jackson, Jesseter Wang, Kevin Weber, Marc Steinberg, Marcio Flausino, Matt Siegel, Michael Russo, Terence Ginja-Martinho, Will Burkart</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">2D Lead</span>
+                    <span class="cr-name">Vero Gomez</span>
+                    <span class="cr-role">2D Animation</span>
+                    <span class="cr-name">Wooyoung Kim</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Editor</span>
+                    <span class="cr-name">Peter Brandi, Randy Rubin, Talia Mazzarella</span>
+                    <span class="cr-role">Colorist</span>
+                    <span class="cr-name">Michael Dwass</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Sound Design</span>
+                    <span class="cr-name">Sounds Like These</span>
+                    <span class="cr-role">Design</span>
+                    <span class="cr-name">Daniel Stuhlpfarrer, Danilo Rodrigues</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Strategy Lead</span>
+                    <span class="cr-name">Surabhi Rathi</span>
+                    <span class="cr-role">Head of Post Production</span>
+                    <span class="cr-name">Jose Fuentes</span>
+                </div>
+                <div class="cr-row">
+                    <span class="cr-role">Copywriter</span>
+                    <span class="cr-name">Shana Billingsley</span>
+                    <span class="cr-role">Storyboard Artist</span>
+                    <span class="cr-name">Thea Glad, William Rosado</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ───────────────────── NEXT PROJECT -->
+<section class="next-project reveal">
+    <a href="microsoft-copilot.html">
+        <p class="label">Next Project</p>
+        <h2>Microsoft <em>— Copilot + PCs</em></h2>
+    </a>
+</section>
+
+
+<!-- ───────────────────── FOOTER -->
+<footer class="case-footer">
+    <div class="case-footer-inner">
+        <h2 class="footer-heading reveal">
+            Let's render<br>
+            <em>something.</em>
+        </h2>
+        <div class="footer-grid reveal">
+            <div>
+                <span class="footer-col-label">Get in touch</span>
+                <a href="mailto:cesar@cesoi.de" class="footer-email">cesar@cesoi.de</a>
+            </div>
+            <div>
+                <span class="footer-col-label">Social</span>
+                <a href="https://www.instagram.com/cesoi.de/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="https://www.behance.net/cesoide" target="_blank" rel="noopener noreferrer">Behance</a>
+                <a href="https://www.linkedin.com/in/cesoide/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+            <div>
+                <span class="footer-col-label">Index</span>
+                <a href="index.html#works">Works</a>
+                <a href="index.html#about">About</a>
+                <a href="mailto:cesar@cesoi.de">Contact</a>
+            </div>
+            <div>
+                <span class="footer-col-label">Studio</span>
+                <p class="footer-location">São Paulo, BR<br>UTC −3</p>
+                <p class="footer-copy" style="margin-top:1.5rem;">© 2026 Cesar Barbosa</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script>
+    /* Live local clock — São Paulo */
+    (function () {
+        const el = document.getElementById('local-clock');
+        if (!el) return;
+        const fmt = new Intl.DateTimeFormat('en-GB', {
+            timeZone: 'America/Sao_Paulo',
+            hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+        });
+        const tick = () => { el.textContent = fmt.format(new Date()) + ' BRT'; };
+        tick(); setInterval(tick, 1000);
+    })();
+
+    /* Click-to-play primary video — uses a mid-video frame as the visible poster */
+    (function () {
+        const block = document.getElementById('video-7up-main');
+        if (!block) return;
+        const video = block.querySelector('video');
+
+        // Seek to ~30% into the video so the visible frame differs from the hero
+        let started = false;
+        const seekToPoster = () => {
+            if (started || !isFinite(video.duration) || video.duration <= 0) return;
+            const t = Math.min(video.duration * 0.30, 10);
+            try { video.currentTime = t; } catch (e) {}
+        };
+        video.addEventListener('loadedmetadata', seekToPoster);
+        video.addEventListener('canplay', seekToPoster);
+
+        block.addEventListener('click', () => {
+            if (block.classList.contains('playing')) {
+                if (video.paused) { video.play(); }
+                else { video.pause(); block.classList.remove('playing'); }
+                return;
+            }
+            block.classList.add('playing');
+            started = true;
+            video.controls = true;
+            video.currentTime = 0;
+            video.play();
+        });
+    })();
+
+    /* Reveal on scroll */
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+        });
+    }, { threshold: 0.07 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

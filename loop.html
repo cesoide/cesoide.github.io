@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loop — Shut Up The Noise · Cesar Barbosa</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+    <!-- Cesoi Design System -->
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="colors_and_type.css">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: var(--font-display, 'Poppins'), system-ui, sans-serif;
+            background: var(--color-dark-surface);
+            color: #fff;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar { display: none; }
+        a { color: inherit; text-decoration: none; }
+
+        :root { --pad: clamp(1.5rem, 5vw, 4rem); }
+
+
+        /* ── NAV ─────────────────────────────────────────── */
+        nav.site-nav {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem var(--pad);
+            color: #fff;
+            font-size: 0.75rem;
+            letter-spacing: 0.06em;
+            font-weight: 400;
+        }
+        nav.site-nav .brand { font-weight: 500; letter-spacing: 0.02em; }
+        nav.site-nav .brand .slash { color: rgba(255,255,255,0.5); margin: 0 .35em; }
+        nav.site-nav .nav-links { display: flex; gap: 2.25rem; align-items: center; }
+        nav.site-nav .nav-links a { transition: color .2s, opacity .2s; opacity: 0.85; }
+        nav.site-nav .nav-links a:hover { color: var(--color-accent); opacity: 1; }
+        nav.site-nav .nav-links a.email {
+            color: var(--color-accent);
+            text-transform: uppercase;
+            opacity: 1;
+            letter-spacing: 0.08em;
+        }
+        nav.site-nav .nav-links a.email:hover { opacity: 0.7; }
+
+
+        /* ── STAGE ───────────────────────────────────────── */
+        .reel-stage {
+            position: relative;
+            width: 100%;
+            min-height: 100svh;
+            background: var(--color-dark-surface);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: clamp(7rem, 12vw, 10rem) var(--pad) clamp(4rem, 8vw, 6rem);
+        }
+
+        .reel-meta {
+            position: absolute;
+            top: 5.5rem; left: 0; right: 0;
+            z-index: 3;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            padding: 0 var(--pad);
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.55);
+            font-variant-numeric: tabular-nums;
+        }
+        .reel-meta .meta-center { text-align: center; }
+        .reel-meta .meta-right  { text-align: right; }
+
+        .reel-title {
+            font-size: var(--text-h1);
+            font-weight: var(--weight-medium);
+            letter-spacing: var(--tracking-tighter);
+            line-height: var(--leading-tight);
+            color: #fff;
+            margin-bottom: clamp(2rem, 4vw, 3rem);
+            max-width: 1440px;
+            text-align: left;
+            width: 100%;
+        }
+        .reel-title em {
+            font-style: italic;
+            font-weight: var(--weight-light);
+            color: var(--color-accent);
+        }
+        .reel-title .dash {
+            color: rgba(255,255,255,0.5);
+            font-weight: 300;
+            margin: 0 .15em;
+        }
+
+
+        /* ── VIDEO PLAYER ────────────────────────────────── */
+        .video-block {
+            position: relative;
+            width: 100%;
+            max-width: 1440px;
+            background: #000;
+            line-height: 0;
+            cursor: pointer;
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+        }
+        .video-block video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+        .video-block .play-btn {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 130px; height: 130px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 2;
+            transition: transform .4s var(--ease-out), background .3s, opacity .4s;
+        }
+        .video-block:hover .play-btn {
+            transform: translate(-50%, -50%) scale(1.08);
+            background: rgba(255,255,255,0.18);
+        }
+        .video-block .play-btn::after {
+            content: "";
+            display: block;
+            width: 0; height: 0;
+            border-style: solid;
+            border-width: 16px 0 16px 26px;
+            border-color: transparent transparent transparent #fff;
+            margin-left: 7px;
+        }
+        .video-block .video-label {
+            position: absolute;
+            bottom: 1.5rem; right: 1.5rem;
+            z-index: 2;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            transition: opacity .4s;
+        }
+        .video-block.playing .play-btn,
+        .video-block.playing .video-label { opacity: 0; pointer-events: none; }
+
+
+        /* ── INLINE CREDITS (minimal) ────────────────────── */
+        .reel-credits {
+            width: 100%;
+            max-width: 1440px;
+            margin-top: clamp(2.5rem, 5vw, 4rem);
+            padding-top: clamp(1.5rem, 3vw, 2.25rem);
+            border-top: var(--border-dark-subtle);
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: clamp(1.5rem, 3vw, 2.5rem);
+        }
+        .reel-credits .cr-block { display: flex; flex-direction: column; gap: 0.5rem; }
+        .reel-credits .cr-key {
+            font-size: var(--text-caps);
+            letter-spacing: var(--tracking-caps);
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            font-weight: var(--weight-regular);
+        }
+        .reel-credits .cr-val {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.9);
+            font-weight: var(--weight-light);
+            line-height: 1.5;
+        }
+        .reel-credits .cr-val .cr-highlight { color: var(--color-accent); }
+
+
+        /* ── FOOTER ──────────────────────────────────────── */
+        footer.case-footer {
+            background: var(--color-dark-surface);
+            color: #fff;
+            padding: clamp(4rem, 8vw, 8rem) var(--pad) 3rem;
+            border-top: var(--border-dark-subtle);
+        }
+        .case-footer-inner { max-width: 1440px; margin: 0 auto; }
+        .footer-heading {
+            font-size: clamp(3rem, 9vw, 8rem);
+            font-weight: 700;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            margin-bottom: clamp(3rem, 6vw, 6rem);
+        }
+        .footer-heading em { color: var(--color-accent); font-style: italic; font-weight: 300; }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
+            border-top: var(--border-dark-subtle);
+            padding-top: 2.5rem;
+            font-size: 0.6875rem;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+        }
+        .footer-col-label {
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        .footer-grid a, .footer-grid p {
+            color: rgba(255,255,255,.55);
+            display: block;
+            line-height: 2;
+            transition: color .2s;
+            font-weight: 400;
+        }
+        .footer-grid a:hover { color: var(--color-accent); }
+        .footer-grid .footer-email {
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
+            text-transform: none;
+            color: rgba(255,255,255,.8);
+            border-bottom: 1px solid rgba(255,255,255,.15);
+            padding-bottom: 0.35rem;
+            display: inline-block;
+        }
+        .footer-grid .footer-email:hover { color: var(--color-accent); border-color: var(--color-accent); }
+        .footer-location {
+            text-transform: none;
+            letter-spacing: 0.03em;
+            font-weight: 300;
+            color: rgba(255,255,255,.4);
+            line-height: 1.8;
+        }
+        .footer-copy {
+            color: rgba(255,255,255,.2);
+            margin-top: 0.75rem;
+            font-size: 0.6rem;
+        }
+
+
+        /* ── REVEAL ──────────────────────────────────────── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .75s var(--ease-out), transform .75s var(--ease-out);
+        }
+        .reveal.visible { opacity: 1; transform: none; }
+
+
+        /* ── RESPONSIVE ──────────────────────────────────── */
+        @media (max-width: 768px) {
+            nav.site-nav .nav-links { gap: 1.25rem; font-size: 0.7rem; }
+            nav.site-nav .nav-links a:nth-child(2),
+            nav.site-nav .nav-links a:nth-child(3) { display: none; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .video-block .play-btn { width: 90px; height: 90px; }
+            .video-block .play-btn::after { border-width: 12px 0 12px 19px; }
+            .reel-credits { grid-template-columns: 1fr; gap: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+
+<!-- ───────────────────────────────────────────────────── STAGE -->
+<section class="reel-stage">
+
+    <nav class="site-nav">
+        <a href="index.html" class="brand">Cesar Barbosa <span class="slash">/</span> cesoi.de</a>
+        <div class="nav-links">
+            <a href="index.html#works">Works</a>
+            <a href="index.html#about">About</a>
+            <a href="mailto:cesar@cesoi.de" class="email">cesar@cesoi.de</a>
+        </div>
+    </nav>
+
+    <div class="reel-meta">
+        <span class="meta-left">São Paulo / BR</span>
+        <span class="meta-center">Public Display of Affection × Loop</span>
+        <span class="meta-right" id="local-clock">--:--:-- BRT</span>
+    </div>
+
+    <h1 class="reel-title reveal">
+        Loop <span class="dash">—</span> <em>Shut Up The Noise</em>
+    </h1>
+
+    <div class="video-block reveal" id="video-loop">
+        <video
+            src="assets/Loop-headphones/SHUT%20UP%20NOISE%20WITH%20LOOP%20EARPLUGS.mp4"
+            preload="metadata"
+            playsinline></video>
+        <button class="play-btn" aria-label="Play video"></button>
+        <span class="video-label">Play Main Film</span>
+    </div>
+
+    <!-- Inline credits — minimal -->
+    <div class="reel-credits reveal">
+        <div class="cr-block">
+            <span class="cr-key">Studio</span>
+            <span class="cr-val">Public Display of Affection</span>
+        </div>
+        <div class="cr-block">
+            <span class="cr-key">Project</span>
+            <span class="cr-val">Loop · Shut Up The Noise</span>
+        </div>
+        <div class="cr-block">
+            <span class="cr-key">My Role</span>
+            <span class="cr-val"><span class="cr-highlight">Animation · Lookdev</span></span>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- ───────────────────── FOOTER -->
+<footer class="case-footer">
+    <div class="case-footer-inner">
+        <h2 class="footer-heading reveal">
+            Let's render<br>
+            <em>something.</em>
+        </h2>
+        <div class="footer-grid reveal">
+            <div>
+                <span class="footer-col-label">Get in touch</span>
+                <a href="mailto:cesar@cesoi.de" class="footer-email">cesar@cesoi.de</a>
+            </div>
+            <div>
+                <span class="footer-col-label">Social</span>
+                <a href="https://www.instagram.com/cesoi.de/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="https://www.behance.net/cesoide" target="_blank" rel="noopener noreferrer">Behance</a>
+                <a href="https://www.linkedin.com/in/cesoide/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+            <div>
+                <span class="footer-col-label">Index</span>
+                <a href="index.html#works">Works</a>
+                <a href="index.html#about">About</a>
+                <a href="mailto:cesar@cesoi.de">Contact</a>
+            </div>
+            <div>
+                <span class="footer-col-label">Studio</span>
+                <p class="footer-location">São Paulo, BR<br>UTC −3</p>
+                <p class="footer-copy" style="margin-top:1.5rem;">© 2026 Cesar Barbosa</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script>
+    /* Live local clock — São Paulo */
+    (function () {
+        const el = document.getElementById('local-clock');
+        if (!el) return;
+        const fmt = new Intl.DateTimeFormat('en-GB', {
+            timeZone: 'America/Sao_Paulo',
+            hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+        });
+        const tick = () => { el.textContent = fmt.format(new Date()) + ' BRT'; };
+        tick(); setInterval(tick, 1000);
+    })();
+
+    /* Click-to-play */
+    (function () {
+        const block = document.getElementById('video-loop');
+        if (!block) return;
+        const video = block.querySelector('video');
+        block.addEventListener('click', () => {
+            if (block.classList.contains('playing')) {
+                if (video.paused) { video.play(); }
+                else { video.pause(); block.classList.remove('playing'); }
+                return;
+            }
+            block.classList.add('playing');
+            video.controls = true;
+            video.play();
+        });
+    })();
+
+    /* Reveal on scroll */
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+        });
+    }, { threshold: 0.07 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
