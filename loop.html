@@ -195,6 +195,41 @@
         .reel-credits .cr-val .cr-highlight { color: var(--color-accent); }
 
 
+        /* ── NEXT PROJECT ────────────────────────────────── */
+        .next-project {
+            background: var(--color-dark-surface);
+            color: #fff;
+            padding: var(--space-3xl) var(--pad);
+            border-top: var(--border-dark-subtle);
+            border-bottom: var(--border-dark-subtle);
+        }
+        .next-project a {
+            display: block;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .next-project .label {
+            color: var(--color-accent);
+            font-size: var(--text-label);
+            letter-spacing: var(--tracking-caps);
+            text-transform: uppercase;
+            margin-bottom: var(--space-md);
+        }
+        .next-project h2 {
+            font-size: var(--text-h1);
+            font-weight: 500;
+            letter-spacing: var(--tracking-tighter);
+            line-height: var(--leading-tight);
+            transition: color .3s;
+        }
+        .next-project h2 em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--color-accent);
+        }
+        .next-project a:hover h2 { color: var(--color-accent); }
+
+
         /* ── FOOTER ──────────────────────────────────────── */
         footer.case-footer {
             background: var(--color-dark-surface);
@@ -329,6 +364,15 @@
         </div>
     </div>
 
+</section>
+
+
+<!-- ───────────────────── NEXT PROJECT -->
+<section class="next-project reveal">
+    <a href="microsoft-copilot.html">
+        <p class="label">Next Project</p>
+        <h2>Microsoft <em>— Copilot + PCs</em></h2>
+    </a>
 </section>
 
 
