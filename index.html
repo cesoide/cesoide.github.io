@@ -582,6 +582,9 @@
 
         /* ── RESPONSIVE ─────────────────────── */
         @media (max-width: 768px) {
+            /* --pad = 10vw em cada lado → conteúdo 80% do viewport em todas as seções */
+            :root { --pad: 10vw; }
+
             nav.site-nav .nav-links { gap: 1.25rem; font-size: 0.7rem; }
             nav.site-nav .nav-links a:nth-child(2),
             nav.site-nav .nav-links a:nth-child(3) { display: none; }
@@ -596,10 +599,6 @@
             /* Works: colunas empilhadas, sem offset da col-right */
             .works-grid { grid-template-columns: 1fr; }
             .col-right { margin-top: 0; }
-            .col-left, .col-right { align-items: center; }
-
-            /* Thumbs 20% menores — item centralizado */
-            .work-item { width: 80%; }
 
             /* About */
             .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
