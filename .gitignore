@@ -13,6 +13,8 @@ desktop.ini
 *.tmp
 *.tmp.*
 *.bak
+*.bak.*
+*.bak_*
 
 # Logs
 *.log
