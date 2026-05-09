@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,11 +11,11 @@
         gtag('js', new Date());
         gtag('config', 'G-G6D3N34V1K');
     </script>
-    <title>Microsoft — Copilot + PCs · Cesar Barbosa</title>
+    <title>Microsoft · Copilot + PCs · Cesar Barbosa</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono&display=swap" rel="stylesheet">
 
     <!-- Cesoi Design System -->
     <link rel="stylesheet" href="shared.css">
@@ -25,7 +25,7 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; font-size: 16px; }
         body {
-            font-family: var(--font-display, 'Poppins'), system-ui, sans-serif;
+            font-family: 'Space Grotesk', system-ui, sans-serif;
             background: var(--color-paper, #fff);
             color:      var(--color-ink, #0e0e0e);
             overflow-x: hidden;
@@ -36,7 +36,7 @@
 
         :root { --pad: clamp(1.5rem, 5vw, 4rem); }
 
-        /* ── NAV ─────────────────────────────────────────── */
+        /* -- NAV ------------------------------------------- */
         nav.site-nav {
             position: absolute;
             top: 0; left: 0; right: 0;
@@ -51,6 +51,8 @@
             font-weight: 400;
         }
         nav.site-nav .brand { font-weight: 500; letter-spacing: 0.02em; }
+        nav.site-nav .brand { display: inline-flex; align-items: center; line-height: 0; }
+        nav.site-nav .brand img { height: 32px; width: auto; display: block; }
         nav.site-nav .brand .slash { color: rgba(255,255,255,0.5); margin: 0 .35em; }
         nav.site-nav .nav-links { display: flex; gap: 2.25rem; align-items: center; }
         nav.site-nav .nav-links a { transition: color .2s, opacity .2s; opacity: 0.85; }
@@ -64,7 +66,7 @@
         nav.site-nav .nav-links a.email:hover { opacity: 0.7; }
 
 
-        /* ── HERO ────────────────────────────────────────── */
+        /* -- HERO ------------------------------------------ */
         .case-hero {
             position: relative;
             width: 100%;
@@ -112,7 +114,7 @@
             padding: 0 var(--pad) clamp(3rem, 6vw, 5rem);
         }
         .case-hero-title {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Syne', sans-serif;
             font-size: var(--text-case-hero);
             font-weight: 500;
             line-height: var(--leading-hero);
@@ -131,7 +133,7 @@
         }
 
 
-        /* ── INTRO BLOCK ─────────────────────────────────── */
+        /* -- INTRO BLOCK ----------------------------------- */
         .intro {
             padding: var(--space-2xl) var(--pad);
             max-width: 1440px;
@@ -163,7 +165,7 @@
         }
 
 
-        /* ── VIDEO PLAYER (with play button) ─────────────── */
+        /* -- VIDEO PLAYER (with play button) --------------- */
         .video-block {
             position: relative;
             width: 100%;
@@ -240,7 +242,7 @@
         }
 
 
-        /* ── SECTION (Illumination, Budapest…) ───────────── */
+        /* -- SECTION (Illumination, Budapest…) ------------- */
         .case-section {
             padding: var(--space-3xl) var(--pad) var(--space-2xl);
             max-width: 1440px;
@@ -276,10 +278,10 @@
             transition: gap .25s var(--ease-out), opacity .25s;
         }
         .case-section .external-link:hover { gap: 0.85rem; opacity: 0.85; }
-        .case-section .external-link::after { content: "→"; font-weight: 400; }
+        .case-section .external-link::after { content: ""; }
 
 
-        /* ── GALLERY (staggered single items) ────────────── */
+        /* -- GALLERY (staggered single items) -------------- */
         .gallery {
             display: flex;
             flex-direction: column;
@@ -348,7 +350,7 @@
         .w-100{ max-width: 100%; }
 
 
-        /* ── ROW LAYOUTS ─────────────────────────────────── */
+        /* -- ROW LAYOUTS ----------------------------------- */
         .row {
             display: grid;
             gap: clamp(1rem, 2vw, 1.5rem);
@@ -366,7 +368,7 @@
         .row.equal-h { align-items: stretch; }
 
 
-        /* ── MEDIA-TO-MEDIA SPACING ──────────────────────── */
+        /* -- MEDIA-TO-MEDIA SPACING ------------------------ */
         /* Rule: no image or video touches another. Bridges the gap when one
            media block (without bottom padding/margin) is immediately followed
            by another media block. */
@@ -382,7 +384,7 @@
         }
 
 
-        /* ── NEXT PROJECT ────────────────────────────────── */
+        /* -- NEXT PROJECT ---------------------------------- */
         .next-project {
             background: var(--color-dark-surface);
             color: #fff;
@@ -416,7 +418,7 @@
         .next-project a:hover h2 { color: var(--color-accent); }
 
 
-        /* ── FOOTER ──────────────────────────────────────── */
+        /* -- FOOTER ---------------------------------------- */
         footer.case-footer {
             background: var(--color-dark-surface);
             color: #fff;
@@ -478,7 +480,7 @@
         }
 
 
-        /* ── CREDITS ─────────────────────────────────────── */
+        /* -- CREDITS --------------------------------------- */
         .case-credits {
             background: var(--color-dark-surface);
             padding: var(--space-3xl) var(--pad);
@@ -536,7 +538,7 @@
         }
 
 
-        /* ── REVEAL ──────────────────────────────────────── */
+        /* -- REVEAL ---------------------------------------- */
         .reveal {
             opacity: 0;
             transform: translateY(28px);
@@ -545,7 +547,7 @@
         .reveal.visible { opacity: 1; transform: none; }
 
 
-        /* ── RESPONSIVE ──────────────────────────────────── */
+        /* -- RESPONSIVE ------------------------------------ */
         @media (max-width: 768px) {
             nav.site-nav .nav-links { gap: 1.25rem; font-size: 0.7rem; }
             nav.site-nav .nav-links a:nth-child(2),
@@ -560,18 +562,44 @@
             .video-block .play-btn { width: 80px; height: 80px; }
             .video-block .play-btn::after { border-width: 10px 0 10px 16px; }
         }
+    
+        /* -- BRAND FONT MAPPING (2026 identity) -------------------
+           Display (Syne) · big headings; Mono (Space Mono) · caps/labels;
+           Body (Space Grotesk) · inherits from body for everything else. */
+        .case-hero-title,
+        .case-section h2,
+        .next-project h2,
+        .footer-heading,
+        .reel-title {
+            font-family: 'Syne', sans-serif;
+        }
+        nav.site-nav,
+        nav.site-nav a,
+        .case-meta,
+        .reel-meta,
+        .intro-eyebrow,
+        .video-block .video-label,
+        .next-project .label,
+        .credits-category,
+        .cr-role,
+        .reel-credits .cr-key,
+        .footer-col-label,
+        .footer-copy,
+        .external-link {
+            font-family: 'Space Mono', monospace;
+        }
     </style>
 </head>
 <body>
 
 
-<!-- ───────────────────────────────────────────────────── HERO -->
+<!-- ----------------------------------------------------- HERO -->
 <section class="case-hero">
 
     <img class="bg" src="assets/Microsoft/1e3c68232311467.689a190ce3d62.png" alt="Microsoft Copilot+ PC" />
 
     <nav class="site-nav">
-        <a href="index.html" class="brand">Cesar Barbosa <span class="slash">/</span> cesoi.de</a>
+        <a href="index.html" class="brand"><img src="assets/logo/cesoi-de-wordmark-white.svg" alt="cesoi.de" /></a>
         <div class="nav-links">
             <a href="index.html#works">Works</a>
             <a href="index.html#about">About</a>
@@ -581,31 +609,31 @@
 
     <div class="case-meta">
         <span class="meta-left">São Paulo / BR</span>
-        <span class="meta-center">Available — Q2 2026</span>
+        <span class="meta-center">Available · Q2 2026</span>
         <span class="meta-right" id="local-clock">--:--:-- BRT</span>
     </div>
 
     <div class="case-hero-content">
         <h1 class="case-hero-title">
-            Microsoft <span class="dash">—</span> <em>Copilot + PCs</em>
+            Microsoft <span class="dash">·</span> <em>Copilot + PCs</em>
         </h1>
     </div>
 
 </section>
 
 
-<!-- ───────────────────── INTRO -->
+<!-- --------------------- INTRO -->
 <section class="intro reveal">
     <div class="intro-eyebrow">
-        Microsoft Copilot+ PCs <span class="star">✦</span>
+        Microsoft Copilot+ PCs <span class="star">*</span>
     </div>
     <p class="intro-text">
-        Microsoft is bringing Copilot+ PCs to schools, students and creators everywhere. The campaign celebrates a new generation of devices designed around AI — fast, intelligent and built for the way people actually work. I collaborated with BUCK to deliver a series of design-driven CGI films, blending hyper-real product hero shots with playful, character-led visual systems.
+        Microsoft is bringing Copilot+ PCs to schools, students and creators everywhere. The campaign celebrates a new generation of devices designed around AI · fast, intelligent and built for the way people actually work. I collaborated with BUCK to deliver a series of design-driven CGI films, blending hyper-real product hero shots with playful, character-led visual systems.
     </p>
 </section>
 
 
-<!-- ───────────────────── PRIMARY VIDEO (click-to-play) -->
+<!-- --------------------- PRIMARY VIDEO (click-to-play) -->
 <div class="video-block" id="video-buck25">
     <video
         src="assets/Microsoft/Microsoft%20Copilot%20PCs%20BUCK-25.mp4"
@@ -617,17 +645,17 @@
 </div>
 
 
-<!-- ───────────────────── ILLUMINATION -->
+<!-- --------------------- ILLUMINATION -->
 <section class="case-section reveal">
     <h2>Illumination</h2>
     <p>
-        The lighting story of the campaign starts with a single beam of warm light cutting across glossy aluminum and translucent surfaces. I worked on a custom lookdev pipeline in Redshift that pushes the contrast between the cool, almost surgical environment and the warm Copilot key — making it the unmistakable hero of every frame.
+        The lighting story of the campaign starts with a single beam of warm light cutting across glossy aluminum and translucent surfaces. I worked on a custom lookdev pipeline in Redshift that pushes the contrast between the cool, almost surgical environment and the warm Copilot key · making it the unmistakable hero of every frame.
     </p>
     <a class="external-link" href="https://buck.co/work/microsoft-copilot-pcs" target="_blank" rel="noopener noreferrer">Full Project Case</a>
 </section>
 
 
-<!-- ───────────────────── SECONDARY VIDEO (autoplay loop) -->
+<!-- --------------------- SECONDARY VIDEO (autoplay loop) -->
 <section class="case-video">
     <video
         src="assets/Microsoft/microsoft_copilot_pcs_buck-15%20%281080p%29.mp4"
@@ -636,7 +664,7 @@
 </section>
 
 
-<!-- ───────────────────── BUCK-24 VIDEO -->
+<!-- --------------------- BUCK-24 VIDEO -->
 <div class="gallery">
     <div class="gallery-item pos-left w-80 reveal">
         <video
@@ -646,7 +674,7 @@
 </div>
 
 
-<!-- ───────────────────── GALLERY GROUP 1 -->
+<!-- --------------------- GALLERY GROUP 1 -->
 
 <!-- Two-up split -->
 <div class="row twoup reveal">
@@ -701,16 +729,16 @@
 </div>
 
 
-<!-- ───────────────────── BUDAPEST -->
+<!-- --------------------- BUDAPEST -->
 <section class="case-section reveal">
     <h2>Budapest Lifestyle Photography</h2>
     <p>
-        For the launch films I joined the BUCK production team in Budapest. The lifestyle plates were shot on location with a small crew and integrated back into the CG pipeline — matching real environments, lighting and depth of field. Every device hero shot was rebuilt in 3D so the team could control every reflection, every UI moment and every soft cast of light from the OLED.
+        For the launch films I joined the BUCK production team in Budapest. The lifestyle plates were shot on location with a small crew and integrated back into the CG pipeline · matching real environments, lighting and depth of field. Every device hero shot was rebuilt in 3D so the team could control every reflection, every UI moment and every soft cast of light from the OLED.
     </p>
 </section>
 
 
-<!-- ───────────────────── GALLERY GROUP 2 (Budapest) -->
+<!-- --------------------- GALLERY GROUP 2 (Budapest) -->
 
 <!-- Two-up landscape -->
 <div class="row twoup reveal">
@@ -746,7 +774,7 @@
 </div>
 
 
-<!-- ───────────────────── TERTIARY VIDEO (side-by-side) -->
+<!-- --------------------- TERTIARY VIDEO (side-by-side) -->
 <section class="case-video">
     <video
         src="assets/Microsoft/sidebyside_01%20%281080p%29.mp4"
@@ -755,7 +783,7 @@
 </section>
 
 
-<!-- ───────────────────── GALLERY GROUP 3 (closing) -->
+<!-- --------------------- GALLERY GROUP 3 (closing) -->
 
 <!-- Three-up tight after spacing -->
 <div class="row threeup reveal">
@@ -805,7 +833,7 @@
 </div>
 
 
-<!-- ───────────────────── CREDITS -->
+<!-- --------------------- CREDITS -->
 <section class="case-credits reveal">
     <div class="credits-inner">
 
@@ -951,16 +979,16 @@
 </section>
 
 
-<!-- ───────────────────── NEXT PROJECT -->
+<!-- --------------------- NEXT PROJECT -->
 <section class="next-project reveal">
     <a href="estee-lauder.html">
         <p class="label">Next Project</p>
-        <h2>Estée Lauder <em>— Hydroplump</em></h2>
+        <h2>Estee Lauder <em>· Hydroplump</em></h2>
     </a>
 </section>
 
 
-<!-- ───────────────────── FOOTER -->
+<!-- --------------------- FOOTER -->
 <footer class="case-footer">
     <div class="case-footer-inner">
         <h2 class="footer-heading reveal">
@@ -986,7 +1014,7 @@
             </div>
             <div>
                 <span class="footer-col-label">Studio</span>
-                <p class="footer-location">São Paulo, BR<br>UTC −3</p>
+                <p class="footer-location">São Paulo, BR<br>UTC -3</p>
                 <p class="footer-copy" style="margin-top:1.5rem;">© 2026 Cesar Barbosa</p>
             </div>
         </div>
@@ -995,7 +1023,7 @@
 
 
 <script>
-    /* Live local clock — São Paulo */
+    /* Live local clock · São Paulo */
     (function () {
         const el = document.getElementById('local-clock');
         if (!el) return;

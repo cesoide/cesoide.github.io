@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,11 +11,11 @@
         gtag('js', new Date());
         gtag('config', 'G-G6D3N34V1K');
     </script>
-    <title>Estée Lauder — Hydroplump · Cesar Barbosa</title>
+    <title>Estee Lauder · Hydroplump · Cesar Barbosa</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono&display=swap" rel="stylesheet">
 
     <!-- Cesoi Design System -->
     <link rel="stylesheet" href="shared.css">
@@ -25,7 +25,7 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; font-size: 16px; }
         body {
-            font-family: var(--font-display, 'Poppins'), system-ui, sans-serif;
+            font-family: 'Space Grotesk', system-ui, sans-serif;
             background: var(--color-paper, #fff);
             color:      var(--color-ink, #0e0e0e);
             overflow-x: hidden;
@@ -36,7 +36,7 @@
 
         :root { --pad: clamp(1.5rem, 5vw, 4rem); }
 
-        /* ── NAV ─────────────────────────────────────────── */
+        /* -- NAV ------------------------------------------- */
         nav.site-nav {
             position: absolute;
             top: 0; left: 0; right: 0;
@@ -51,6 +51,8 @@
             font-weight: 400;
         }
         nav.site-nav .brand { font-weight: 500; letter-spacing: 0.02em; }
+        nav.site-nav .brand { display: inline-flex; align-items: center; line-height: 0; }
+        nav.site-nav .brand img { height: 32px; width: auto; display: block; }
         nav.site-nav .brand .slash { color: rgba(255,255,255,0.5); margin: 0 .35em; }
         nav.site-nav .nav-links { display: flex; gap: 2.25rem; align-items: center; }
         nav.site-nav .nav-links a { transition: color .2s, opacity .2s; opacity: 0.85; }
@@ -64,7 +66,7 @@
         nav.site-nav .nav-links a.email:hover { opacity: 0.7; }
 
 
-        /* ── HERO ────────────────────────────────────────── */
+        /* -- HERO ------------------------------------------ */
         .case-hero {
             position: relative;
             width: 100%;
@@ -112,7 +114,7 @@
             padding: 0 var(--pad) clamp(3rem, 6vw, 5rem);
         }
         .case-hero-title {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Syne', sans-serif;
             font-size: var(--text-case-hero);
             font-weight: 500;
             line-height: var(--leading-hero);
@@ -131,7 +133,7 @@
         }
 
 
-        /* ── INTRO BLOCK ─────────────────────────────────── */
+        /* -- INTRO BLOCK ----------------------------------- */
         .intro {
             padding: var(--space-2xl) var(--pad);
             max-width: 1440px;
@@ -163,7 +165,7 @@
         }
 
 
-        /* ── VIDEO PLAYER (with play button) ─────────────── */
+        /* -- VIDEO PLAYER (with play button) --------------- */
         .video-block {
             position: relative;
             width: 100%;
@@ -232,7 +234,7 @@
         }
 
 
-        /* ── SECTION (Overview…) ─────────────────────────── */
+        /* -- SECTION (Overview…) --------------------------- */
         .case-section {
             padding: var(--space-3xl) var(--pad) var(--space-2xl);
             max-width: 1440px;
@@ -256,7 +258,7 @@
         .case-section p + p { margin-top: var(--space-sm); }
 
 
-        /* ── GALLERY (staggered single items) ────────────── */
+        /* -- GALLERY (staggered single items) -------------- */
         .gallery {
             display: flex;
             flex-direction: column;
@@ -328,7 +330,7 @@
         .w-100{ max-width: 100%; }
 
 
-        /* ── ROW LAYOUTS ─────────────────────────────────── */
+        /* -- ROW LAYOUTS ----------------------------------- */
         .row {
             display: grid;
             gap: clamp(1rem, 2vw, 1.5rem);
@@ -346,7 +348,7 @@
         .row.equal-h { align-items: stretch; }
 
 
-        /* ── MEDIA-TO-MEDIA SPACING ──────────────────────── */
+        /* -- MEDIA-TO-MEDIA SPACING ------------------------ */
         /* Rule: no image or video touches another. */
         .case-video + .case-video,
         .case-video + .video-block,
@@ -360,7 +362,7 @@
         }
 
 
-        /* ── NEXT PROJECT ────────────────────────────────── */
+        /* -- NEXT PROJECT ---------------------------------- */
         .next-project {
             background: var(--color-dark-surface);
             color: #fff;
@@ -394,7 +396,7 @@
         .next-project a:hover h2 { color: var(--color-accent); }
 
 
-        /* ── CREDITS ─────────────────────────────────────── */
+        /* -- CREDITS --------------------------------------- */
         .case-credits {
             background: var(--color-dark-surface);
             padding: var(--space-3xl) var(--pad);
@@ -452,7 +454,7 @@
         }
 
 
-        /* ── FOOTER ──────────────────────────────────────── */
+        /* -- FOOTER ---------------------------------------- */
         footer.case-footer {
             background: var(--color-dark-surface);
             color: #fff;
@@ -514,7 +516,7 @@
         }
 
 
-        /* ── REVEAL ──────────────────────────────────────── */
+        /* -- REVEAL ---------------------------------------- */
         .reveal {
             opacity: 0;
             transform: translateY(28px);
@@ -523,7 +525,7 @@
         .reveal.visible { opacity: 1; transform: none; }
 
 
-        /* ── RESPONSIVE ──────────────────────────────────── */
+        /* -- RESPONSIVE ------------------------------------ */
         @media (max-width: 768px) {
             nav.site-nav .nav-links { gap: 1.25rem; font-size: 0.7rem; }
             nav.site-nav .nav-links a:nth-child(2),
@@ -538,18 +540,44 @@
             .video-block .play-btn { width: 80px; height: 80px; }
             .video-block .play-btn::after { border-width: 10px 0 10px 16px; }
         }
+    
+        /* -- BRAND FONT MAPPING (2026 identity) -------------------
+           Display (Syne) · big headings; Mono (Space Mono) · caps/labels;
+           Body (Space Grotesk) · inherits from body for everything else. */
+        .case-hero-title,
+        .case-section h2,
+        .next-project h2,
+        .footer-heading,
+        .reel-title {
+            font-family: 'Syne', sans-serif;
+        }
+        nav.site-nav,
+        nav.site-nav a,
+        .case-meta,
+        .reel-meta,
+        .intro-eyebrow,
+        .video-block .video-label,
+        .next-project .label,
+        .credits-category,
+        .cr-role,
+        .reel-credits .cr-key,
+        .footer-col-label,
+        .footer-copy,
+        .external-link {
+            font-family: 'Space Mono', monospace;
+        }
     </style>
 </head>
 <body>
 
 
-<!-- ───────────────────────────────────────────────────── HERO -->
+<!-- ----------------------------------------------------- HERO -->
 <section class="case-hero">
 
-    <img class="bg" src="assets/Estee/SP26_Hydroplump_Image_Color_28in_300dpi_Global_SRGB_250708.jpg" alt="Estée Lauder — Hydroplump" />
+    <img class="bg" src="assets/Estee/SP26_Hydroplump_Image_Color_28in_300dpi_Global_SRGB_250708.jpg" alt="Estee Lauder · Hydroplump" />
 
     <nav class="site-nav">
-        <a href="index.html" class="brand">Cesar Barbosa <span class="slash">/</span> cesoi.de</a>
+        <a href="index.html" class="brand"><img src="assets/logo/cesoi-de-wordmark-white.svg" alt="cesoi.de" /></a>
         <div class="nav-links">
             <a href="index.html#works">Works</a>
             <a href="index.html#about">About</a>
@@ -559,31 +587,31 @@
 
     <div class="case-meta">
         <span class="meta-left">São Paulo / BR</span>
-        <span class="meta-center">JCD × Estée Lauder</span>
+        <span class="meta-center">JCD × Estee Lauder</span>
         <span class="meta-right" id="local-clock">--:--:-- BRT</span>
     </div>
 
     <div class="case-hero-content">
         <h1 class="case-hero-title">
-            Estée Lauder <span class="dash">—</span> <em>Hydroplump</em>
+            Estee Lauder <span class="dash">·</span> <em>Hydroplump</em>
         </h1>
     </div>
 
 </section>
 
 
-<!-- ───────────────────── INTRO -->
+<!-- --------------------- INTRO -->
 <section class="intro reveal">
     <div class="intro-eyebrow">
-        Estée Lauder · Hydroplump <span class="star">✦</span>
+        Estee Lauder · Hydroplump <span class="star">*</span>
     </div>
     <p class="intro-text">
-        James Conkle Directs (JCD) led the creative vision for Estée Lauder's Hydroplump launch. I joined the team to help translate the formula's bouncy, gel-textured hydration into a hyper-real CG visual system — a director's cut master film, a trio of campaign pillars, and a library of square assets built for global rollout.
+        James Conkle Directs (JCD) led the creative vision for Estee Lauder's Hydroplump launch. I joined the team to help translate the formula's bouncy, gel-textured hydration into a hyper-real CG visual system · a director's cut master film, a trio of campaign pillars, and a library of square assets built for global rollout.
     </p>
 </section>
 
 
-<!-- ───────────────────── PRIMARY VIDEO (click-to-play) -->
+<!-- --------------------- PRIMARY VIDEO (click-to-play) -->
 <div class="video-block" id="video-estee-main">
     <video
         src="assets/Estee/Preview%20No%20Sound%20Dont%20Post/Estee250318_DirCut_251222_Preview.mp4"
@@ -594,25 +622,25 @@
 </div>
 
 
-<!-- ───────────────────── OVERVIEW -->
+<!-- --------------------- OVERVIEW -->
 <section class="case-section reveal">
     <h2>Overview</h2>
     <p>
-        I contributed to a CG-led suite of films and stills around three campaign pillars — Leveled Up Hydration, Plumping and Color — exploring water, oil and fruit textures in macro detail. Every product hero shot was rebuilt in 3D so the team could control reflections, refractions and the soft pearlescent light that wraps each lipstick.
+        I contributed to a CG-led suite of films and stills around three campaign pillars · Leveled Up Hydration, Plumping and Color · exploring water, oil and fruit textures in macro detail. Every product hero shot was rebuilt in 3D so the team could control reflections, refractions and the soft pearlescent light that wraps each lipstick.
     </p>
 </section>
 
 
-<!-- ───────────────────── GALLERY GROUP 1 — Stills -->
+<!-- --------------------- GALLERY GROUP 1 · Stills -->
 
 <!-- Two-up portraits -->
 <div class="row twoup reveal">
-    <div class="gallery-item"><img src="assets/Estee/SP26_Hydroplump_Image_Fruit_Oil_46in_300dpi_Global_SRGB_250707.jpg" alt="Hydroplump — Fruit Oil still" /></div>
-    <div class="gallery-item"><img src="assets/Estee/SP26_Hydroplump_Image_Dual_Moisture_41in_300dpi_Global_SRGB_250707_Crop.jpg" alt="Hydroplump — Dual Moisture still" /></div>
+    <div class="gallery-item"><img src="assets/Estee/SP26_Hydroplump_Image_Fruit_Oil_46in_300dpi_Global_SRGB_250707.jpg" alt="Hydroplump · Fruit Oil still" /></div>
+    <div class="gallery-item"><img src="assets/Estee/SP26_Hydroplump_Image_Dual_Moisture_41in_300dpi_Global_SRGB_250707_Crop.jpg" alt="Hydroplump · Dual Moisture still" /></div>
 </div>
 
 
-<!-- ───────────────────── CAMPAIGN FILM V1 — Hydration -->
+<!-- --------------------- CAMPAIGN FILM V1 · Hydration -->
 <section class="case-video">
     <video
         src="assets/Estee/SP26_Hydroplump_Tier%20B%20Campaign%20Video_V1%20Leveled%20Up%20Hydration_13%20seconds_1920x1080_Sound_Supers_Global_COMP_250728.mp4"
@@ -620,7 +648,7 @@
 </section>
 
 
-<!-- ───────────────────── CAMPAIGN FILM V2 — Plumping -->
+<!-- --------------------- CAMPAIGN FILM V2 · Plumping -->
 <section class="case-video">
     <video
         src="assets/Estee/SP26_Hydroplump_Tier%20B%20Campaign%20Video_V2%20Leveled%20Up%20Plumping_10%20seconds_1920x1080_Sound_Supers_Global_COMP_250728.mp4"
@@ -628,7 +656,7 @@
 </section>
 
 
-<!-- ───────────────────── CAMPAIGN FILM V3 — Color -->
+<!-- --------------------- CAMPAIGN FILM V3 · Color -->
 <section class="case-video">
     <video
         src="assets/Estee/SP26_Hydroplump_Tier%20B%20Campaign%20Video_V3%20Leveled%20Up%20Color_11%20seconds_1920x1080_Sound_Supers_Global_COMP_250729.mp4"
@@ -636,14 +664,14 @@
 </section>
 
 
-<!-- ───────────────────── STILL FRAMES A + B -->
+<!-- --------------------- STILL FRAMES A + B -->
 <div class="row twoup reveal">
-    <div class="gallery-item"><img src="assets/Estee/SP26_Hydroplump_Tier%20B%20Campaign%20Video_V1%20Leveled%20Up%20Hydration_13%20seconds_1920x1080_Sound_Superless_Global_COMP_250728_A.png" alt="Hydroplump — Hydration still A" /></div>
-    <div class="gallery-item"><img src="assets/Estee/SP26_Hydroplump_Tier%20B%20Campaign%20Video_V1%20Leveled%20Up%20Hydration_13%20seconds_1920x1080_Sound_Superless_Global_COMP_250728_B.png" alt="Hydroplump — Hydration still B" /></div>
+    <div class="gallery-item"><img src="assets/Estee/SP26_Hydroplump_Tier%20B%20Campaign%20Video_V1%20Leveled%20Up%20Hydration_13%20seconds_1920x1080_Sound_Superless_Global_COMP_250728_A.png" alt="Hydroplump · Hydration still A" /></div>
+    <div class="gallery-item"><img src="assets/Estee/SP26_Hydroplump_Tier%20B%20Campaign%20Video_V1%20Leveled%20Up%20Hydration_13%20seconds_1920x1080_Sound_Superless_Global_COMP_250728_B.png" alt="Hydroplump · Hydration still B" /></div>
 </div>
 
 
-<!-- ───────────────────── SQUARE FILM — V1 1080×1080 -->
+<!-- --------------------- SQUARE FILM · V1 1080×1080 -->
 <div class="gallery">
     <div class="gallery-item pos-center w-65 reveal">
         <video
@@ -653,15 +681,15 @@
 </div>
 
 
-<!-- ───────────────────── CLOSING TEXTURE STUDY -->
+<!-- --------------------- CLOSING TEXTURE STUDY -->
 <div class="gallery">
     <div class="gallery-item pos-center w-70 reveal">
-        <img src="assets/Estee/estee_250318_nano_banana_pro_1776341849224.png" alt="Hydroplump — texture study" />
+        <img src="assets/Estee/estee_250318_nano_banana_pro_1776341849224.png" alt="Hydroplump · texture study" />
     </div>
 </div>
 
 
-<!-- ───────────────────── CREDITS -->
+<!-- --------------------- CREDITS -->
 <section class="case-credits reveal">
     <div class="credits-inner">
 
@@ -687,16 +715,16 @@
 </section>
 
 
-<!-- ───────────────────── NEXT PROJECT -->
+<!-- --------------------- NEXT PROJECT -->
 <section class="next-project reveal">
     <a href="7up.html">
         <p class="label">Next Project</p>
-        <h2>7UP <em>— New 7UP, Same 7UP</em></h2>
+        <h2>7UP <em>· New 7UP, Same 7UP</em></h2>
     </a>
 </section>
 
 
-<!-- ───────────────────── FOOTER -->
+<!-- --------------------- FOOTER -->
 <footer class="case-footer">
     <div class="case-footer-inner">
         <h2 class="footer-heading reveal">
@@ -722,7 +750,7 @@
             </div>
             <div>
                 <span class="footer-col-label">Studio</span>
-                <p class="footer-location">São Paulo, BR<br>UTC −3</p>
+                <p class="footer-location">São Paulo, BR<br>UTC -3</p>
                 <p class="footer-copy" style="margin-top:1.5rem;">© 2026 Cesar Barbosa</p>
             </div>
         </div>
@@ -731,7 +759,7 @@
 
 
 <script>
-    /* Live local clock — São Paulo */
+    /* Live local clock · São Paulo */
     (function () {
         const el = document.getElementById('local-clock');
         if (!el) return;
@@ -743,7 +771,7 @@
         tick(); setInterval(tick, 1000);
     })();
 
-    /* Click-to-play primary video — uses a mid-video frame as the visible poster */
+    /* Click-to-play primary video · uses a mid-video frame as the visible poster */
     (function () {
         const block = document.getElementById('video-estee-main');
         if (!block) return;

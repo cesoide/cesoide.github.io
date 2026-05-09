@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,11 +11,11 @@
         gtag('js', new Date());
         gtag('config', 'G-G6D3N34V1K');
     </script>
-    <title>Singleton — Discover True Richness · Cesar Barbosa</title>
+    <title>Singleton · Discover True Richness · Cesar Barbosa</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono&display=swap" rel="stylesheet">
 
     <!-- Cesoi Design System -->
     <link rel="stylesheet" href="shared.css">
@@ -25,7 +25,7 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; font-size: 16px; }
         body {
-            font-family: var(--font-display, 'Poppins'), system-ui, sans-serif;
+            font-family: 'Space Grotesk', system-ui, sans-serif;
             background: var(--color-paper, #fff);
             color:      var(--color-ink, #0e0e0e);
             overflow-x: hidden;
@@ -36,7 +36,7 @@
 
         :root { --pad: clamp(1.5rem, 5vw, 4rem); }
 
-        /* ── NAV ─────────────────────────────────────────── */
+        /* -- NAV ------------------------------------------- */
         nav.site-nav {
             position: absolute;
             top: 0; left: 0; right: 0;
@@ -51,6 +51,8 @@
             font-weight: 400;
         }
         nav.site-nav .brand { font-weight: 500; letter-spacing: 0.02em; }
+        nav.site-nav .brand { display: inline-flex; align-items: center; line-height: 0; }
+        nav.site-nav .brand img { height: 32px; width: auto; display: block; }
         nav.site-nav .brand .slash { color: rgba(255,255,255,0.5); margin: 0 .35em; }
         nav.site-nav .nav-links { display: flex; gap: 2.25rem; align-items: center; }
         nav.site-nav .nav-links a { transition: color .2s, opacity .2s; opacity: 0.85; }
@@ -64,7 +66,7 @@
         nav.site-nav .nav-links a.email:hover { opacity: 0.7; }
 
 
-        /* ── HERO ────────────────────────────────────────── */
+        /* -- HERO ------------------------------------------ */
         .case-hero {
             position: relative;
             width: 100%;
@@ -112,7 +114,7 @@
             padding: 0 var(--pad) clamp(3rem, 6vw, 5rem);
         }
         .case-hero-title {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Syne', sans-serif;
             font-size: var(--text-case-hero);
             font-weight: 500;
             line-height: var(--leading-hero);
@@ -131,7 +133,7 @@
         }
 
 
-        /* ── INTRO BLOCK ─────────────────────────────────── */
+        /* -- INTRO BLOCK ----------------------------------- */
         .intro {
             padding: var(--space-2xl) var(--pad);
             max-width: 1440px;
@@ -163,7 +165,7 @@
         }
 
 
-        /* ── VIDEO PLAYER (with play button) ─────────────── */
+        /* -- VIDEO PLAYER (with play button) --------------- */
         .video-block {
             position: relative;
             width: 100%;
@@ -232,7 +234,7 @@
         }
 
 
-        /* ── SECTION (Overview…) ─────────────────────────── */
+        /* -- SECTION (Overview…) --------------------------- */
         .case-section {
             padding: var(--space-3xl) var(--pad) var(--space-2xl);
             max-width: 1440px;
@@ -256,7 +258,7 @@
         .case-section p + p { margin-top: var(--space-sm); }
 
 
-        /* ── GALLERY (staggered single items) ────────────── */
+        /* -- GALLERY (staggered single items) -------------- */
         .gallery {
             display: flex;
             flex-direction: column;
@@ -324,7 +326,7 @@
         .w-100{ max-width: 100%; }
 
 
-        /* ── ROW LAYOUTS ─────────────────────────────────── */
+        /* -- ROW LAYOUTS ----------------------------------- */
         .row {
             display: grid;
             gap: clamp(1rem, 2vw, 1.5rem);
@@ -343,7 +345,7 @@
         .row.equal-h { align-items: stretch; }
 
 
-        /* ── MEDIA-TO-MEDIA SPACING ──────────────────────── */
+        /* -- MEDIA-TO-MEDIA SPACING ------------------------ */
         .case-video + .case-video,
         .case-video + .video-block,
         .case-video + .gallery,
@@ -356,7 +358,7 @@
         }
 
 
-        /* ── NEXT PROJECT ────────────────────────────────── */
+        /* -- NEXT PROJECT ---------------------------------- */
         .next-project {
             background: var(--color-dark-surface);
             color: #fff;
@@ -390,7 +392,7 @@
         .next-project a:hover h2 { color: var(--color-accent); }
 
 
-        /* ── CREDITS ─────────────────────────────────────── */
+        /* -- CREDITS --------------------------------------- */
         .case-credits {
             background: var(--color-dark-surface);
             padding: var(--space-3xl) var(--pad);
@@ -448,7 +450,7 @@
         }
 
 
-        /* ── FOOTER ──────────────────────────────────────── */
+        /* -- FOOTER ---------------------------------------- */
         footer.case-footer {
             background: var(--color-dark-surface);
             color: #fff;
@@ -510,7 +512,7 @@
         }
 
 
-        /* ── REVEAL ──────────────────────────────────────── */
+        /* -- REVEAL ---------------------------------------- */
         .reveal {
             opacity: 0;
             transform: translateY(28px);
@@ -519,7 +521,7 @@
         .reveal.visible { opacity: 1; transform: none; }
 
 
-        /* ── RESPONSIVE ──────────────────────────────────── */
+        /* -- RESPONSIVE ------------------------------------ */
         @media (max-width: 768px) {
             nav.site-nav .nav-links { gap: 1.25rem; font-size: 0.7rem; }
             nav.site-nav .nav-links a:nth-child(2),
@@ -534,18 +536,44 @@
             .video-block .play-btn { width: 80px; height: 80px; }
             .video-block .play-btn::after { border-width: 10px 0 10px 16px; }
         }
+    
+        /* -- BRAND FONT MAPPING (2026 identity) -------------------
+           Display (Syne) · big headings; Mono (Space Mono) · caps/labels;
+           Body (Space Grotesk) · inherits from body for everything else. */
+        .case-hero-title,
+        .case-section h2,
+        .next-project h2,
+        .footer-heading,
+        .reel-title {
+            font-family: 'Syne', sans-serif;
+        }
+        nav.site-nav,
+        nav.site-nav a,
+        .case-meta,
+        .reel-meta,
+        .intro-eyebrow,
+        .video-block .video-label,
+        .next-project .label,
+        .credits-category,
+        .cr-role,
+        .reel-credits .cr-key,
+        .footer-col-label,
+        .footer-copy,
+        .external-link {
+            font-family: 'Space Mono', monospace;
+        }
     </style>
 </head>
 <body>
 
 
-<!-- ───────────────────────────────────────────────────── HERO -->
+<!-- ----------------------------------------------------- HERO -->
 <section class="case-hero">
 
-    <img class="bg" src="assets/Singleton/ac1c6e110194481.602d4c3e52604.jpg" alt="The Singleton — Discover True Richness" />
+    <img class="bg" src="assets/Singleton/ac1c6e110194481.602d4c3e52604.jpg" alt="The Singleton · Discover True Richness" />
 
     <nav class="site-nav">
-        <a href="index.html" class="brand">Cesar Barbosa <span class="slash">/</span> cesoi.de</a>
+        <a href="index.html" class="brand"><img src="assets/logo/cesoi-de-wordmark-white.svg" alt="cesoi.de" /></a>
         <div class="nav-links">
             <a href="index.html#works">Works</a>
             <a href="index.html#about">About</a>
@@ -555,31 +583,31 @@
 
     <div class="case-meta">
         <span class="meta-left">São Paulo / BR</span>
-        <span class="meta-center">Stink × The Singleton — 2021</span>
+        <span class="meta-center">Stink × The Singleton · 2021</span>
         <span class="meta-right" id="local-clock">--:--:-- BRT</span>
     </div>
 
     <div class="case-hero-content">
         <h1 class="case-hero-title">
-            Singleton <span class="dash">—</span> <em>Discover True Richness</em>
+            Singleton <span class="dash">·</span> <em>Discover True Richness</em>
         </h1>
     </div>
 
 </section>
 
 
-<!-- ───────────────────── INTRO -->
+<!-- --------------------- INTRO -->
 <section class="intro reveal">
     <div class="intro-eyebrow">
-        The Singleton · Discover True Richness <span class="star">✦</span>
+        The Singleton · Discover True Richness <span class="star">*</span>
     </div>
     <p class="intro-text">
-        Stink directed The Singleton's "Discover True Richness" — a cinematic film exploring the brand's playful, sensorial side through abstract worlds and tactile light. I joined the HardcoreFX team as motion designer, contributing CG simulations and product moments to the campaign's visual language.
+        Stink directed The Singleton's "Discover True Richness" · a cinematic film exploring the brand's playful, sensorial side through abstract worlds and tactile light. I joined the HardcoreFX team as motion designer, contributing CG simulations and product moments to the campaign's visual language.
     </p>
 </section>
 
 
-<!-- ───────────────────── PRIMARY VIDEO (click-to-play) -->
+<!-- --------------------- PRIMARY VIDEO (click-to-play) -->
 <div class="video-block" id="video-singleton-main">
     <video
         src="assets/Singleton/The%20Singleton_portfolio.mp4"
@@ -590,11 +618,11 @@
 </div>
 
 
-<!-- ───────────────────── OVERVIEW -->
+<!-- --------------------- OVERVIEW -->
 <section class="case-section reveal">
     <h2>Overview</h2>
     <p>
-        We were called by our friends from DOPO for this amazing and challenging project: to build the visual concept for "richness that flows", which represents the core element for the single malt whisky The Singleton campaign. The challenge wasn't just that — we also had to create the pack shot in which the bottle was formed, having to match the KV created by the agency.
+        We were called by our friends from DOPO for this amazing and challenging project: to build the visual concept for "richness that flows", which represents the core element for the single malt whisky The Singleton campaign. The challenge wasn't just that · we also had to create the pack shot in which the bottle was formed, having to match the KV created by the agency.
     </p>
     <p>
         We did the 3D animation and rendering, and the post-production was done by the talented hands of Juliano Storchi &amp; The DOPO Team, who did not only the composite, but raised the visuals of the 3D renders to a higher level.
@@ -605,12 +633,12 @@
 </section>
 
 
-<!-- ───────────────────── GALLERY GROUP 1 — Hero shots -->
+<!-- --------------------- GALLERY GROUP 1 · Hero shots -->
 
 <!-- Big single -->
 <div class="gallery">
     <div class="gallery-item pos-center w-80 reveal">
-        <img src="assets/Singleton/0bc176110194481.602d52d942534.png" alt="Singleton — product hero" />
+        <img src="assets/Singleton/0bc176110194481.602d52d942534.png" alt="Singleton · product hero" />
     </div>
 </div>
 
@@ -621,19 +649,19 @@
 </div>
 
 
-<!-- ───────────────────── GALLERY GROUP 2 — Process / Lookdev -->
+<!-- --------------------- GALLERY GROUP 2 · Process / Lookdev -->
 
 <!-- Three-up process -->
 <div class="row threeup reveal">
-    <div class="gallery-item"><img src="assets/Singleton/process_ve_01.png" alt="Process — pass 01" /></div>
-    <div class="gallery-item"><img src="assets/Singleton/process_ve_02.png" alt="Process — pass 02" /></div>
-    <div class="gallery-item"><img src="assets/Singleton/process_ve_03.png" alt="Process — pass 03" /></div>
+    <div class="gallery-item"><img src="assets/Singleton/process_ve_01.png" alt="Process · pass 01" /></div>
+    <div class="gallery-item"><img src="assets/Singleton/process_ve_02.png" alt="Process · pass 02" /></div>
+    <div class="gallery-item"><img src="assets/Singleton/process_ve_03.png" alt="Process · pass 03" /></div>
 </div>
 
 <!-- Single process -->
 <div class="gallery">
     <div class="gallery-item pos-right w-65 reveal">
-        <img src="assets/Singleton/process_ve_04.png" alt="Process — pass 04" />
+        <img src="assets/Singleton/process_ve_04.png" alt="Process · pass 04" />
     </div>
 </div>
 
@@ -644,24 +672,24 @@
 </div>
 
 
-<!-- ───────────────────── GALLERY GROUP 3 — Motion -->
+<!-- --------------------- GALLERY GROUP 3 · Motion -->
 
 <!-- Three-up GIFs -->
 <div class="row threeup reveal">
     <div class="gallery-item"><img src="assets/Singleton/578b78110194481.602d4c3db0e45.gif" alt="Motion 01" /></div>
     <div class="gallery-item"><img src="assets/Singleton/9be807110194481.602d4c3db1390.gif" alt="Motion 02" /></div>
-    <div class="gallery-item"><img src="assets/Singleton/sh050_pb_v024.gif" alt="Shot 050 — playblast" /></div>
+    <div class="gallery-item"><img src="assets/Singleton/sh050_pb_v024.gif" alt="Shot 050 · playblast" /></div>
 </div>
 
 <!-- Three-up GIFs -->
 <div class="row threeup reveal">
-    <div class="gallery-item"><img src="assets/Singleton/sh050_v24preview.gif" alt="Shot 050 — preview" /></div>
-    <div class="gallery-item"><img src="assets/Singleton/preview-sh070_1.gif" alt="Shot 070 — preview 01" /></div>
-    <div class="gallery-item"><img src="assets/Singleton/preview_shot070.gif" alt="Shot 070 — preview 02" /></div>
+    <div class="gallery-item"><img src="assets/Singleton/sh050_v24preview.gif" alt="Shot 050 · preview" /></div>
+    <div class="gallery-item"><img src="assets/Singleton/preview-sh070_1.gif" alt="Shot 070 · preview 01" /></div>
+    <div class="gallery-item"><img src="assets/Singleton/preview_shot070.gif" alt="Shot 070 · preview 02" /></div>
 </div>
 
 
-<!-- ───────────────────── CREDITS -->
+<!-- --------------------- CREDITS -->
 <section class="case-credits reveal">
     <div class="credits-inner">
 
@@ -711,16 +739,16 @@
 </section>
 
 
-<!-- ───────────────────── NEXT PROJECT -->
+<!-- --------------------- NEXT PROJECT -->
 <section class="next-project reveal">
     <a href="voxel.html">
         <p class="label">Next Project</p>
-        <h2>Voxel <em>— Voxel Journey</em></h2>
+        <h2>Voxel <em>· Voxel Journey</em></h2>
     </a>
 </section>
 
 
-<!-- ───────────────────── FOOTER -->
+<!-- --------------------- FOOTER -->
 <footer class="case-footer">
     <div class="case-footer-inner">
         <h2 class="footer-heading reveal">
@@ -746,7 +774,7 @@
             </div>
             <div>
                 <span class="footer-col-label">Studio</span>
-                <p class="footer-location">São Paulo, BR<br>UTC −3</p>
+                <p class="footer-location">São Paulo, BR<br>UTC -3</p>
                 <p class="footer-copy" style="margin-top:1.5rem;">© 2026 Cesar Barbosa</p>
             </div>
         </div>
@@ -755,7 +783,7 @@
 
 
 <script>
-    /* Live local clock — São Paulo */
+    /* Live local clock · São Paulo */
     (function () {
         const el = document.getElementById('local-clock');
         if (!el) return;
@@ -767,7 +795,7 @@
         tick(); setInterval(tick, 1000);
     })();
 
-    /* Click-to-play primary video — uses a mid-video frame as the visible poster */
+    /* Click-to-play primary video · uses a mid-video frame as the visible poster */
     (function () {
         const block = document.getElementById('video-singleton-main');
         if (!block) return;

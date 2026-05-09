@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,11 +11,11 @@
         gtag('js', new Date());
         gtag('config', 'G-G6D3N34V1K');
     </script>
-    <title>Simply Spiked — Seen Too Much · Cesar Barbosa</title>
+    <title>Simply Spiked · Seen Too Much · Cesar Barbosa</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono&display=swap" rel="stylesheet">
 
     <!-- Cesoi Design System -->
     <link rel="stylesheet" href="shared.css">
@@ -25,7 +25,7 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; font-size: 16px; }
         body {
-            font-family: var(--font-display, 'Poppins'), system-ui, sans-serif;
+            font-family: 'Space Grotesk', system-ui, sans-serif;
             background: var(--color-paper, #fff);
             color:      var(--color-ink, #0e0e0e);
             overflow-x: hidden;
@@ -36,7 +36,7 @@
 
         :root { --pad: clamp(1.5rem, 5vw, 4rem); }
 
-        /* ── NAV ─────────────────────────────────────────── */
+        /* -- NAV ------------------------------------------- */
         nav.site-nav {
             position: absolute;
             top: 0; left: 0; right: 0;
@@ -51,6 +51,8 @@
             font-weight: 400;
         }
         nav.site-nav .brand { font-weight: 500; letter-spacing: 0.02em; }
+        nav.site-nav .brand { display: inline-flex; align-items: center; line-height: 0; }
+        nav.site-nav .brand img { height: 32px; width: auto; display: block; }
         nav.site-nav .brand .slash { color: rgba(255,255,255,0.5); margin: 0 .35em; }
         nav.site-nav .nav-links { display: flex; gap: 2.25rem; align-items: center; }
         nav.site-nav .nav-links a { transition: color .2s, opacity .2s; opacity: 0.85; }
@@ -64,7 +66,7 @@
         nav.site-nav .nav-links a.email:hover { opacity: 0.7; }
 
 
-        /* ── HERO ────────────────────────────────────────── */
+        /* -- HERO ------------------------------------------ */
         .case-hero {
             position: relative;
             width: 100%;
@@ -112,7 +114,7 @@
             padding: 0 var(--pad) clamp(3rem, 6vw, 5rem);
         }
         .case-hero-title {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Syne', sans-serif;
             font-size: var(--text-case-hero);
             font-weight: 500;
             line-height: var(--leading-hero);
@@ -131,7 +133,7 @@
         }
 
 
-        /* ── INTRO BLOCK ─────────────────────────────────── */
+        /* -- INTRO BLOCK ----------------------------------- */
         .intro {
             padding: var(--space-2xl) var(--pad);
             max-width: 1440px;
@@ -163,7 +165,7 @@
         }
 
 
-        /* ── VIDEO PLAYER (with play button) ─────────────── */
+        /* -- VIDEO PLAYER (with play button) --------------- */
         .video-block {
             position: relative;
             width: 100%;
@@ -232,7 +234,7 @@
         }
 
 
-        /* ── SECTION (Overview…) ─────────────────────────── */
+        /* -- SECTION (Overview…) --------------------------- */
         .case-section {
             padding: var(--space-3xl) var(--pad) var(--space-2xl);
             max-width: 1440px;
@@ -256,7 +258,7 @@
         .case-section p + p { margin-top: var(--space-sm); }
 
 
-        /* ── GALLERY (staggered single items) ────────────── */
+        /* -- GALLERY (staggered single items) -------------- */
         .gallery {
             display: flex;
             flex-direction: column;
@@ -328,7 +330,7 @@
         .w-100{ max-width: 100%; }
 
 
-        /* ── ROW LAYOUTS ─────────────────────────────────── */
+        /* -- ROW LAYOUTS ----------------------------------- */
         .row {
             display: grid;
             gap: clamp(1rem, 2vw, 1.5rem);
@@ -346,7 +348,7 @@
         .row.equal-h { align-items: stretch; }
 
 
-        /* ── MEDIA-TO-MEDIA SPACING ──────────────────────── */
+        /* -- MEDIA-TO-MEDIA SPACING ------------------------ */
         .case-video + .case-video,
         .case-video + .video-block,
         .case-video + .gallery,
@@ -359,7 +361,7 @@
         }
 
 
-        /* ── NEXT PROJECT ────────────────────────────────── */
+        /* -- NEXT PROJECT ---------------------------------- */
         .next-project {
             background: var(--color-dark-surface);
             color: #fff;
@@ -393,7 +395,7 @@
         .next-project a:hover h2 { color: var(--color-accent); }
 
 
-        /* ── CREDITS ─────────────────────────────────────── */
+        /* -- CREDITS --------------------------------------- */
         .case-credits {
             background: var(--color-dark-surface);
             padding: var(--space-3xl) var(--pad);
@@ -451,7 +453,7 @@
         }
 
 
-        /* ── FOOTER ──────────────────────────────────────── */
+        /* -- FOOTER ---------------------------------------- */
         footer.case-footer {
             background: var(--color-dark-surface);
             color: #fff;
@@ -513,7 +515,7 @@
         }
 
 
-        /* ── REVEAL ──────────────────────────────────────── */
+        /* -- REVEAL ---------------------------------------- */
         .reveal {
             opacity: 0;
             transform: translateY(28px);
@@ -522,7 +524,7 @@
         .reveal.visible { opacity: 1; transform: none; }
 
 
-        /* ── RESPONSIVE ──────────────────────────────────── */
+        /* -- RESPONSIVE ------------------------------------ */
         @media (max-width: 768px) {
             nav.site-nav .nav-links { gap: 1.25rem; font-size: 0.7rem; }
             nav.site-nav .nav-links a:nth-child(2),
@@ -537,18 +539,44 @@
             .video-block .play-btn { width: 80px; height: 80px; }
             .video-block .play-btn::after { border-width: 10px 0 10px 16px; }
         }
+    
+        /* -- BRAND FONT MAPPING (2026 identity) -------------------
+           Display (Syne) · big headings; Mono (Space Mono) · caps/labels;
+           Body (Space Grotesk) · inherits from body for everything else. */
+        .case-hero-title,
+        .case-section h2,
+        .next-project h2,
+        .footer-heading,
+        .reel-title {
+            font-family: 'Syne', sans-serif;
+        }
+        nav.site-nav,
+        nav.site-nav a,
+        .case-meta,
+        .reel-meta,
+        .intro-eyebrow,
+        .video-block .video-label,
+        .next-project .label,
+        .credits-category,
+        .cr-role,
+        .reel-credits .cr-key,
+        .footer-col-label,
+        .footer-copy,
+        .external-link {
+            font-family: 'Space Mono', monospace;
+        }
     </style>
 </head>
 <body>
 
 
-<!-- ───────────────────────────────────────────────────── HERO -->
+<!-- ----------------------------------------------------- HERO -->
 <section class="case-hero">
 
-    <img class="bg" src="assets/Simply-spiked/hero.png" alt="Simply Spiked — Seen Too Much" />
+    <img class="bg" src="assets/Simply-spiked/hero.png" alt="Simply Spiked · Seen Too Much" />
 
     <nav class="site-nav">
-        <a href="index.html" class="brand">Cesar Barbosa <span class="slash">/</span> cesoi.de</a>
+        <a href="index.html" class="brand"><img src="assets/logo/cesoi-de-wordmark-white.svg" alt="cesoi.de" /></a>
         <div class="nav-links">
             <a href="index.html#works">Works</a>
             <a href="index.html#about">About</a>
@@ -558,23 +586,23 @@
 
     <div class="case-meta">
         <span class="meta-left">São Paulo / BR</span>
-        <span class="meta-center">Hornet × Simply Spiked — 2022</span>
+        <span class="meta-center">Hornet × Simply Spiked · 2022</span>
         <span class="meta-right" id="local-clock">--:--:-- BRT</span>
     </div>
 
     <div class="case-hero-content">
         <h1 class="case-hero-title">
-            Simply Spiked <span class="dash">—</span> <em>Seen Too Much</em>
+            Simply Spiked <span class="dash">·</span> <em>Seen Too Much</em>
         </h1>
     </div>
 
 </section>
 
 
-<!-- ───────────────────── INTRO -->
+<!-- --------------------- INTRO -->
 <section class="intro reveal">
     <div class="intro-eyebrow">
-        Simply Spiked · Launch Films <span class="star">✦</span>
+        Simply Spiked · Launch Films <span class="star">*</span>
     </div>
     <p class="intro-text">
         Hornet directed Simply Spiked's launch films, a hyper-real CG world built around the brand's bold flavor promise. I was responsible for the simulations.
@@ -582,26 +610,26 @@
 </section>
 
 
-<!-- ───────────────────── PRIMARY VIDEO (click-to-play) -->
+<!-- --------------------- PRIMARY VIDEO (click-to-play) -->
 <div class="video-block" id="video-spiked-main">
     <video
         src="assets/Simply-spiked/SeenTooMuch15_vA1_16x9_220630.mp4"
         preload="auto"
         playsinline></video>
     <button class="play-btn" aria-label="Play video"></button>
-    <span class="video-label">Play — Seen Too Much</span>
+    <span class="video-label">Play · Seen Too Much</span>
 </div>
 
 
-<!-- ───────────────────── SEEN TOO MUCH — GIFs -->
+<!-- --------------------- SEEN TOO MUCH · GIFs -->
 <div class="row threeup reveal">
-    <div class="gallery-item"><img src="assets/Simply-spiked/gifGunGIFS/SeenTooMuch15_vA1_16x9_220630.gif" alt="Seen Too Much — moment 01" /></div>
-    <div class="gallery-item"><img src="assets/Simply-spiked/gifGunGIFS/SeenTooMuch15_vA1_16x9_220631.gif" alt="Seen Too Much — moment 02" /></div>
-    <div class="gallery-item"><img src="assets/Simply-spiked/gifGunGIFS/SeenTooMuch15_vA1_16x9_220632.gif" alt="Seen Too Much — moment 03" /></div>
+    <div class="gallery-item"><img src="assets/Simply-spiked/gifGunGIFS/SeenTooMuch15_vA1_16x9_220630.gif" alt="Seen Too Much · moment 01" /></div>
+    <div class="gallery-item"><img src="assets/Simply-spiked/gifGunGIFS/SeenTooMuch15_vA1_16x9_220631.gif" alt="Seen Too Much · moment 02" /></div>
+    <div class="gallery-item"><img src="assets/Simply-spiked/gifGunGIFS/SeenTooMuch15_vA1_16x9_220632.gif" alt="Seen Too Much · moment 03" /></div>
 </div>
 
 
-<!-- ───────────────────── CHASE THE FEELING — Video (autoplay loop) -->
+<!-- --------------------- CHASE THE FEELING · Video (autoplay loop) -->
 <section class="case-video">
     <video
         src="assets/Simply-spiked/ChaseTheFeeling15_220909_OPT1.mp4"
@@ -609,15 +637,15 @@
 </section>
 
 
-<!-- ───────────────────── CHASE THE FEELING — GIFs -->
+<!-- --------------------- CHASE THE FEELING · GIFs -->
 <div class="row threeup reveal">
-    <div class="gallery-item"><img src="assets/Simply-spiked/gifGunGIFS/ChaseTheFeeling15_220909_OPT1.gif" alt="Chase The Feeling — moment 01" /></div>
-    <div class="gallery-item"><img src="assets/Simply-spiked/gifGunGIFS/ChaseTheFeeling15_220909_OPT1_1.gif" alt="Chase The Feeling — moment 02" /></div>
-    <div class="gallery-item"><img src="assets/Simply-spiked/gifGunGIFS/ChaseTheFeeling15_220909_OPT1_2.gif" alt="Chase The Feeling — moment 03" /></div>
+    <div class="gallery-item"><img src="assets/Simply-spiked/gifGunGIFS/ChaseTheFeeling15_220909_OPT1.gif" alt="Chase The Feeling · moment 01" /></div>
+    <div class="gallery-item"><img src="assets/Simply-spiked/gifGunGIFS/ChaseTheFeeling15_220909_OPT1_1.gif" alt="Chase The Feeling · moment 02" /></div>
+    <div class="gallery-item"><img src="assets/Simply-spiked/gifGunGIFS/ChaseTheFeeling15_220909_OPT1_2.gif" alt="Chase The Feeling · moment 03" /></div>
 </div>
 
 
-<!-- ───────────────────── CREDITS -->
+<!-- --------------------- CREDITS -->
 <section class="case-credits reveal">
     <div class="credits-inner">
 
@@ -649,16 +677,16 @@
 </section>
 
 
-<!-- ───────────────────── NEXT PROJECT -->
+<!-- --------------------- NEXT PROJECT -->
 <section class="next-project reveal">
     <a href="meta-connect.html">
         <p class="label">Next Project</p>
-        <h2>Meta <em>— Meta Connect 2024</em></h2>
+        <h2>Meta <em>· Meta Connect 2024</em></h2>
     </a>
 </section>
 
 
-<!-- ───────────────────── FOOTER -->
+<!-- --------------------- FOOTER -->
 <footer class="case-footer">
     <div class="case-footer-inner">
         <h2 class="footer-heading reveal">
@@ -684,7 +712,7 @@
             </div>
             <div>
                 <span class="footer-col-label">Studio</span>
-                <p class="footer-location">São Paulo, BR<br>UTC −3</p>
+                <p class="footer-location">São Paulo, BR<br>UTC -3</p>
                 <p class="footer-copy" style="margin-top:1.5rem;">© 2026 Cesar Barbosa</p>
             </div>
         </div>
@@ -693,7 +721,7 @@
 
 
 <script>
-    /* Live local clock — São Paulo */
+    /* Live local clock · São Paulo */
     (function () {
         const el = document.getElementById('local-clock');
         if (!el) return;
@@ -705,7 +733,7 @@
         tick(); setInterval(tick, 1000);
     })();
 
-    /* Click-to-play primary video — uses a mid-video frame as the visible poster */
+    /* Click-to-play primary video · uses a mid-video frame as the visible poster */
     (function () {
         const block = document.getElementById('video-spiked-main');
         if (!block) return;
