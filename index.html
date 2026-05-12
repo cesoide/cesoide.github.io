@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Analytics 4 -->
+    <title>Cesar Barbosa — 3D Animator & Lookdev</title>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G6D3N34V1K"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-G6D3N34V1K');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G6D3N34V1K');
     </script>
-    <title>Cesar Barbosa · 3D Animator & Lookdev</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
     <!-- Cesoi Design System -->
     <link rel="stylesheet" href="shared.css">
@@ -24,39 +24,12 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; font-size: 16px; }
         body {
-            /* Brand identity 2026 · Space Grotesk for body */
-            font-family: 'Space Grotesk', system-ui, sans-serif;
+            /* Use Poppins from the Cesoi design system */
+            font-family: var(--font-display, 'Poppins'), system-ui, sans-serif;
             background: var(--color-paper, #ffffff);
             color: var(--color-ink, #0e0e0e);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-        }
-
-        /* ── BRAND FONT MAPPING ───────────────────────────────────
-           Display (Syne)  · big headings, hero, footer
-           Mono (Space Mono) · caps / labels / metadata
-           Body (Space Grotesk) · everything else (inherited from body) */
-        .hero-h1,
-        .about-h2,
-        .sketches-h2,
-        .footer-heading,
-        .work-label .left {
-            font-family: 'Syne', sans-serif;
-        }
-        nav.site-nav,
-        nav.site-nav a,
-        .hero-meta,
-        .hero-eyebrow,
-        .marquee-track span,
-        .about-tag,
-        .image-tag,
-        .info-row .key,
-        .cta-availability,
-        .work-label .right,
-        .sketches-eyebrow,
-        .footer-col-label,
-        .footer-copy {
-            font-family: 'Space Mono', monospace;
         }
         ::-webkit-scrollbar { display: none; }
 
@@ -90,14 +63,6 @@
         nav.site-nav .brand {
             font-weight: 500;
             letter-spacing: 0.02em;
-            display: inline-flex;
-            align-items: center;
-            line-height: 0;
-        }
-        nav.site-nav .brand img {
-            height: 32px;
-            width: auto;
-            display: block;
         }
         nav.site-nav .brand .slash {
             color: rgba(255,255,255,0.5);
@@ -202,7 +167,7 @@
             margin-bottom: 1.75rem;
         }
         .hero-h1 {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Poppins', sans-serif;
             font-size: 63px;
             font-weight: 700;
             line-height: 1.05;
@@ -220,7 +185,7 @@
             text-underline-offset: 0.12em;
         }
         .hero-body {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Poppins', sans-serif;
             font-size: clamp(1.5rem, 1.92vw, 1.95rem);
             color: rgba(255,255,255,0.78);
             line-height: 1.45;
@@ -307,18 +272,23 @@
 
         /* Hover-swap thumbnail (used by Reel) */
         .work-thumb.hover-swap { position: relative; }
-        .work-thumb.hover-swap img {
+        .work-thumb.hover-swap img,
+        .work-thumb.hover-swap video {
             position: absolute;
             inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             transition: opacity .35s ease, transform .8s cubic-bezier(.16,1,.3,1);
         }
         .work-thumb.hover-swap .img-hover { opacity: 0; }
         .work-item:hover .work-thumb.hover-swap .img-default { opacity: 0; }
         .work-item:hover .work-thumb.hover-swap .img-hover { opacity: 1; }
-        /* Disable scale on the default img since the GIF replaces it */
-        .work-item:hover .work-thumb.hover-swap img { transform: none; }
+        /* Disable scale on the default img since the GIF/video replaces it */
+        .work-item:hover .work-thumb.hover-swap img,
+        .work-item:hover .work-thumb.hover-swap video { transform: none; }
 
-        /* Label · large editorial style, two columns */
+        /* Label — large editorial style, two columns */
         .work-label {
             display: flex;
             justify-content: space-between;
@@ -625,55 +595,21 @@
 
         /* ── RESPONSIVE ─────────────────────── */
         @media (max-width: 768px) {
-            /* Garante que nada vaze horizontalmente */
-            html, body { overflow-x: hidden; max-width: 100%; }
-            *, *::before, *::after { box-sizing: border-box; }
-
-            /* Padding lateral direto em todas as seções · 5vw cada lado */
-            nav.site-nav   { padding-left: 5vw; padding-right: 5vw; }
-            .hero-content  { padding-left: 5vw; padding-right: 5vw; }
-            .hero-meta     { padding-left: 5vw; padding-right: 5vw; }
-            .works         { padding-left: 5vw; padding-right: 5vw; }
-            .about         { padding-left: 5vw; padding-right: 5vw; }
-            footer         { padding-left: 5vw; padding-right: 5vw; }
-
             nav.site-nav .nav-links { gap: 1.25rem; font-size: 0.7rem; }
             nav.site-nav .nav-links a:nth-child(2),
             nav.site-nav .nav-links a:nth-child(3) { display: none; }
-
-            /* Hero: escala com o viewport */
-            .hero-h1 { font-size: clamp(1.6rem, 7.5vw, 3.9375rem); margin-bottom: 1.25rem; }
-            .hero-body { font-size: clamp(0.85rem, 3.8vw, 1.5rem); line-height: 1.5; }
-
-            /* Works: coluna única, itens 100% da largura disponível */
-            .works-grid { grid-template-columns: 1fr; gap: 0; }
-            .col-right  { margin-top: 0; }
-            .work-item  { width: 100%; max-width: 100%; }
-            .work-thumb { width: 100%; }
-            /* Permite que o título do projeto quebre linha em vez de vazar */
-            .work-label .left { white-space: normal; }
-
-            /* About */
-            .about-grid  { grid-template-columns: 1fr; gap: 2.5rem; }
-            .about-image { aspect-ratio: 4/5; max-width: 100%; width: 100%; }
-            .info-row    { grid-template-columns: 80px 1fr; }
-
-            /* Sketches, footer, marquee */
+            .works-grid { grid-template-columns: 1fr; }
+            .col-right { margin-top: 0; }
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .about-image { aspect-ratio: 4/5; max-width: 320px; }
+            .info-row { grid-template-columns: 80px 1fr; }
             .sketches-grid { grid-template-columns: repeat(3, 1fr); }
-            .footer-grid   { grid-template-columns: 1fr 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
             .marquee-track { gap: 2rem; }
             .marquee-track span { gap: 2rem; }
-        }
-
-        /* Telas pequenas (telefones <= 480px) */
-        @media (max-width: 480px) {
-            .hero-meta     { display: none; }
-            .hero-h1       { font-size: clamp(1.4rem, 7vw, 1.75rem); }
-            .hero-body     { font-size: 0.85rem; }
-            .about-h2      { font-size: clamp(1.4rem, 7vw, 2.25rem); }
-            .footer-heading{ font-size: clamp(2rem, 9vw, 3.5rem); }
-            .footer-grid   { grid-template-columns: 1fr; gap: 2rem; }
-            .sketches-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -686,7 +622,7 @@
     <img class="hero-bg" src="hero-bg.png" alt="" aria-hidden="true" />
 
     <nav class="site-nav">
-        <a href="#" class="brand"><img src="assets/logo/cesoi-de-wordmark-white.svg" alt="cesoi.de" /></a>
+        <a href="#" class="brand">Cesar Barbosa <span class="slash">/</span> cesoi.de</a>
         <div class="nav-links">
             <a href="#works">Works</a>
             <a href="#about">About</a>
@@ -696,7 +632,7 @@
 
     <div class="hero-meta">
         <span class="meta-left">São Paulo / BR</span>
-        <span class="meta-center">Available · Q2 2026</span>
+        <span class="meta-center">Available — Q2 2026</span>
         <span class="meta-right" id="local-clock">--:--:-- BRT</span>
     </div>
 
@@ -730,7 +666,7 @@
         <span>Simply Spiked <span class="dot"></span></span>
         <span>Samsung <span class="dot"></span></span>
         <span>Cisco <span class="dot"></span></span>
-        <span>Estee Lauder <span class="dot"></span></span>
+        <span>Estée Lauder <span class="dot"></span></span>
         <span>Betterment <span class="dot"></span></span>
         <span>Voxel <span class="dot"></span></span>
         <span>Google <span class="dot"></span></span>
@@ -745,7 +681,7 @@
         <span>Simply Spiked <span class="dot"></span></span>
         <span>Samsung <span class="dot"></span></span>
         <span>Cisco <span class="dot"></span></span>
-        <span>Estee Lauder <span class="dot"></span></span>
+        <span>Estée Lauder <span class="dot"></span></span>
         <span>Betterment <span class="dot"></span></span>
         <span>Voxel <span class="dot"></span></span>
         <span>Google <span class="dot"></span></span>
@@ -766,18 +702,19 @@
                     <img class="img-hover"   src="assets/Reel/intro.gif"      alt="Showreel preview" />
                 </div>
                 <div class="work-label">
-                    <span class="left">Reel <span class="dash">·</span> <span class="desc">Selected Works</span></span>
+                    <span class="left">Reel <span class="dash">—</span> <span class="desc">Showreel 2019–2026</span></span>
                     <span class="right"></span>
                 </div>
             </a>
 
             <a href="estee-lauder.html" class="work-item reveal reveal-d1">
                 <div class="work-thumb hover-swap" style="background:#f0d8c0;">
-                    <img class="img-default" src="assets/Estee/thumb.jpg" alt="Estee Lauder" />
-                    <img class="img-hover"   src="assets/Estee/hover.gif" alt="Estee Lauder preview" />
+                    <img class="img-default" src="assets/Estee/thumb.jpg" alt="Estée Lauder" />
+                    <video class="img-hover" src="assets/Estee/Estee250318_DirCut_251222_OTIMIZADO.mp4"
+                           muted loop playsinline preload="metadata"></video>
                 </div>
                 <div class="work-label">
-                    <span class="left">Estee Lauder <span class="dash">·</span> <span class="desc">Hydroplump</span></span>
+                    <span class="left">Estée Lauder <span class="dash">—</span> <span class="desc">Hydroplump</span></span>
                     <span class="right">Animation · Simulation</span>
                 </div>
             </a>
@@ -788,7 +725,7 @@
                     <img class="img-hover"   src="assets/ebay/hover.gif" alt="eBay preview" />
                 </div>
                 <div class="work-label">
-                    <span class="left">eBay <span class="dash">·</span> <span class="desc">A-Z of Authenticity</span></span>
+                    <span class="left">eBay <span class="dash">—</span> <span class="desc">A-Z of Authenticity</span></span>
                     <span class="right">Animation</span>
                 </div>
             </a>
@@ -799,7 +736,7 @@
                     <img class="img-hover"   src="assets/Meta%20Connect%202024/hover.gif" alt="Meta Connect preview" />
                 </div>
                 <div class="work-label">
-                    <span class="left">Meta <span class="dash">·</span> <span class="desc">Meta Connect · BUCK</span></span>
+                    <span class="left">Meta <span class="dash">—</span> <span class="desc">Meta Connect · BUCK</span></span>
                     <span class="right">Design</span>
                 </div>
             </a>
@@ -810,7 +747,7 @@
                     <img class="img-hover"   src="assets/Samsung_wallpapers/hover.gif" alt="Samsung preview" />
                 </div>
                 <div class="work-label">
-                    <span class="left">Samsung <span class="dash">·</span> <span class="desc">Cheil Screensavers</span></span>
+                    <span class="left">Samsung <span class="dash">—</span> <span class="desc">Cheil Screensavers</span></span>
                     <span class="right">Design · Animation</span>
                 </div>
             </a>
@@ -821,7 +758,7 @@
                     <img class="img-hover"   src="assets/Voxel/hover.gif" alt="Voxel preview" />
                 </div>
                 <div class="work-label">
-                    <span class="left">Voxel <span class="dash">·</span> <span class="desc">Voxel Journey</span></span>
+                    <span class="left">Voxel <span class="dash">—</span> <span class="desc">Voxel Journey</span></span>
                     <span class="right">Animation</span>
                 </div>
             </a>
@@ -837,7 +774,7 @@
                     <img class="img-hover"   src="assets/Microsoft/hover.gif" alt="Microsoft preview" />
                 </div>
                 <div class="work-label">
-                    <span class="left">Microsoft <span class="dash">·</span> <span class="desc">Copilot + PCs</span></span>
+                    <span class="left">Microsoft <span class="dash">—</span> <span class="desc">Copilot + PCs</span></span>
                     <span class="right">Design · Animation</span>
                 </div>
             </a>
@@ -848,7 +785,7 @@
                     <img class="img-hover"   src="assets/7up/hover.gif" alt="7UP preview" />
                 </div>
                 <div class="work-label">
-                    <span class="left">7up <span class="dash">·</span> <span class="desc">New 7up, Same 7up</span></span>
+                    <span class="left">7up <span class="dash">—</span> <span class="desc">New 7up, Same 7up</span></span>
                     <span class="right">Design · Lookdev</span>
                 </div>
             </a>
@@ -859,8 +796,8 @@
                     <img class="img-hover"   src="assets/Verizon/hover.gif" alt="Verizon preview" />
                 </div>
                 <div class="work-label">
-                    <span class="left">Verizon <span class="dash">·</span> <span class="desc">Investor Day 2022</span></span>
-                    <span class="right">Simulation</span>
+                    <span class="left">Verizon <span class="dash">—</span> <span class="desc">Investor Day 2022</span></span>
+                    <span class="right">Design · Animation</span>
                 </div>
             </a>
 
@@ -870,7 +807,7 @@
                     <img class="img-hover"   src="assets/Simply-spiked/hover.gif" alt="Simply Spiked preview" />
                 </div>
                 <div class="work-label">
-                    <span class="left">Simply Spiked <span class="dash">·</span> <span class="desc">Seen Too Much</span></span>
+                    <span class="left">Simply Spiked <span class="dash">—</span> <span class="desc">Seen Too Much</span></span>
                     <span class="right">Simulation · VFX</span>
                 </div>
             </a>
@@ -881,7 +818,7 @@
                     <img class="img-hover"   src="assets/Betterment_03/hover.gif" alt="Betterment preview" />
                 </div>
                 <div class="work-label">
-                    <span class="left">Betterment <span class="dash">·</span> <span class="desc">Cash Reserve</span></span>
+                    <span class="left">Betterment <span class="dash">—</span> <span class="desc">Cash Reserve</span></span>
                     <span class="right">Animation</span>
                 </div>
             </a>
@@ -892,8 +829,8 @@
                     <img class="img-hover"   src="assets/Singleton/hover.gif" alt="Singleton preview" />
                 </div>
                 <div class="work-label">
-                    <span class="left">Singleton <span class="dash">·</span> <span class="desc">Discover True Richness</span></span>
-                    <span class="right">Animation</span>
+                    <span class="left">Singleton <span class="dash">—</span> <span class="desc">Discover True Richness</span></span>
+                    <span class="right">Simulation · FX</span>
                 </div>
             </a>
 
@@ -903,7 +840,7 @@
                     <img class="img-hover"   src="assets/Loop-headphones/hover.gif" alt="Loop preview" />
                 </div>
                 <div class="work-label">
-                    <span class="left">Loop <span class="dash">·</span> <span class="desc">Shut Up The Noise</span></span>
+                    <span class="left">Loop <span class="dash">—</span> <span class="desc">Shut Up The Noise</span></span>
                     <span class="right">Animation · Lookdev</span>
                 </div>
             </a>
@@ -923,7 +860,7 @@
 
         <!-- Portrait -->
         <div class="about-image reveal">
-            <img src="cesar-portrait.jpg" alt="Cesar Barbosa" />
+            <img src="assets/avatar2026.png" alt="Cesar Barbosa" />
             <span class="image-tag">+ CESAR · SP · 2026</span>
         </div>
 
@@ -934,7 +871,7 @@
             </h2>
             <div class="about-body reveal reveal-d2">
                 <p>
-                    I'm Cesar Barbosa, a 3D animator, designer and lookdev specialist based in São Paulo. I work primarily in Cinema 4D and Houdini, rendering with Redshift and Octane. I love the kind of projects that require both design sensibility and technical craft.
+                    I'm Cesar Barbosa, a 3D animator, designer and lookdev specialist based in São Paulo. My focus is high-end animation and lookdev — I work primarily in Cinema 4D and Houdini, rendering with Redshift and Octane. I love the kind of projects that require both design sensibility and technical craft.
                 </p>
                 <p>
                     Available for remote projects. Get in touch <a href="mailto:cesar@cesoi.de">cesar@cesoi.de</a>. When I'm not working, I do some experiments and post them on <a href="https://www.instagram.com/cesoi.de/" target="_blank" rel="noopener noreferrer">Instagram</a>.
@@ -1010,7 +947,7 @@
 
 
 <script>
-    /* Live local clock · São Paulo (BRT, UTC−3) */
+    /* Live local clock — São Paulo (BRT, UTC−3) */
     (function () {
         const el = document.getElementById('local-clock');
         if (!el) return;
@@ -1026,6 +963,19 @@
         setInterval(tick, 1000);
     })();
 
+    /* Hover-swap video: play on hover, pause + reset on leave */
+    document.querySelectorAll('.work-item').forEach(item => {
+        const vid = item.querySelector('video.img-hover');
+        if (!vid) return;
+        item.addEventListener('mouseenter', () => {
+            vid.currentTime = 0;
+            vid.play().catch(() => {});
+        });
+        item.addEventListener('mouseleave', () => {
+            vid.pause();
+        });
+    });
+
     /* Reveal on scroll */
     const io = new IntersectionObserver((entries) => {
         entries.forEach(e => {
@@ -1035,7 +985,7 @@
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 
-    /* Parallax · hero background */
+    /* Parallax — hero background */
     (function () {
         const bg   = document.querySelector('.hero-bg');
         const hero = document.querySelector('.hero');
