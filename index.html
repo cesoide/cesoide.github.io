@@ -14,7 +14,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:ital,wght@0,400;0,500;0,700;0,800;1,400;1,500;1,700&family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Cesoi Design System -->
     <link rel="stylesheet" href="shared.css">
@@ -24,8 +24,8 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; font-size: 16px; }
         body {
-            /* Use Poppins from the Cesoi design system */
-            font-family: var(--font-display, 'Poppins'), system-ui, sans-serif;
+            /* Use Space Grotesk for body / Syne reserved for headings */
+            font-family: var(--font-body, 'Space Grotesk'), system-ui, sans-serif;
             background: var(--color-paper, #ffffff);
             color: var(--color-ink, #0e0e0e);
             overflow-x: hidden;
@@ -167,7 +167,7 @@
             margin-bottom: 1.75rem;
         }
         .hero-h1 {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Syne', sans-serif;
             font-size: 63px;
             font-weight: 700;
             line-height: 1.05;
@@ -185,7 +185,7 @@
             text-underline-offset: 0.12em;
         }
         .hero-body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-size: clamp(1.5rem, 1.92vw, 1.95rem);
             color: rgba(255,255,255,0.78);
             line-height: 1.45;
@@ -622,7 +622,7 @@
     <img class="hero-bg" src="hero-bg.png" alt="" aria-hidden="true" />
 
     <nav class="site-nav">
-        <a href="#" class="brand">Cesar Barbosa <span class="slash">/</span> cesoi.de</a>
+        <a href="#" class="brand"><img src="assets/logo/cesoi-de-wordmark-white.svg" alt="cesoi.de" style="height:1.1rem;width:auto;display:block;" /></a>
         <div class="nav-links">
             <a href="#works">Works</a>
             <a href="#about">About</a>
@@ -640,8 +640,8 @@
         <div class="hero-inner">
             <h1 class="hero-h1">
                 I'm <em>Cesar Barbosa</em>,<br>
-                a <i>3D animator</i>, designer and lookdev artist<br>
-                based in São Paulo
+                a <i>3D designer</i> and animator based in São Paulo<br>
+                working with studios and brands worldwide.
             </h1>
             <p class="hero-body">
                 I work primarily in Cinema 4D and Houdini, rendering with Redshift and Octane.<br>
