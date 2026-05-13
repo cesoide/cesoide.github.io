@@ -176,11 +176,11 @@
         }
         .hero-h1 {
             font-family: 'Syne', sans-serif;
-            font-size: 63px;
+            font-size: clamp(1.85rem, 5.5vw, 63px);
             font-weight: 700;
-            line-height: 1.05;
+            line-height: 1.1;
             letter-spacing: -0.025em;
-            margin-bottom: 2rem;
+            margin-bottom: clamp(1.25rem, 3vw, 2rem);
             color: #fff;
         }
         .hero-h1 em { font-style: italic; color: var(--orange); font-weight: 700; }
@@ -194,9 +194,9 @@
         }
         .hero-body {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(1.5rem, 1.92vw, 1.95rem);
+            font-size: clamp(1rem, 2.4vw, 1.95rem);
             color: rgba(255,255,255,0.78);
-            line-height: 1.45;
+            line-height: 1.5;
             font-weight: 400;
             max-width: none;
             letter-spacing: -0.005em;
@@ -603,11 +603,31 @@
 
         /* ── RESPONSIVE ─────────────────────── */
         @media (max-width: 768px) {
+            nav.site-nav { padding: 1rem var(--pad); }
+            nav.site-nav .brand img { height: 26px; }
             nav.site-nav .nav-links { gap: 1.25rem; font-size: 0.7rem; }
             nav.site-nav .nav-links a:nth-child(2),
             nav.site-nav .nav-links a:nth-child(3) { display: none; }
+
+            /* Hero */
+            .hero { min-height: auto; padding-top: 2rem; }
+            .hero-content { min-height: 88svh; padding: 0 var(--pad) clamp(2.5rem, 6vw, 4rem); }
+            .hero-meta {
+                top: 4.5rem;
+                grid-template-columns: 1fr;
+                gap: 0.35rem;
+                font-size: 0.62rem;
+                letter-spacing: 0.14em;
+            }
+            .hero-meta .meta-center,
+            .hero-meta .meta-right { text-align: left; }
+            .hero-eyebrow { font-size: 0.6rem; margin-bottom: 1.25rem; }
+
+            /* Works */
             .works-grid { grid-template-columns: 1fr; }
             .col-right { margin-top: 0; }
+
+            /* About */
             .about-grid {
                 grid-template-columns: 1fr;
                 gap: 2.5rem;
@@ -618,6 +638,10 @@
             .footer-grid { grid-template-columns: 1fr 1fr; }
             .marquee-track { gap: 2rem; }
             .marquee-track span { gap: 2rem; }
+        }
+        @media (max-width: 420px) {
+            nav.site-nav .brand img { height: 22px; }
+            .hero-eyebrow { font-size: 0.55rem; }
         }
     
         /* ── BRAND FONT MAPPING (2026 identity) ──────────────────
