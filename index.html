@@ -63,6 +63,14 @@
         nav.site-nav .brand {
             font-weight: 500;
             letter-spacing: 0.02em;
+            display: inline-flex;
+            align-items: center;
+            line-height: 0;
+        }
+        nav.site-nav .brand img {
+            height: 32px;
+            width: auto;
+            display: block;
         }
         nav.site-nav .brand .slash {
             color: rgba(255,255,255,0.5);
@@ -610,6 +618,32 @@
             .footer-grid { grid-template-columns: 1fr 1fr; }
             .marquee-track { gap: 2rem; }
             .marquee-track span { gap: 2rem; }
+        }
+    
+        /* ── BRAND FONT MAPPING (2026 identity) ──────────────────
+           Display (Syne) · big headings; Mono (Space Mono) · caps/labels;
+           Body (Space Grotesk) · inherits from body for everything else. */
+        .hero-h1,
+        .about-h2,
+        .sketches-h2,
+        .footer-heading,
+        .work-label .left {
+            font-family: 'Syne', sans-serif;
+        }
+        nav.site-nav,
+        nav.site-nav a,
+        .hero-meta,
+        .hero-eyebrow,
+        .marquee-track span,
+        .about-tag,
+        .image-tag,
+        .info-row .key,
+        .cta-availability,
+        .work-label .right,
+        .sketches-eyebrow,
+        .footer-col-label,
+        .footer-copy {
+            font-family: 'Space Mono', monospace;
         }
     </style>
 </head>
