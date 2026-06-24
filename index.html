@@ -104,7 +104,7 @@
         .hero {
             position: relative;
             width: 100%;
-            min-height: 84svh;
+            min-height: 76svh;
             background: #0a0a0a;
             color: #fff;
             overflow: hidden;
@@ -116,7 +116,7 @@
             /* Extra height so parallax translation never reveals empty space */
             height: 130%;
             object-fit: cover;
-            object-position: center top;
+            object-position: center bottom;
             will-change: transform;
             transform: translate3d(0, 0, 0);
             z-index: 0;
@@ -135,10 +135,10 @@
         .hero-content {
             position: relative;
             z-index: 2;
-            min-height: 84svh;
+            min-height: 76svh;
             display: flex;
-            align-items: flex-end;
-            padding: 0 var(--pad) clamp(3rem, 7vw, 5rem);
+            align-items: center;
+            padding: clamp(4rem, 9vw, 6rem) var(--pad);
         }
 
         /* Meta info bar between nav and hero text */
@@ -611,7 +611,7 @@
 
             /* Hero */
             .hero { min-height: auto; padding-top: 2rem; }
-            .hero-content { min-height: 88svh; padding: 0 var(--pad) clamp(2.5rem, 6vw, 4rem); }
+            .hero-content { min-height: 79svh; align-items: center; padding: clamp(5rem, 16vw, 7rem) var(--pad) clamp(2rem, 6vw, 3rem); }
             .hero-meta {
                 top: 4.5rem;
                 grid-template-columns: 1fr;
