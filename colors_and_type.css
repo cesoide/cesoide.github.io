@@ -16,8 +16,9 @@
   --color-ink-dark:     #0a0a0a;      /* used in dark sections */
   --color-dark-surface: #0a0a0a;      /* hero, footer, credits bg */
 
-  /* Accent — electric blue (2026); palette options below */
-  --color-accent:       var(--accent-electric);
+  /* Accent — monochrome (2026): ink on light surfaces, flipped to white
+     inside dark sections (override below). Emphasis comes from weight. */
+  --color-accent:       var(--color-ink);
 
   /* Accent palette options */
   --accent-orange:      oklch(0.72 0.19 45);
@@ -161,3 +162,20 @@
 .accent-italic     { color: var(--color-accent); font-style: italic; }
 .ink               { color: var(--color-ink); }
 .muted             { opacity: 0.55; }
+
+/* ── Monochrome accent scoping ──────────────────────────────
+   Accent = white inside dark surfaces, ink everywhere else.
+   Custom properties resolve at use site, so aliases inherit this. */
+.hero, .about, footer,
+.case-hero, .case-credits, .next-project,
+.reel-stage {
+  --color-accent: #ffffff;
+  /* Page-local aliases resolve at their definition site (:root), so they
+     inherit the already-resolved ink value; re-declare them here so the
+     dark-surface flip reaches every usage. */
+  --orange: #ffffff;
+  --accent: #ffffff;
+}
+
+/* Weight carries the emphasis color used to provide */
+.cr-name .cr-highlight { font-weight: 600; }
