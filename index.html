@@ -3,7 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cesar Barbosa — 3D Animator & Lookdev</title>
+    <title>Cesar Barbosa — 3D Designer & Animator · São Paulo</title>
+
+    <!-- SEO / share -->
+    <meta name="description" content="3D design, animation and lookdev for Microsoft, Meta, Samsung and eBay — with studios like Buck, Oddfellows and FutureDeluxe. Available for freelance worldwide.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cesoi.de/">
+    <meta property="og:title" content="Cesar Barbosa — 3D Designer & Animator">
+    <meta property="og:description" content="3D design, animation and lookdev for Microsoft, Meta, Samsung and eBay — with studios like Buck, Oddfellows and FutureDeluxe.">
+    <meta property="og:image" content="https://cesoi.de/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://cesoi.de/">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0a'/%3E%3Ccircle cx='32' cy='32' r='13' fill='%23ee6c2b'/%3E%3C/svg%3E">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Cesar Barbosa",
+      "jobTitle": "3D Designer & Animator",
+      "url": "https://cesoi.de/",
+      "email": "mailto:cesar@cesoi.de",
+      "address": { "@type": "PostalAddress", "addressLocality": "São Paulo", "addressCountry": "BR" },
+      "sameAs": [
+        "https://www.instagram.com/cesoi.de/",
+        "https://www.behance.net/cesoide",
+        "https://www.linkedin.com/in/cesoide/"
+      ]
+    }
+    </script>
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G6D3N34V1K"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -15,6 +44,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:ital,wght@0,400;0,500;0,700;0,800;1,400;1,500;1,700&family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="preload" as="image" href="assets/Header-billy.jpg">
 
     <!-- Cesoi Design System -->
     <link rel="stylesheet" href="shared.css">
@@ -72,10 +103,6 @@
             height: auto;
             display: block;
         }
-        nav.site-nav .brand .slash {
-            color: rgba(255,255,255,0.5);
-            margin: 0 .35em;
-        }
         nav.site-nav .nav-links {
             display: flex;
             gap: 2.25rem;
@@ -104,7 +131,7 @@
         .hero {
             position: relative;
             width: 100%;
-            min-height: 76svh;
+            min-height: 82svh;
             background: #0a0a0a;
             color: #fff;
             overflow: hidden;
@@ -126,7 +153,7 @@
             content: "";
             position: absolute; inset: 0;
             background:
-                linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.10) 35%, rgba(10,10,10,0.20) 70%, rgba(10,10,10,0.65) 100%),
+                linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.10) 35%, rgba(10,10,10,0.30) 70%, rgba(10,10,10,0.78) 100%),
                 linear-gradient(90deg, rgba(10,10,10,0.50) 0%, rgba(10,10,10,0.15) 45%, rgba(10,10,10,0) 100%);
             z-index: 1;
             pointer-events: none;
@@ -135,10 +162,10 @@
         .hero-content {
             position: relative;
             z-index: 2;
-            min-height: 76svh;
+            min-height: 82svh;
             display: flex;
-            align-items: center;
-            padding: clamp(4rem, 9vw, 6rem) var(--pad);
+            align-items: flex-end;
+            padding: clamp(6rem, 12vw, 8rem) var(--pad) clamp(3rem, 6vw, 4.5rem);
         }
 
         /* Meta info bar between nav and hero text */
@@ -158,96 +185,132 @@
             font-weight: 400;
             font-variant-numeric: tabular-nums;
         }
-        .hero-meta .meta-center {
-            text-align: center;
+        .hero-meta .meta-center { text-align: center; }
+        .hero-meta .meta-right  { text-align: right; }
+
+        /* Availability — the single most commercial fact on the page gets a pulse */
+        .meta-availability {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            color: rgba(255,255,255,0.85);
         }
-        .hero-meta .meta-right {
-            text-align: right;
+        .meta-availability::before {
+            content: "";
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: var(--orange);
+            animation: pulse 2.2s ease-in-out infinite;
         }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(238,108,43,0.55); }
+            55%      { box-shadow: 0 0 0 7px rgba(238,108,43,0); }
+        }
+
         .hero-inner { max-width: 100%; }
 
-        .hero-eyebrow {
-            display: inline-block;
-            font-size: 0.6875rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.6);
-            margin-bottom: 1.75rem;
-        }
         .hero-h1 {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(1.85rem, 5.5vw, 63px);
+            font-size: clamp(2rem, 5.8vw, 68px);
             font-weight: 700;
-            line-height: 1.1;
+            line-height: 1.06;
             letter-spacing: -0.025em;
-            margin-bottom: clamp(1.25rem, 3vw, 2rem);
+            margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
             color: #fff;
+            max-width: 20ch;
         }
         .hero-h1 em { font-style: italic; color: var(--orange); font-weight: 700; }
         .hero-h1 i  {
             font-style: italic;
             font-weight: 500;
-            text-decoration: underline;
-            text-decoration-color: var(--orange);
-            text-decoration-thickness: 2px;
-            text-underline-offset: 0.12em;
         }
         .hero-body {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(1rem, 2.4vw, 1.95rem);
-            color: rgba(255,255,255,0.78);
-            line-height: 1.5;
+            font-size: clamp(1rem, 1.6vw, 1.3rem);
+            color: rgba(255,255,255,0.75);
+            line-height: 1.55;
             font-weight: 400;
-            max-width: none;
+            max-width: 58ch;
             letter-spacing: -0.005em;
         }
+        .hero-body strong { color: rgba(255,255,255,0.95); font-weight: 500; }
 
-
-        /* ── MARQUEE ────────────────────────── */
-        .marquee {
-            background: var(--color-paper);
-            color: var(--color-ink);
-            border-top: var(--border-subtle);
-            border-bottom: var(--border-subtle);
-            overflow: hidden;
-            white-space: nowrap;
-            position: relative;
+        .hero-cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: clamp(1.75rem, 3.5vw, 2.5rem);
         }
-        .marquee-track {
+        .btn {
             display: inline-flex;
             align-items: center;
-            gap: 3.5rem;
-            padding: 1.4rem 0;
-            animation: marquee 190s linear infinite;
-            will-change: transform;
-        }
-        .marquee:hover .marquee-track { animation-play-state: paused; }
-        .marquee-track span {
-            font-size: 0.875rem;
-            letter-spacing: 0.04em;
+            gap: 0.7rem;
+            padding: 0.95rem 1.6rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.16em;
             text-transform: uppercase;
-            font-weight: 500;
-            color: rgba(10,10,10,0.85);
-            white-space: nowrap;
-            display: inline-flex;
-            align-items: center;
-            gap: 3.5rem;
+            font-weight: 700;
+            transition: background .2s, color .2s, border-color .2s;
         }
-        .marquee-track .dot {
-            display: inline-block;
-            width: 5px; height: 5px;
-            border-radius: 50%;
+        .btn-primary {
             background: var(--orange);
+            color: #0a0a0a;
         }
-        @keyframes marquee {
-            0%   { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+        .btn-primary:hover { background: #fff; }
+        .btn-ghost {
+            border: 1px solid rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.9);
+            font-weight: 400;
         }
+        .btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
+
+
+        /* ── CLIENT STRIP ───────────────────── */
+        .clients {
+            background: var(--dark);
+            color: #fff;
+            padding: clamp(1.75rem, 3.5vw, 2.75rem) var(--pad);
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+        .clients-row {
+            display: grid;
+            grid-template-columns: 110px 1fr;
+            gap: 1.5rem;
+            align-items: baseline;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            line-height: 2.1;
+        }
+        .clients-row + .clients-row { margin-top: 0.6rem; }
+        .clients-row .k { color: rgba(255,255,255,0.35); }
+        .clients-row .v { color: rgba(255,255,255,0.72); }
+        .clients-row .v i { color: rgba(255,255,255,0.28); font-style: normal; margin: 0 0.45em; }
 
 
         /* ── WORKS ──────────────────────────── */
         .works {
             padding: 4rem var(--pad) 5rem;
+        }
+        .works-tag {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: clamp(2rem, 4vw, 3rem);
+        }
+        .works-tag::before {
+            content: "";
+            display: inline-block;
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--orange);
         }
         .works-grid {
             display: grid;
@@ -263,7 +326,7 @@
 
 
         /* ── WORK ITEM ──────────────────────── */
-        .work-item { cursor: default; }
+        .work-item { cursor: pointer; }
         .work-thumb {
             overflow: hidden;
             background: #ddd;
@@ -278,7 +341,7 @@
         }
         .work-item:hover .work-thumb img { transform: scale(1.04); }
 
-        /* Hover-swap thumbnail (used by Reel) */
+        /* Hover-swap thumbnail — lazy video revealed on hover */
         .work-thumb.hover-swap { position: relative; }
         .work-thumb.hover-swap img,
         .work-thumb.hover-swap video {
@@ -292,7 +355,7 @@
         .work-thumb.hover-swap .img-hover { opacity: 0; }
         .work-item:hover .work-thumb.hover-swap .img-default { opacity: 0; }
         .work-item:hover .work-thumb.hover-swap .img-hover { opacity: 1; }
-        /* Disable scale on the default img since the GIF/video replaces it */
+        /* Disable scale on the default img since the video replaces it */
         .work-item:hover .work-thumb.hover-swap img,
         .work-item:hover .work-thumb.hover-swap video { transform: none; }
 
@@ -309,12 +372,9 @@
             font-size: clamp(1.15rem, 1.8vw, 1.75rem);
             font-weight: 600;
             letter-spacing: -0.015em;
-            line-height: 1.15;
+            line-height: 1.2;
             color: var(--dark);
             transition: color .2s;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
         }
         .work-label .left .dash {
             color: var(--gray);
@@ -328,6 +388,7 @@
         }
         .work-label .right {
             flex-shrink: 0;
+            max-width: 38%;
             text-align: right;
             font-size: 0.7rem;
             letter-spacing: 0.18em;
@@ -336,10 +397,6 @@
             font-weight: 400;
             line-height: 1.9;
             padding-top: 0.4rem;
-        }
-        .work-label .right .year {
-            display: block;
-            letter-spacing: 0.22em;
         }
         .work-item:hover .work-label .left { color: var(--orange); }
 
@@ -477,54 +534,6 @@
         .cta-availability:hover { background: var(--orange); color: #fff; }
 
 
-        /* ── SKETCHES ───────────────────────── */
-        .sketches { padding: 4rem var(--pad); background: var(--light); }
-        .sketches-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 2.5rem;
-        }
-        .sketches-eyebrow {
-            font-size: 0.6875rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--gray);
-            margin-bottom: 0.75rem;
-        }
-        .sketches-h2 {
-            font-size: clamp(1.8rem, 3.5vw, 3.25rem);
-            font-weight: 800;
-            line-height: 1.08;
-            letter-spacing: -0.02em;
-        }
-        .sketches-h2 em { color: var(--orange); font-style: italic; font-weight: 300; }
-        .sketches-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 0.5rem;
-        }
-        .sketch-thumb {
-            aspect-ratio: 1;
-            overflow: hidden;
-            background: #1a1a1a;
-            cursor: pointer;
-        }
-        .sketch-thumb img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%);
-            opacity: 0.7;
-            transition: filter .6s, opacity .6s, transform .6s cubic-bezier(.16,1,.3,1);
-            display: block;
-        }
-        .sketch-thumb:hover img {
-            filter: grayscale(0%);
-            opacity: 1;
-            transform: scale(1.05);
-        }
-
-
         /* ── FOOTER ─────────────────────────── */
         footer {
             background: var(--dark);
@@ -537,9 +546,21 @@
             font-weight: 800;
             line-height: 0.95;
             letter-spacing: -0.03em;
-            margin-bottom: clamp(3rem, 6vw, 6rem);
+            margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
         }
         .footer-heading em { color: var(--orange); font-style: italic; font-weight: 300; }
+        .footer-cta-email {
+            display: inline-block;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.2rem, 2.6vw, 2rem);
+            font-weight: 500;
+            color: #fff;
+            border-bottom: 2px solid var(--orange);
+            padding-bottom: 0.3rem;
+            margin-bottom: clamp(3rem, 6vw, 6rem);
+            transition: color .2s;
+        }
+        .footer-cta-email:hover { color: var(--orange); }
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -602,6 +623,10 @@
 
 
         /* ── RESPONSIVE ─────────────────────── */
+        @media (max-width: 1000px) {
+            .work-label { gap: 1rem; }
+            .work-label .right { display: none; }
+        }
         @media (max-width: 768px) {
             nav.site-nav { padding: 1rem var(--pad); }
             nav.site-nav .brand img { width: 128px; }
@@ -610,8 +635,8 @@
             nav.site-nav .nav-links a:nth-child(3) { display: none; }
 
             /* Hero */
-            .hero { min-height: auto; padding-top: 2rem; }
-            .hero-content { min-height: 79svh; align-items: center; padding: clamp(5rem, 16vw, 7rem) var(--pad) clamp(2rem, 6vw, 3rem); }
+            .hero { min-height: auto; }
+            .hero-content { min-height: 84svh; align-items: flex-end; padding: clamp(7rem, 24vw, 9rem) var(--pad) 2.5rem; }
             .hero-meta {
                 top: 4.5rem;
                 grid-template-columns: 1fr;
@@ -621,11 +646,15 @@
             }
             .hero-meta .meta-center,
             .hero-meta .meta-right { text-align: left; }
-            .hero-eyebrow { font-size: 0.6rem; margin-bottom: 1.25rem; }
+            .hero-cta-row .btn { padding: 0.85rem 1.25rem; font-size: 0.68rem; }
+
+            /* Clients */
+            .clients-row { grid-template-columns: 1fr; gap: 0.25rem; }
 
             /* Works */
             .works-grid { grid-template-columns: 1fr; }
-            .col-right { margin-top: 0; }
+            .col-right { margin-top: clamp(2rem, 5vw, 4.5rem); }
+            .work-label .right { display: block; }
 
             /* About */
             .about-grid {
@@ -634,22 +663,18 @@
             }
             .about-image { aspect-ratio: 4/5; max-width: 320px; }
             .info-row { grid-template-columns: 80px 1fr; }
-            .sketches-grid { grid-template-columns: repeat(3, 1fr); }
             .footer-grid { grid-template-columns: 1fr 1fr; }
-            .marquee-track { gap: 2rem; }
-            .marquee-track span { gap: 2rem; }
         }
         @media (max-width: 420px) {
             nav.site-nav .brand img { width: 109px; }
-            .hero-eyebrow { font-size: 0.55rem; }
+            .work-label .right { display: none; }
         }
-    
+
         /* ── BRAND FONT MAPPING (2026 identity) ──────────────────
            Display (Syne) · big headings; Mono (Space Mono) · caps/labels;
            Body (Space Grotesk) · inherits from body for everything else. */
         .hero-h1,
         .about-h2,
-        .sketches-h2,
         .footer-heading,
         .work-label .left {
             font-family: 'Syne', sans-serif;
@@ -657,14 +682,11 @@
         nav.site-nav,
         nav.site-nav a,
         .hero-meta,
-        .hero-eyebrow,
-        .marquee-track span,
         .about-tag,
         .image-tag,
         .info-row .key,
         .cta-availability,
         .work-label .right,
-        .sketches-eyebrow,
         .footer-col-label,
         .footer-copy {
             font-family: 'Space Mono', monospace;
@@ -677,7 +699,7 @@
 <!-- ──────────────────────────────────────────────── HERO + NAV -->
 <section class="hero" id="hero">
 
-    <img class="hero-bg" src="assets/Header-billy.png" alt="" aria-hidden="true" />
+    <img class="hero-bg" src="assets/Header-billy.jpg" alt="" aria-hidden="true" fetchpriority="high" />
 
     <nav class="site-nav">
         <a href="#" class="brand"><img src="assets/logo/cesoi-de-wordmark-white.svg" alt="cesoi.de" /></a>
@@ -690,25 +712,49 @@
 
     <div class="hero-meta">
         <span class="meta-left">São Paulo / BR</span>
-        <span class="meta-center">Available for freelance work</span>
+        <span class="meta-center"><a href="mailto:cesar@cesoi.de" class="meta-availability">Available for freelance work</a></span>
         <span class="meta-right" id="local-clock">--:--:-- BRT</span>
     </div>
 
     <div class="hero-content">
         <div class="hero-inner">
             <h1 class="hero-h1">
-                I'm <em>Cesar Barbosa</em>,<br>
-                a <i>3D designer</i> and animator based in São Paulo<br>
-                working with studios and brands worldwide.
+                I'm <em>Cesar Barbosa</em>.<br>
+                I make 3D you can <i>almost touch</i>.
             </h1>
+            <p class="hero-body">
+                3D designer &amp; animator in São Paulo — animation, lookdev and design
+                for <strong>Microsoft, Meta, Samsung and eBay</strong>, with studios like
+                <strong>Buck, Oddfellows and FutureDeluxe</strong>.
+            </p>
+            <div class="hero-cta-row">
+                <a href="reel.html" class="btn btn-primary">▶&#xFE0E;&nbsp; Watch the reel</a>
+                <a href="mailto:cesar@cesoi.de?subject=Project%20inquiry" class="btn btn-ghost">Start a project →</a>
+            </div>
         </div>
     </div>
 
 </section>
 
 
+<!-- ──────────────────────────────────────────────── CLIENT STRIP -->
+<section class="clients" aria-label="Selected clients and studios">
+    <div class="clients-row">
+        <span class="k">Clients</span>
+        <span class="v">Microsoft<i>·</i>Meta<i>·</i>Samsung<i>·</i>eBay<i>·</i>Verizon<i>·</i>Estée Lauder<i>·</i>7UP<i>·</i>The Singleton</span>
+    </div>
+    <div class="clients-row">
+        <span class="k">Studios</span>
+        <span class="v">Buck<i>·</i>Oddfellows<i>·</i>FutureDeluxe<i>·</i>Hornet<i>·</i>State Design<i>·</i>Brand New School<i>·</i>DE-YAN</span>
+    </div>
+</section>
+
+
 <!-- ──────────────────────────────────────────────── WORKS -->
 <section class="works" id="works">
+
+    <p class="works-tag">/01 · Selected Work</p>
+
     <div class="works-grid">
 
         <!-- LEFT COLUMN -->
@@ -716,8 +762,8 @@
 
             <a href="reel.html" class="work-item reveal" id="reel">
                 <div class="work-thumb hover-swap">
-                    <img class="img-default" src="assets/Reel/thumb.jpg" alt="Reel" />
-                    <img class="img-hover"   src="assets/Reel/intro.gif"      alt="Reel preview" />
+                    <img class="img-default" src="assets/Reel/thumb.jpg" alt="Reel" fetchpriority="high" />
+                    <video class="img-hover" data-src="assets/Reel/intro.mp4" muted loop playsinline preload="none"></video>
                 </div>
                 <div class="work-label">
                     <span class="left">Reel <span class="dash">—</span> <span class="desc">Selected Works</span></span>
@@ -727,9 +773,8 @@
 
             <a href="estee-lauder.html" class="work-item reveal reveal-d1">
                 <div class="work-thumb hover-swap" style="background:#f0d8c0;">
-                    <img class="img-default" src="assets/Estee/thumb.jpg" alt="Estée Lauder" />
-                    <video class="img-hover" src="assets/Estee/Estee250318_DirCut_251222_OTIMIZADO.mp4"
-                           muted loop playsinline preload="metadata"></video>
+                    <img class="img-default" src="assets/Estee/thumb.jpg" alt="Estée Lauder" loading="lazy" decoding="async" />
+                    <video class="img-hover" data-src="assets/Estee/hover.mp4" muted loop playsinline preload="none"></video>
                 </div>
                 <div class="work-label">
                     <span class="left">Estée Lauder <span class="dash">—</span> <span class="desc">Hydroplump</span></span>
@@ -739,8 +784,8 @@
 
             <a href="ebay.html" class="work-item reveal reveal-d1">
                 <div class="work-thumb hover-swap" style="background:#0a1a2e;">
-                    <img class="img-default" src="assets/ebay/thumb.jpg" alt="eBay" />
-                    <img class="img-hover"   src="assets/ebay/hover.gif" alt="eBay preview" />
+                    <img class="img-default" src="assets/ebay/thumb.jpg" alt="eBay" loading="lazy" decoding="async" />
+                    <video class="img-hover" data-src="assets/ebay/hover.mp4" muted loop playsinline preload="none"></video>
                 </div>
                 <div class="work-label">
                     <span class="left">eBay <span class="dash">—</span> <span class="desc">A-Z of Authenticity</span></span>
@@ -750,8 +795,8 @@
 
             <a href="meta-connect.html" class="work-item reveal reveal-d1">
                 <div class="work-thumb hover-swap" style="background:#c0d4f0;">
-                    <img class="img-default" src="assets/Meta%20Connect%202024/thumb.jpg" alt="Meta Connect" />
-                    <img class="img-hover"   src="assets/Meta%20Connect%202024/hover.gif" alt="Meta Connect preview" />
+                    <img class="img-default" src="assets/Meta%20Connect%202024/thumb.jpg" alt="Meta Connect" loading="lazy" decoding="async" />
+                    <video class="img-hover" data-src="assets/Meta%20Connect%202024/hover.mp4" muted loop playsinline preload="none"></video>
                 </div>
                 <div class="work-label">
                     <span class="left">Meta <span class="dash">—</span> <span class="desc">Meta Connect · BUCK</span></span>
@@ -761,8 +806,8 @@
 
             <a href="samsung.html" class="work-item reveal reveal-d1">
                 <div class="work-thumb hover-swap" style="background:#1a2a48;">
-                    <img class="img-default" src="assets/Samsung_wallpapers/thumb.jpg" alt="Samsung" />
-                    <img class="img-hover"   src="assets/Samsung_wallpapers/hover.gif" alt="Samsung preview" />
+                    <img class="img-default" src="assets/Samsung_wallpapers/thumb.jpg" alt="Samsung" loading="lazy" decoding="async" />
+                    <video class="img-hover" data-src="assets/Samsung_wallpapers/hover.mp4" muted loop playsinline preload="none"></video>
                 </div>
                 <div class="work-label">
                     <span class="left">Samsung <span class="dash">—</span> <span class="desc">Cheil Screensavers</span></span>
@@ -772,8 +817,8 @@
 
             <a href="voxel.html" class="work-item reveal reveal-d1">
                 <div class="work-thumb hover-swap" style="background:#e8eef8;">
-                    <img class="img-default" src="assets/Voxel/thumb.jpg" alt="Voxel" />
-                    <img class="img-hover"   src="assets/Voxel/hover.gif" alt="Voxel preview" />
+                    <img class="img-default" src="assets/Voxel/thumb.jpg" alt="Voxel" loading="lazy" decoding="async" />
+                    <video class="img-hover" data-src="assets/Voxel/hover.mp4" muted loop playsinline preload="none"></video>
                 </div>
                 <div class="work-label">
                     <span class="left">Voxel <span class="dash">—</span> <span class="desc">Voxel Journey</span></span>
@@ -788,8 +833,8 @@
 
             <a href="microsoft-copilot.html" class="work-item reveal reveal-d2">
                 <div class="work-thumb hover-swap" style="background:#c8d8e8;">
-                    <img class="img-default" src="assets/Microsoft/thumb.jpg" alt="Microsoft" />
-                    <img class="img-hover"   src="assets/Microsoft/hover.gif" alt="Microsoft preview" />
+                    <img class="img-default" src="assets/Microsoft/thumb.jpg" alt="Microsoft" loading="lazy" decoding="async" />
+                    <video class="img-hover" data-src="assets/Microsoft/hover.mp4" muted loop playsinline preload="none"></video>
                 </div>
                 <div class="work-label">
                     <span class="left">Microsoft <span class="dash">—</span> <span class="desc">Copilot + PCs</span></span>
@@ -799,8 +844,8 @@
 
             <a href="object-studies.html" class="work-item reveal reveal-d2">
                 <div class="work-thumb hover-swap" style="background:#1a1614;">
-                    <img class="img-default" src="assets/Object-Studies/thumb.png" alt="Object Studies" />
-                    <img class="img-hover"   src="assets/Object-Studies/hover.gif" alt="Object Studies preview" />
+                    <img class="img-default" src="assets/Object-Studies/thumb.jpg" alt="Object Studies" loading="lazy" decoding="async" />
+                    <video class="img-hover" data-src="assets/Object-Studies/hover.mp4" muted loop playsinline preload="none"></video>
                 </div>
                 <div class="work-label">
                     <span class="left">Object Studies <span class="dash">—</span> <span class="desc">Personal Project</span></span>
@@ -810,8 +855,8 @@
 
             <a href="7up.html" class="work-item reveal reveal-d2">
                 <div class="work-thumb hover-swap" style="background:#1a7a2a;">
-                    <img class="img-default" src="assets/kv015_sculptfruit_ice_axl_v007.png" alt="7UP" />
-                    <img class="img-hover"   src="assets/7up/hover.gif" alt="7UP preview" />
+                    <img class="img-default" src="assets/7up/thumb.jpg" alt="7UP" loading="lazy" decoding="async" />
+                    <video class="img-hover" data-src="assets/7up/hover.mp4" muted loop playsinline preload="none"></video>
                 </div>
                 <div class="work-label">
                     <span class="left">7up <span class="dash">—</span> <span class="desc">New 7up, Same 7up</span></span>
@@ -821,8 +866,8 @@
 
             <a href="verizon.html" class="work-item reveal reveal-d2">
                 <div class="work-thumb hover-swap" style="background:#1a0808;">
-                    <img class="img-default" src="assets/Verizon/thumb.jpg" alt="Verizon" />
-                    <img class="img-hover"   src="assets/Verizon/hover.gif" alt="Verizon preview" />
+                    <img class="img-default" src="assets/Verizon/thumb.jpg" alt="Verizon" loading="lazy" decoding="async" />
+                    <video class="img-hover" data-src="assets/Verizon/hover.mp4" muted loop playsinline preload="none"></video>
                 </div>
                 <div class="work-label">
                     <span class="left">Verizon <span class="dash">—</span> <span class="desc">Investor Day 2022</span></span>
@@ -832,8 +877,8 @@
 
             <a href="simply-spiked.html" class="work-item reveal reveal-d2">
                 <div class="work-thumb hover-swap" style="background:#c03028;">
-                    <img class="img-default" src="assets/Simply-spiked/thumb.jpg" alt="Simply Spiked" />
-                    <img class="img-hover"   src="assets/Simply-spiked/hover.gif" alt="Simply Spiked preview" />
+                    <img class="img-default" src="assets/Simply-spiked/thumb.jpg" alt="Simply Spiked" loading="lazy" decoding="async" />
+                    <video class="img-hover" data-src="assets/Simply-spiked/hover.mp4" muted loop playsinline preload="none"></video>
                 </div>
                 <div class="work-label">
                     <span class="left">Simply Spiked <span class="dash">—</span> <span class="desc">Seen Too Much</span></span>
@@ -843,8 +888,8 @@
 
             <a href="betterment.html" class="work-item reveal reveal-d2">
                 <div class="work-thumb hover-swap" style="background:#f5b942;">
-                    <img class="img-default" src="assets/Betterment_03/thumb.jpg" alt="Betterment" />
-                    <img class="img-hover"   src="assets/Betterment_03/hover.gif" alt="Betterment preview" />
+                    <img class="img-default" src="assets/Betterment_03/thumb.jpg" alt="Betterment" loading="lazy" decoding="async" />
+                    <video class="img-hover" data-src="assets/Betterment_03/hover.mp4" muted loop playsinline preload="none"></video>
                 </div>
                 <div class="work-label">
                     <span class="left">Betterment <span class="dash">—</span> <span class="desc">Cash Reserve</span></span>
@@ -854,8 +899,8 @@
 
             <a href="singleton.html" class="work-item reveal reveal-d2">
                 <div class="work-thumb hover-swap" style="background:#2a1208;">
-                    <img class="img-default" src="assets/Singleton/thumb.jpg" alt="Singleton" />
-                    <img class="img-hover"   src="assets/Singleton/hover.gif" alt="Singleton preview" />
+                    <img class="img-default" src="assets/Singleton/thumb.jpg" alt="Singleton" loading="lazy" decoding="async" />
+                    <video class="img-hover" data-src="assets/Singleton/hover.mp4" muted loop playsinline preload="none"></video>
                 </div>
                 <div class="work-label">
                     <span class="left">Singleton <span class="dash">—</span> <span class="desc">Discover True Richness</span></span>
@@ -865,8 +910,8 @@
 
             <a href="loop.html" class="work-item reveal reveal-d2">
                 <div class="work-thumb hover-swap" style="background:#1a1a1a;">
-                    <img class="img-default" src="assets/Loop-headphones/thumb.jpg" alt="Loop" />
-                    <img class="img-hover"   src="assets/Loop-headphones/hover.gif" alt="Loop preview" />
+                    <img class="img-default" src="assets/Loop-headphones/thumb.jpg" alt="Loop" loading="lazy" decoding="async" />
+                    <video class="img-hover" data-src="assets/Loop-headphones/hover.mp4" muted loop playsinline preload="none"></video>
                 </div>
                 <div class="work-label">
                     <span class="left">Loop <span class="dash">—</span> <span class="desc">Shut Up The Noise</span></span>
@@ -889,24 +934,24 @@
 
         <!-- Portrait -->
         <div class="about-image reveal">
-            <img src="assets/avatar2026.png" alt="Cesar Barbosa" />
+            <img src="assets/avatar2026.jpg" alt="Cesar Barbosa" loading="lazy" decoding="async" />
             <span class="image-tag">+ CESAR · SP · 2026</span>
         </div>
 
         <!-- Headline + body -->
         <div class="about-center">
             <h2 class="about-h2 reveal reveal-d1">
-                3D <em>designer</em> and <em>animator</em> working with studios and brands worldwide.
+                Atmosphere, <em>restraint</em>, and materials you can <em>feel</em>.
             </h2>
             <div class="about-body reveal reveal-d2">
                 <p>
-                    I'm Cesar Barbosa, a 3D animator and designer based in São Paulo, working with studios and brands worldwide.
+                    I'm Cesar Barbosa, a 3D designer and animator based in São Paulo, working remotely with studios and brands worldwide.
                 </p>
                 <p>
-                    My primary craft is animation, with growing focus on design and visual direction. I'm drawn to projects that require both — where atmosphere, restraint, and material attention matter as much as the technique behind them.
+                    My work sits where animation meets design direction — I care about how a surface catches light and how a move feels as much as the technique behind it. That's the sensibility I bring whether the brief is a product film, a brand campaign, or a single frame.
                 </p>
                 <p>
-                    Over the past years I've collaborated with studios like Buck, Oddfellows, and Future Deluxe, contributing to work for Microsoft, Meta, Verizon and others.
+                    Over the past years I've collaborated with studios like Buck, Oddfellows and FutureDeluxe, contributing to work for Microsoft, Meta, Verizon and others.
                 </p>
                 <p>
                     Currently available for remote projects, ideally from concept through final delivery.
@@ -934,7 +979,7 @@
                 </div>
                 <div class="info-row">
                     <span class="key">Studios</span>
-                    <span class="val">Buck · Oddfellows · Future Deluxe · Hornet · Not Real · STATE · Brand New School · DE-YAN</span>
+                    <span class="val">Buck · Oddfellows · FutureDeluxe · Hornet · Not Real · STATE · Brand New School · DE-YAN</span>
                 </div>
                 <div class="info-row">
                     <span class="key">Tools</span>
@@ -945,7 +990,7 @@
                     <span class="val">Portuguese · English</span>
                 </div>
             </div>
-            <a href="mailto:cesar@cesoi.de" class="cta-availability">Available for freelance work</a>
+            <a href="mailto:cesar@cesoi.de?subject=Project%20inquiry" class="cta-availability">Available for freelance work</a>
         </div>
 
     </div>
@@ -958,6 +1003,7 @@
         Let's render<br>
         <em>something.</em>
     </h2>
+    <a href="mailto:cesar@cesoi.de?subject=Project%20inquiry" class="footer-cta-email reveal reveal-d1">cesar@cesoi.de</a>
     <div class="footer-grid reveal reveal-d1">
         <div>
             <span class="footer-col-label">Get in touch</span>
@@ -1001,18 +1047,40 @@
         setInterval(tick, 1000);
     })();
 
-    /* Hover-swap video: play on hover, pause + reset on leave */
-    document.querySelectorAll('.work-item').forEach(item => {
-        const vid = item.querySelector('video.img-hover');
-        if (!vid) return;
-        item.addEventListener('mouseenter', () => {
-            vid.currentTime = 0;
-            vid.play().catch(() => {});
+    /* Hover videos — lazy: only fetch near the viewport, only on devices that can hover */
+    (function () {
+        const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        const vids = document.querySelectorAll('video.img-hover[data-src]');
+
+        const hydrate = (v) => {
+            if (v.dataset.src && !v.src) {
+                v.src = v.dataset.src;
+                v.load();
+            }
+        };
+
+        if (canHover) {
+            const vio = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) { hydrate(e.target); vio.unobserve(e.target); }
+                });
+            }, { rootMargin: '400px' });
+            vids.forEach(v => vio.observe(v));
+        }
+
+        document.querySelectorAll('.work-item').forEach(item => {
+            const vid = item.querySelector('video.img-hover');
+            if (!vid) return;
+            item.addEventListener('mouseenter', () => {
+                hydrate(vid);
+                vid.currentTime = 0;
+                vid.play().catch(() => {});
+            });
+            item.addEventListener('mouseleave', () => {
+                vid.pause();
+            });
         });
-        item.addEventListener('mouseleave', () => {
-            vid.pause();
-        });
-    });
+    })();
 
     /* Reveal on scroll */
     const io = new IntersectionObserver((entries) => {
