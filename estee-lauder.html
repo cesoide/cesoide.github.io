@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,6 +12,15 @@
         gtag('config', 'G-G6D3N34V1K');
     </script>
     <title>Estee Lauder · Hydroplump · Cesar Barbosa</title>
+    <meta name="description" content="Estee Lauder Hydroplump with JCD. Animation and simulation by Cesar Barbosa.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cesoi.de/estee-lauder.html">
+    <meta property="og:title" content="Estee Lauder · Hydroplump · Cesar Barbosa">
+    <meta property="og:description" content="Estee Lauder Hydroplump with JCD. Animation and simulation by Cesar Barbosa.">
+    <meta property="og:image" content="https://cesoi.de/assets/Estee/thumb.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://cesoi.de/estee-lauder.html">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0a'/%3E%3Ccircle cx='32' cy='32' r='13' fill='%23ee6c2b'/%3E%3C/svg%3E">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -566,6 +575,20 @@
         .external-link {
             font-family: 'Space Mono', monospace;
         }
+
+        .footer-cta-email {
+            display: inline-block;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.2rem, 2.6vw, 2rem);
+            font-weight: 500;
+            color: #fff;
+            border-bottom: 2px solid var(--color-accent);
+            padding-bottom: 0.3rem;
+            margin-bottom: clamp(3rem, 6vw, 6rem);
+            transition: color .2s;
+        }
+        .footer-cta-email:hover { color: var(--color-accent); }
+        .footer-heading { margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
     </style>
 </head>
 <body>
@@ -574,10 +597,10 @@
 <!-- ----------------------------------------------------- HERO -->
 <section class="case-hero">
 
-    <img class="bg" src="assets/Estee/SP26_Hydroplump_Image_Color_28in_300dpi_Global_SRGB_250708.jpg" alt="Estee Lauder · Hydroplump" />
+    <img class="bg" src="assets/Estee/SP26_Hydroplump_Image_Color_28in_300dpi_Global_SRGB_250708_hero.jpg" alt="Estee Lauder · Hydroplump" />
 
     <nav class="site-nav">
-        <a href="index.html" class="brand"><img src="assets/logo/cesoi-de-wordmark-white.svg" alt="cesoi.de" /></a>
+        <a href="index.html" class="brand"><img src="assets/logo/cesoi-de-wordmark-white.svg" alt="cesoi.de" loading="lazy" decoding="async" /></a>
         <div class="nav-links">
             <a href="index.html#works">Works</a>
             <a href="index.html#about">About</a>
@@ -635,39 +658,39 @@
 
 <!-- Two-up portraits -->
 <div class="row twoup reveal">
-    <div class="gallery-item"><img src="assets/Estee/SP26_Hydroplump_Image_Fruit_Oil_46in_300dpi_Global_SRGB_250707.jpg" alt="Hydroplump · Fruit Oil still" /></div>
-    <div class="gallery-item"><img src="assets/Estee/SP26_Hydroplump_Image_Dual_Moisture_41in_300dpi_Global_SRGB_250707_Crop.jpg" alt="Hydroplump · Dual Moisture still" /></div>
+    <div class="gallery-item"><img src="assets/Estee/SP26_Hydroplump_Image_Fruit_Oil_46in_300dpi_Global_SRGB_250707.jpg" alt="Hydroplump · Fruit Oil still" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="assets/Estee/SP26_Hydroplump_Image_Dual_Moisture_41in_300dpi_Global_SRGB_250707_Crop.jpg" alt="Hydroplump · Dual Moisture still" loading="lazy" decoding="async" /></div>
 </div>
 
 
 <!-- --------------------- CAMPAIGN FILM V1 · Hydration -->
 <section class="case-video">
     <video
-        src="assets/Estee/SP26_Hydroplump_Tier%20B%20Campaign%20Video_V1%20Leveled%20Up%20Hydration_13%20seconds_1920x1080_Sound_Supers_Global_COMP_250728.mp4"
-        autoplay muted loop playsinline></video>
+        data-src="assets/Estee/SP26_Hydroplump_Tier%20B%20Campaign%20Video_V1%20Leveled%20Up%20Hydration_13%20seconds_1920x1080_Sound_Supers_Global_COMP_250728_web.mp4"
+        autoplay muted loop playsinline preload="none"></video>
 </section>
 
 
 <!-- --------------------- CAMPAIGN FILM V2 · Plumping -->
 <section class="case-video">
     <video
-        src="assets/Estee/SP26_Hydroplump_Tier%20B%20Campaign%20Video_V2%20Leveled%20Up%20Plumping_10%20seconds_1920x1080_Sound_Supers_Global_COMP_250728.mp4"
-        autoplay muted loop playsinline></video>
+        data-src="assets/Estee/SP26_Hydroplump_Tier%20B%20Campaign%20Video_V2%20Leveled%20Up%20Plumping_10%20seconds_1920x1080_Sound_Supers_Global_COMP_250728_web.mp4"
+        autoplay muted loop playsinline preload="none"></video>
 </section>
 
 
 <!-- --------------------- CAMPAIGN FILM V3 · Color -->
 <section class="case-video">
     <video
-        src="assets/Estee/SP26_Hydroplump_Tier%20B%20Campaign%20Video_V3%20Leveled%20Up%20Color_11%20seconds_1920x1080_Sound_Supers_Global_COMP_250729.mp4"
-        autoplay muted loop playsinline></video>
+        data-src="assets/Estee/SP26_Hydroplump_Tier%20B%20Campaign%20Video_V3%20Leveled%20Up%20Color_11%20seconds_1920x1080_Sound_Supers_Global_COMP_250729_web.mp4"
+        autoplay muted loop playsinline preload="none"></video>
 </section>
 
 
 <!-- --------------------- STILL FRAMES A + B -->
 <div class="row twoup reveal">
-    <div class="gallery-item"><img src="assets/Estee/SP26_Hydroplump_Tier%20B%20Campaign%20Video_V1%20Leveled%20Up%20Hydration_13%20seconds_1920x1080_Sound_Superless_Global_COMP_250728_A.png" alt="Hydroplump · Hydration still A" /></div>
-    <div class="gallery-item"><img src="assets/Estee/SP26_Hydroplump_Tier%20B%20Campaign%20Video_V1%20Leveled%20Up%20Hydration_13%20seconds_1920x1080_Sound_Superless_Global_COMP_250728_B.png" alt="Hydroplump · Hydration still B" /></div>
+    <div class="gallery-item"><img src="assets/Estee/SP26_Hydroplump_Tier%20B%20Campaign%20Video_V1%20Leveled%20Up%20Hydration_13%20seconds_1920x1080_Sound_Superless_Global_COMP_250728_A.png" alt="Hydroplump · Hydration still A" loading="lazy" decoding="async" /></div>
+    <div class="gallery-item"><img src="assets/Estee/SP26_Hydroplump_Tier%20B%20Campaign%20Video_V1%20Leveled%20Up%20Hydration_13%20seconds_1920x1080_Sound_Superless_Global_COMP_250728_B.png" alt="Hydroplump · Hydration still B" loading="lazy" decoding="async" /></div>
 </div>
 
 
@@ -675,8 +698,8 @@
 <div class="gallery">
     <div class="gallery-item pos-center w-65 reveal">
         <video
-            src="assets/Estee/SP26_Hydroplump_Tier%20B%20Campaign%20Video_V1%20Leveled%20Up%20Hydration_13%20seconds_1080x1080_Sound_Supers_Global_COMP_250728.mp4"
-            autoplay muted loop playsinline></video>
+            data-src="assets/Estee/SP26_Hydroplump_Tier%20B%20Campaign%20Video_V1%20Leveled%20Up%20Hydration_13%20seconds_1080x1080_Sound_Supers_Global_COMP_250728_web.mp4"
+            autoplay muted loop playsinline preload="none"></video>
     </div>
 </div>
 
@@ -684,7 +707,7 @@
 <!-- --------------------- CLOSING TEXTURE STUDY -->
 <div class="gallery">
     <div class="gallery-item pos-center w-70 reveal">
-        <img src="assets/Estee/estee_250318_nano_banana_pro_1776341849224.png" alt="Hydroplump · texture study" />
+        <img src="assets/Estee/estee_250318_nano_banana_pro_1776341849224_web.jpg" alt="Hydroplump · texture study" loading="lazy" decoding="async" />
     </div>
 </div>
 
@@ -731,6 +754,7 @@
             Let's render<br>
             <em>something.</em>
         </h2>
+        <a href="mailto:cesar@cesoi.de?subject=Project%20inquiry" class="footer-cta-email reveal">cesar@cesoi.de</a>
         <div class="footer-grid reveal">
             <div>
                 <span class="footer-col-label">Get in touch</span>
@@ -808,6 +832,25 @@
         });
     }, { threshold: 0.07 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+
+<script>
+    /* Lazy-hydrate media: videos only fetch near the viewport */
+    (function () {
+        const vids = document.querySelectorAll('video[data-src]');
+        if (!vids.length) return;
+        const io2 = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    const v = e.target;
+                    if (!v.src && v.dataset.src) { v.src = v.dataset.src; v.load(); }
+                    io2.unobserve(v);
+                }
+            });
+        }, { rootMargin: '600px' });
+        vids.forEach(v => io2.observe(v));
+    })();
 </script>
 
 </body>
