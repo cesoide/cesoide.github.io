@@ -140,6 +140,18 @@
             font-weight: 300;
             margin: 0 .15em;
         }
+        .case-hero-role {
+            margin-top: 1.1rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.65);
+        }
+        .case-hero-role b {
+            color: var(--color-accent);
+            font-weight: 400;
+        }
 
 
         /* -- INTRO BLOCK ----------------------------------- */
@@ -256,6 +268,15 @@
             padding: var(--space-3xl) var(--pad) var(--space-2xl);
             max-width: 1440px;
             margin: 0 auto;
+        }
+        .case-section .chapter-label {
+            display: block;
+            font-family: 'Space Mono', monospace;
+            font-size: var(--text-label);
+            letter-spacing: var(--tracking-caps);
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: var(--space-sm);
         }
         .case-section h2 {
             font-size: var(--text-h2);
@@ -637,9 +658,12 @@
     </div>
 
     <div class="case-hero-content">
-        <h1 class="case-hero-title">
-            Microsoft <span class="dash">·</span> <em>Copilot + PCs</em>
-        </h1>
+        <div class="case-hero-inner">
+            <h1 class="case-hero-title">
+                Microsoft <span class="dash">·</span> <em>Copilot + PCs</em>
+            </h1>
+            <p class="case-hero-role">3D Design · Animation · Lookdev <b>with BUCK</b></p>
+        </div>
     </div>
 
 </section>
@@ -670,6 +694,7 @@
 
 <!-- --------------------- ILLUMINATION -->
 <section class="case-section reveal">
+    <span class="chapter-label">/01</span>
     <h2>Illumination</h2>
     <p>
         The lighting story of the campaign starts with a single beam of warm light cutting across glossy aluminum and translucent surfaces. I worked on a custom lookdev pipeline in Redshift that pushes the contrast between the cool, almost surgical environment and the warm Copilot key · making it the unmistakable hero of every frame.
@@ -695,6 +720,16 @@
             autoplay muted loop playsinline preload="none"></video>
     </div>
 </div>
+
+
+<!-- --------------------- MATERIALS & SURFACES -->
+<section class="case-section reveal">
+    <span class="chapter-label">/02</span>
+    <h2>Materials &amp; Surfaces</h2>
+    <p>
+        Every device was rebuilt in CG and pushed until the materials survived extreme close-ups. Brushed aluminum, soft-touch keys, glass and the OLED glow were tuned shot by shot, so the product reads as something you could pick up, not something rendered.
+    </p>
+</section>
 
 
 <!-- --------------------- GALLERY GROUP 1 -->
@@ -754,6 +789,7 @@
 
 <!-- --------------------- BUDAPEST -->
 <section class="case-section reveal">
+    <span class="chapter-label">/03</span>
     <h2>Budapest Lifestyle Photography</h2>
     <p>
         For the launch films I joined the BUCK production team in Budapest. The lifestyle plates were shot on location with a small crew and integrated back into the CG pipeline · matching real environments, lighting and depth of field. Every device hero shot was rebuilt in 3D so the team could control every reflection, every UI moment and every soft cast of light from the OLED.
@@ -803,6 +839,16 @@
         data-src="assets/Microsoft/sidebyside_01%20%281080p%29.mp4"
         poster="assets/Microsoft/thumb.jpg"
         autoplay muted loop playsinline preload="none"></video>
+</section>
+
+
+<!-- --------------------- SYSTEMS AT PLAY -->
+<section class="case-section reveal">
+    <span class="chapter-label">/04</span>
+    <h2>Systems at Play</h2>
+    <p>
+        Around the hero product work, the campaign runs on a playful, character-led visual system. Type, characters and device screens share one animation language, so every film and cutdown feels like part of the same world.
+    </p>
 </section>
 
 
