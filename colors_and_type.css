@@ -16,8 +16,8 @@
   --color-ink-dark:     #0a0a0a;      /* used in dark sections */
   --color-dark-surface: #0a0a0a;      /* hero, footer, credits bg */
 
-  /* Accent — default orange; override per palette */
-  --color-accent:       oklch(0.72 0.19 45);
+  /* Accent — electric blue (2026); palette options below */
+  --color-accent:       var(--accent-electric);
 
   /* Accent palette options */
   --accent-orange:      oklch(0.72 0.19 45);
