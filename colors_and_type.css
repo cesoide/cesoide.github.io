@@ -166,7 +166,8 @@
 /* ── Monochrome accent scoping ──────────────────────────────
    Accent = white inside dark surfaces, ink everywhere else.
    Custom properties resolve at use site, so aliases inherit this. */
-.hero, .about, footer,
+/* LIRONA TEST: .hero removed from dark-surface list (home hero is now light) */
+.about, footer,
 .case-hero, .case-credits, .next-project,
 .reel-stage {
   --color-accent: #ffffff;

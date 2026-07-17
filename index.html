@@ -57,7 +57,7 @@
         body {
             /* Use Space Grotesk for body / Syne reserved for headings */
             font-family: var(--font-body, 'Space Grotesk'), system-ui, sans-serif;
-            background: var(--color-paper, #ffffff);
+            background: var(--bg, #f5f5f3); /* LIRONA TEST: was --color-paper #ffffff */
             color: var(--color-ink, #0e0e0e);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
@@ -86,7 +86,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 1.5rem var(--pad);
-            color: #fff;
+            color: #111110; /* LIRONA TEST: was #fff */
             font-size: 0.75rem;
             letter-spacing: 0.06em;
             font-weight: 400;
@@ -117,7 +117,7 @@
             opacity: 1;
         }
         nav.site-nav .nav-links a.email {
-            color: var(--orange);
+            color: #D95500; /* LIRONA TEST: darker orange, readable on light bg */
             text-transform: uppercase;
             opacity: 1;
             letter-spacing: 0.08em;
@@ -128,13 +128,15 @@
 
 
         /* ── HERO ───────────────────────────── */
+        /* LIRONA TEST: flat light hero, no bg image (backup: index.html.bak_pre-lirona) */
         .hero {
             position: relative;
             width: 100%;
-            min-height: 82svh;
-            background: #0a0a0a;
-            color: #fff;
+            background: var(--bg, #f5f5f3);
+            color: #111110;
             overflow: hidden;
+            /* symmetric gap: meta-bar -> text == button -> hero bottom */
+            --hero-gap: clamp(2.75rem, 5vw, 4rem);
         }
         .hero-bg {
             position: absolute;
@@ -148,24 +150,18 @@
             transform: translate3d(0, 0, 0);
             z-index: 0;
         }
-        /* Subtle vignette to ensure text readability */
+        /* LIRONA TEST: vignette disabled (no bg image) */
         .hero::before {
-            content: "";
-            position: absolute; inset: 0;
-            background:
-                linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.10) 35%, rgba(10,10,10,0.30) 70%, rgba(10,10,10,0.78) 100%),
-                linear-gradient(90deg, rgba(10,10,10,0.50) 0%, rgba(10,10,10,0.15) 45%, rgba(10,10,10,0) 100%);
-            z-index: 1;
-            pointer-events: none;
+            content: none;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
-            min-height: 82svh;
             display: flex;
-            align-items: flex-end;
-            padding: clamp(6rem, 12vw, 8rem) var(--pad) clamp(3rem, 6vw, 4.5rem);
+            align-items: flex-start;
+            /* top: meta bar sits at 5.5rem + ~1rem tall, then --hero-gap; bottom: --hero-gap */
+            padding: calc(6.5rem + var(--hero-gap)) var(--pad) var(--hero-gap);
         }
 
         /* Meta info bar between nav and hero text */
@@ -181,7 +177,7 @@
             font-size: 0.7rem;
             letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.55);
+            color: rgba(17,17,16,0.5); /* LIRONA TEST: was rgba(255,255,255,0.55) */
             font-weight: 400;
             font-variant-numeric: tabular-nums;
         }
@@ -193,13 +189,13 @@
             display: inline-flex;
             align-items: center;
             gap: 0.55rem;
-            color: rgba(255,255,255,0.85);
+            color: rgba(17,17,16,0.75);
         }
         .meta-availability::before {
             content: "";
             width: 7px; height: 7px;
             border-radius: 50%;
-            background: var(--orange);
+            background: rgba(17,17,16,0.7); /* LIRONA TEST: dark gray dot */
             animation: pulse 2.2s ease-in-out infinite;
         }
         @keyframes pulse {
@@ -216,9 +212,9 @@
             line-height: 1.1;
             letter-spacing: -0.025em;
             margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
-            color: #fff;
+            color: #111110; /* LIRONA TEST: was #fff */
         }
-        .hero-h1 em { font-style: italic; color: var(--orange); font-weight: 800; }
+        .hero-h1 em { font-style: italic; color: #111110; font-weight: 800; } /* LIRONA TEST: was orange (unreadable on light) */
         .hero-h1 i  {
             font-style: italic;
             font-weight: 500;
@@ -230,7 +226,7 @@
         .hero-body {
             font-family: 'Space Grotesk', sans-serif;
             font-size: clamp(1.05rem, 1.9vw, 1.5rem);
-            color: rgba(255,255,255,0.75);
+            color: rgba(17,17,16,0.65); /* dark gray, secondary */
             line-height: 1.5;
             font-weight: 300;
             max-width: 52ch;
@@ -256,16 +252,19 @@
             transition: background .2s, color .2s, border-color .2s;
         }
         .btn-primary {
-            background: var(--orange);
-            color: #0a0a0a;
+            /* LIRONA TEST: quiet outline — emphasis moved to .btn-ghost (Start a project) */
+            background: transparent;
+            border: 1px solid rgba(17,17,16,0.35);
+            color: rgba(17,17,16,0.85);
         }
-        .btn-primary:hover { background: rgba(255,255,255,0.78); }
+        .btn-primary:hover { border-color: #111110; color: #111110; background: rgba(17,17,16,0.05); }
         .btn-ghost {
-            border: 1px solid rgba(255,255,255,0.3);
-            color: rgba(255,255,255,0.9);
+            background: #1c1c1a; /* LIRONA TEST: inverted — dark gray fill */
+            border: 1px solid #1c1c1a;
+            color: #f5f5f3;      /* text = page background color */
             font-weight: 400;
         }
-        .btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
+        .btn-ghost:hover { background: var(--orange); border-color: var(--orange); color: #111110; }
 
 
         /* ── WORKS ──────────────────────────── */
@@ -618,7 +617,7 @@
 
             /* Hero */
             .hero { min-height: auto; }
-            .hero-content { min-height: 84svh; align-items: flex-end; padding: clamp(7rem, 24vw, 9rem) var(--pad) 2.5rem; }
+            .hero-content { align-items: flex-start; padding: calc(9rem + 2.5rem) var(--pad) 2.5rem; }
             .hero-meta {
                 top: 4.5rem;
                 grid-template-columns: 1fr;
@@ -678,10 +677,11 @@
 <!-- ──────────────────────────────────────────────── HERO + NAV -->
 <section class="hero" id="hero">
 
-    <img class="hero-bg" src="assets/Header-billy.jpg" alt="" aria-hidden="true" fetchpriority="high" />
+    <!-- LIRONA TEST: bg image removed. Restore:
+    <img class="hero-bg" src="assets/Header-billy.jpg" alt="" aria-hidden="true" fetchpriority="high" /> -->
 
     <nav class="site-nav">
-        <a href="#" class="brand"><img src="assets/logo/cesoi-de-wordmark-white.svg" alt="cesoi.de" /></a>
+        <a href="#" class="brand"><img src="assets/logo/cesoi-de-wordmark-dark.svg" alt="cesoi.de" /></a>
         <div class="nav-links">
             <a href="#works">Works</a>
             <a href="#about">About</a>
