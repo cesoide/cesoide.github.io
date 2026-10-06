@@ -691,7 +691,7 @@
 
     <div class="hero-meta">
         <span class="meta-left">São Paulo / BR</span>
-        <span class="meta-center"><a href="mailto:cesar@cesoi.de" class="meta-availability">Available early October</a></span>
+        <span class="meta-center"><a href="mailto:cesar@cesoi.de" class="meta-availability" data-available-from="2026-10-12" data-available-text="Available for freelance">Available from 12 October</a></span>
         <span class="meta-right" id="local-clock">--:--:-- BRT</span>
     </div>
 
@@ -907,8 +907,8 @@
                 <p>
                     Over the past years I've collaborated with studios like Buck, Oddfellows and FutureDeluxe, contributing to work for Microsoft, Meta, Verizon and others.
                 </p>
-                <p>
-                    Available for remote projects from early October, ideally from concept through final delivery.
+                <p data-available-from="2026-10-12" data-available-text="Available for freelance and remote projects, ideally from concept through final delivery.">
+                    Available for remote projects from 12 October, ideally from concept through final delivery.
                 </p>
                 <p>
                     Get in touch at <a href="mailto:cesar@cesoi.de">cesar@cesoi.de</a>, or follow my personal work on <a href="https://www.instagram.com/cesoi.de/" target="_blank" rel="noopener noreferrer">Instagram</a>.
@@ -944,7 +944,7 @@
                     <span class="val">Portuguese · English</span>
                 </div>
             </div>
-            <a href="mailto:cesar@cesoi.de?subject=Project%20inquiry" class="cta-availability">Available early October</a>
+            <a href="mailto:cesar@cesoi.de?subject=Project%20inquiry" class="cta-availability" data-available-from="2026-10-12" data-available-text="Available for freelance">Available from 12 October</a>
         </div>
 
     </div>
@@ -985,6 +985,15 @@
 
 
 <script>
+    /* Availability — swaps to the "now" copy once the date arrives in São Paulo (UTC−3) */
+    (function () {
+        const now = Date.now();
+        document.querySelectorAll('[data-available-from]').forEach(function (el) {
+            const from = new Date(el.dataset.availableFrom + 'T00:00:00-03:00').getTime();
+            if (now >= from) el.textContent = el.dataset.availableText;
+        });
+    })();
+
     /* Live local clock — São Paulo (BRT, UTC−3) */
     (function () {
         const el = document.getElementById('local-clock');
