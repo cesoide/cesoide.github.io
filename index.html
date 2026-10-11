@@ -41,6 +41,8 @@
       gtag('config', 'G-G6D3N34V1K');
     </script>
 
+    <script>document.documentElement.classList.add('motion')</script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:ital,wght@0,400;0,500;0,700;0,800;1,400;1,500;1,700&family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -57,7 +59,7 @@
         body {
             /* Use Space Grotesk for body / Syne reserved for headings */
             font-family: var(--font-body, 'Space Grotesk'), system-ui, sans-serif;
-            background: var(--bg, #f5f5f3); /* LIRONA TEST: was --color-paper #ffffff */
+            background: var(--dark, #0a0a0a); /* dark behind the sticky footer; light paper lives on <main> */
             color: var(--color-ink, #0e0e0e);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
@@ -296,8 +298,6 @@
         }
         .col-left  { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 4.5rem); }
         .col-right {
-            display: flex; flex-direction: column;
-            gap: clamp(2rem, 5vw, 4.5rem);
             margin-top: clamp(14rem, 22vw, 22rem);
         }
 
@@ -590,6 +590,41 @@
         }
 
 
+        /* ── SCROLL MOTION (scroll-motion.js) ── */
+        main {
+            position: relative;
+            z-index: 1;
+            /* light paper, but the last 2px dark so no light seam shows under the About edge */
+            background: linear-gradient(var(--bg, #f5f5f3), var(--bg, #f5f5f3)) top / 100% calc(100% - 2px) no-repeat, var(--dark, #0a0a0a);
+            overflow-x: clip; /* swing moves thumbs 40% sideways; clip (not hidden) keeps sticky working */
+        }
+        [data-foot] { position: sticky; bottom: 0; z-index: 0; }
+        [data-foot-shade] { position: absolute; inset: 0; background: #000; opacity: .7; pointer-events: none; }
+        [data-hero-drift] { position: relative; }
+        .h1-line { display: block; overflow: hidden; padding-bottom: .06em; }
+        .col-right-inner { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 4.5rem); }
+        .about-h2[data-words] { display: flex; flex-wrap: wrap; column-gap: .26em; }
+        .about-image img[data-parallax] { position: absolute; left: 0; top: -10%; height: 120%; }
+        #scroll-bar {
+            position: fixed; top: 0; left: 0; right: 0; height: 2px;
+            background: #0e0e0e; transform-origin: 0 50%; transform: scaleX(0);
+            z-index: 60; pointer-events: none;
+        }
+        #view-cursor {
+            position: fixed; top: 0; left: 0;
+            width: 96px; height: 96px; border-radius: 50%;
+            background: #0e0e0e; color: #f5f5f3;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Space Mono', monospace; font-size: .65rem;
+            letter-spacing: .18em; text-transform: uppercase;
+            pointer-events: none; z-index: 70;
+            transform: translate(-200px, -200px) scale(0);
+        }
+        /* pre-JS hidden states, so nothing flashes before the script runs */
+        .motion [data-line] { display: inline-block; transform: translateY(110%); }
+        .motion [data-hero] [data-reveal] { opacity: 0; transform: translateY(28px); }
+        .motion [data-swing] { opacity: 0; }
+
         /* ── REVEAL ─────────────────────────── */
         .reveal {
             opacity: 0;
@@ -673,9 +708,14 @@
 </head>
 <body>
 
+<div id="scroll-bar" aria-hidden="true"></div>
+<div id="view-cursor" aria-hidden="true">View →</div>
+
+<main>
+
 
 <!-- ──────────────────────────────────────────────── HERO + NAV -->
-<section class="hero" id="hero">
+<section class="hero" id="hero" data-hero>
 
     <!-- LIRONA TEST: bg image removed. Restore:
     <img class="hero-bg" src="assets/Header-billy.jpg" alt="" aria-hidden="true" fetchpriority="high" /> -->
@@ -689,6 +729,8 @@
         </div>
     </nav>
 
+    <div data-hero-drift="0.35">
+
     <div class="hero-meta">
         <span class="meta-left">São Paulo / BR</span>
         <span class="meta-center"><a href="mailto:cesar@cesoi.de" class="meta-availability" data-available-from="2026-10-12" data-available-text="Available for freelance">Available from 12 October</a></span>
@@ -698,18 +740,20 @@
     <div class="hero-content">
         <div class="hero-inner">
             <h1 class="hero-h1">
-                I'm <em>Cesar Barbosa</em>,<br>
-                a <i>3D designer</i> and animator based in São Paulo,<br>
-                working with studios and brands worldwide.
+                <span class="h1-line"><span data-line>I'm <em>Cesar Barbosa</em>,</span></span>
+                <span class="h1-line"><span data-line>a <i>3D designer</i> and animator based in São Paulo,</span></span>
+                <span class="h1-line"><span data-line>working with studios and brands worldwide.</span></span>
             </h1>
-            <p class="hero-body">
+            <p class="hero-body" data-reveal="up" data-delay="500">
                 Chasing light, materials and movement until a frame feels real enough to touch.
             </p>
-            <div class="hero-cta-row">
+            <div class="hero-cta-row" data-reveal="up" data-delay="620">
                 <a href="reel.html" class="btn btn-primary">▶&#xFE0E;&nbsp; Watch the reel</a>
                 <a href="mailto:cesar@cesoi.de?subject=Project%20inquiry" class="btn btn-ghost">Start a project →</a>
             </div>
         </div>
+    </div>
+
     </div>
 
 </section>
@@ -718,161 +762,189 @@
 <!-- ──────────────────────────────────────────────── WORKS -->
 <section class="works" id="works">
 
-    <p class="works-tag">/01 · Selected Work</p>
+    <p class="works-tag" data-reveal="up">/01 · Selected Work</p>
 
     <div class="works-grid">
 
         <!-- LEFT COLUMN -->
         <div class="col-left">
 
-            <a href="microsoft-copilot.html" class="work-item reveal">
-                <div class="work-thumb hover-swap" style="background:#c8d8e8;">
-                    <img class="img-default" src="assets/Microsoft/thumb.jpg" alt="Microsoft" fetchpriority="high" />
-                    <video class="img-hover" data-src="assets/Microsoft/hover.mp4" muted loop playsinline preload="none"></video>
-                </div>
-                <div class="work-label">
-                    <span class="left">Microsoft <span class="dash">—</span> <span class="desc">Copilot + PCs</span></span>
-                    <span class="right">Design · Animation</span>
-                </div>
-            </a>
+            <div data-cursor><div data-swing="left">
+                <a href="microsoft-copilot.html" class="work-item">
+                    <div class="work-thumb hover-swap" style="background:#c8d8e8;">
+                        <img class="img-default" src="assets/Microsoft/thumb.jpg" alt="Microsoft" fetchpriority="high" />
+                        <video class="img-hover" data-src="assets/Microsoft/hover.mp4" muted loop playsinline preload="none"></video>
+                    </div>
+                    <div class="work-label">
+                        <span class="left">Microsoft <span class="dash">—</span> <span class="desc">Copilot + PCs</span></span>
+                        <span class="right">Design · Animation</span>
+                    </div>
+                </a>
+            </div></div>
 
-            <a href="7up.html" class="work-item reveal reveal-d1">
-                <div class="work-thumb hover-swap" style="background:#1a7a2a;">
-                    <img class="img-default" src="assets/7up/thumb.jpg" alt="7UP" loading="lazy" decoding="async" />
-                    <video class="img-hover" data-src="assets/7up/hover.mp4" muted loop playsinline preload="none"></video>
-                </div>
-                <div class="work-label">
-                    <span class="left">7up <span class="dash">—</span> <span class="desc">New 7up, Same 7up</span></span>
-                    <span class="right">Design · Lookdev</span>
-                </div>
-            </a>
+            <div data-cursor><div data-swing="left">
+                <a href="7up.html" class="work-item">
+                    <div class="work-thumb hover-swap" style="background:#1a7a2a;">
+                        <img class="img-default" src="assets/7up/thumb.jpg" alt="7UP" loading="lazy" decoding="async" />
+                        <video class="img-hover" data-src="assets/7up/hover.mp4" muted loop playsinline preload="none"></video>
+                    </div>
+                    <div class="work-label">
+                        <span class="left">7up <span class="dash">—</span> <span class="desc">New 7up, Same 7up</span></span>
+                        <span class="right">Design · Lookdev</span>
+                    </div>
+                </a>
+            </div></div>
 
-            <a href="ebay.html" class="work-item reveal reveal-d1">
-                <div class="work-thumb hover-swap" style="background:#0a1a2e;">
-                    <img class="img-default" src="assets/ebay/thumb.jpg" alt="eBay" loading="lazy" decoding="async" />
-                    <video class="img-hover" data-src="assets/ebay/hover.mp4" muted loop playsinline preload="none"></video>
-                </div>
-                <div class="work-label">
-                    <span class="left">eBay <span class="dash">—</span> <span class="desc">A-Z of Authenticity</span></span>
-                    <span class="right">Animation</span>
-                </div>
-            </a>
+            <div data-cursor><div data-swing="left">
+                <a href="ebay.html" class="work-item">
+                    <div class="work-thumb hover-swap" style="background:#0a1a2e;">
+                        <img class="img-default" src="assets/ebay/thumb.jpg" alt="eBay" loading="lazy" decoding="async" />
+                        <video class="img-hover" data-src="assets/ebay/hover.mp4" muted loop playsinline preload="none"></video>
+                    </div>
+                    <div class="work-label">
+                        <span class="left">eBay <span class="dash">—</span> <span class="desc">A-Z of Authenticity</span></span>
+                        <span class="right">Animation</span>
+                    </div>
+                </a>
+            </div></div>
 
-            <a href="meta-connect.html" class="work-item reveal reveal-d1">
-                <div class="work-thumb hover-swap" style="background:#c0d4f0;">
-                    <img class="img-default" src="assets/Meta%20Connect%202024/thumb.jpg" alt="Meta Connect" loading="lazy" decoding="async" />
-                    <video class="img-hover" data-src="assets/Meta%20Connect%202024/hover.mp4" muted loop playsinline preload="none"></video>
-                </div>
-                <div class="work-label">
-                    <span class="left">Meta <span class="dash">—</span> <span class="desc">Meta Connect · BUCK</span></span>
-                    <span class="right">Design</span>
-                </div>
-            </a>
+            <div data-cursor><div data-swing="left">
+                <a href="meta-connect.html" class="work-item">
+                    <div class="work-thumb hover-swap" style="background:#c0d4f0;">
+                        <img class="img-default" src="assets/Meta%20Connect%202024/thumb.jpg" alt="Meta Connect" loading="lazy" decoding="async" />
+                        <video class="img-hover" data-src="assets/Meta%20Connect%202024/hover.mp4" muted loop playsinline preload="none"></video>
+                    </div>
+                    <div class="work-label">
+                        <span class="left">Meta <span class="dash">—</span> <span class="desc">Meta Connect · BUCK</span></span>
+                        <span class="right">Design</span>
+                    </div>
+                </a>
+            </div></div>
 
-            <a href="samsung.html" class="work-item reveal reveal-d1">
-                <div class="work-thumb hover-swap" style="background:#1a2a48;">
-                    <img class="img-default" src="assets/Samsung_wallpapers/thumb.jpg" alt="Samsung" loading="lazy" decoding="async" />
-                    <video class="img-hover" data-src="assets/Samsung_wallpapers/hover.mp4" muted loop playsinline preload="none"></video>
-                </div>
-                <div class="work-label">
-                    <span class="left">Samsung <span class="dash">—</span> <span class="desc">Cheil Screensavers</span></span>
-                    <span class="right">Design · Animation</span>
-                </div>
-            </a>
+            <div data-cursor><div data-swing="left">
+                <a href="samsung.html" class="work-item">
+                    <div class="work-thumb hover-swap" style="background:#1a2a48;">
+                        <img class="img-default" src="assets/Samsung_wallpapers/thumb.jpg" alt="Samsung" loading="lazy" decoding="async" />
+                        <video class="img-hover" data-src="assets/Samsung_wallpapers/hover.mp4" muted loop playsinline preload="none"></video>
+                    </div>
+                    <div class="work-label">
+                        <span class="left">Samsung <span class="dash">—</span> <span class="desc">Cheil Screensavers</span></span>
+                        <span class="right">Design · Animation</span>
+                    </div>
+                </a>
+            </div></div>
 
-            <a href="voxel.html" class="work-item reveal reveal-d1">
-                <div class="work-thumb hover-swap" style="background:#e8eef8;">
-                    <img class="img-default" src="assets/Voxel/thumb.jpg" alt="Voxel" loading="lazy" decoding="async" />
-                    <video class="img-hover" data-src="assets/Voxel/hover.mp4" muted loop playsinline preload="none"></video>
-                </div>
-                <div class="work-label">
-                    <span class="left">Voxel <span class="dash">—</span> <span class="desc">Voxel Journey</span></span>
-                    <span class="right">Animation</span>
-                </div>
-            </a>
+            <div data-cursor><div data-swing="left">
+                <a href="voxel.html" class="work-item">
+                    <div class="work-thumb hover-swap" style="background:#e8eef8;">
+                        <img class="img-default" src="assets/Voxel/thumb.jpg" alt="Voxel" loading="lazy" decoding="async" />
+                        <video class="img-hover" data-src="assets/Voxel/hover.mp4" muted loop playsinline preload="none"></video>
+                    </div>
+                    <div class="work-label">
+                        <span class="left">Voxel <span class="dash">—</span> <span class="desc">Voxel Journey</span></span>
+                        <span class="right">Animation</span>
+                    </div>
+                </a>
+            </div></div>
 
         </div>
 
         <!-- RIGHT COLUMN -->
         <div class="col-right">
+          <div class="col-right-inner" data-parallax="-0.14">
 
-            <a href="estee-lauder.html" class="work-item reveal reveal-d2">
-                <div class="work-thumb hover-swap" style="background:#f0d8c0;">
-                    <img class="img-default" src="assets/Estee/thumb.jpg" alt="Estée Lauder" loading="lazy" decoding="async" />
-                    <video class="img-hover" data-src="assets/Estee/hover.mp4" muted loop playsinline preload="none"></video>
-                </div>
-                <div class="work-label">
-                    <span class="left">Estée Lauder <span class="dash">—</span> <span class="desc">Hydroplump</span></span>
-                    <span class="right">Animation · Simulation</span>
-                </div>
-            </a>
+            <div data-cursor><div data-swing="right">
+                <a href="estee-lauder.html" class="work-item">
+                    <div class="work-thumb hover-swap" style="background:#f0d8c0;">
+                        <img class="img-default" src="assets/Estee/thumb.jpg" alt="Estée Lauder" loading="lazy" decoding="async" />
+                        <video class="img-hover" data-src="assets/Estee/hover.mp4" muted loop playsinline preload="none"></video>
+                    </div>
+                    <div class="work-label">
+                        <span class="left">Estée Lauder <span class="dash">—</span> <span class="desc">Hydroplump</span></span>
+                        <span class="right">Animation · Simulation</span>
+                    </div>
+                </a>
+            </div></div>
 
-            <a href="verizon.html" class="work-item reveal reveal-d2">
-                <div class="work-thumb hover-swap" style="background:#1a0808;">
-                    <img class="img-default" src="assets/Verizon/thumb.jpg" alt="Verizon" loading="lazy" decoding="async" />
-                    <video class="img-hover" data-src="assets/Verizon/hover.mp4" muted loop playsinline preload="none"></video>
-                </div>
-                <div class="work-label">
-                    <span class="left">Verizon <span class="dash">—</span> <span class="desc">Investor Day 2022</span></span>
-                    <span class="right">Design · Animation</span>
-                </div>
-            </a>
+            <div data-cursor><div data-swing="right">
+                <a href="verizon.html" class="work-item">
+                    <div class="work-thumb hover-swap" style="background:#1a0808;">
+                        <img class="img-default" src="assets/Verizon/thumb.jpg" alt="Verizon" loading="lazy" decoding="async" />
+                        <video class="img-hover" data-src="assets/Verizon/hover.mp4" muted loop playsinline preload="none"></video>
+                    </div>
+                    <div class="work-label">
+                        <span class="left">Verizon <span class="dash">—</span> <span class="desc">Investor Day 2022</span></span>
+                        <span class="right">Design · Animation</span>
+                    </div>
+                </a>
+            </div></div>
 
-            <a href="object-studies.html" class="work-item reveal reveal-d2">
-                <div class="work-thumb hover-swap" style="background:#1a1614;">
-                    <img class="img-default" src="assets/Object-Studies/thumb.jpg" alt="Object Studies" loading="lazy" decoding="async" />
-                    <video class="img-hover" data-src="assets/Object-Studies/hover.mp4" muted loop playsinline preload="none"></video>
-                </div>
-                <div class="work-label">
-                    <span class="left">Object Studies <span class="dash">—</span> <span class="desc">Personal Project</span></span>
-                    <span class="right">Design · Lookdev</span>
-                </div>
-            </a>
+            <div data-cursor><div data-swing="right">
+                <a href="object-studies.html" class="work-item">
+                    <div class="work-thumb hover-swap" style="background:#1a1614;">
+                        <img class="img-default" src="assets/Object-Studies/thumb.jpg" alt="Object Studies" loading="lazy" decoding="async" />
+                        <video class="img-hover" data-src="assets/Object-Studies/hover.mp4" muted loop playsinline preload="none"></video>
+                    </div>
+                    <div class="work-label">
+                        <span class="left">Object Studies <span class="dash">—</span> <span class="desc">Personal Project</span></span>
+                        <span class="right">Design · Lookdev</span>
+                    </div>
+                </a>
+            </div></div>
 
-            <a href="simply-spiked.html" class="work-item reveal reveal-d2">
-                <div class="work-thumb hover-swap" style="background:#c03028;">
-                    <img class="img-default" src="assets/Simply-spiked/thumb.jpg" alt="Simply Spiked" loading="lazy" decoding="async" />
-                    <video class="img-hover" data-src="assets/Simply-spiked/hover.mp4" muted loop playsinline preload="none"></video>
-                </div>
-                <div class="work-label">
-                    <span class="left">Simply Spiked <span class="dash">—</span> <span class="desc">Seen Too Much</span></span>
-                    <span class="right">Simulation · VFX</span>
-                </div>
-            </a>
+            <div data-cursor><div data-swing="right">
+                <a href="simply-spiked.html" class="work-item">
+                    <div class="work-thumb hover-swap" style="background:#c03028;">
+                        <img class="img-default" src="assets/Simply-spiked/thumb.jpg" alt="Simply Spiked" loading="lazy" decoding="async" />
+                        <video class="img-hover" data-src="assets/Simply-spiked/hover.mp4" muted loop playsinline preload="none"></video>
+                    </div>
+                    <div class="work-label">
+                        <span class="left">Simply Spiked <span class="dash">—</span> <span class="desc">Seen Too Much</span></span>
+                        <span class="right">Simulation · VFX</span>
+                    </div>
+                </a>
+            </div></div>
 
-            <a href="betterment.html" class="work-item reveal reveal-d2">
-                <div class="work-thumb hover-swap" style="background:#f5b942;">
-                    <img class="img-default" src="assets/Betterment_03/thumb.jpg" alt="Betterment" loading="lazy" decoding="async" />
-                    <video class="img-hover" data-src="assets/Betterment_03/hover.mp4" muted loop playsinline preload="none"></video>
-                </div>
-                <div class="work-label">
-                    <span class="left">Betterment <span class="dash">—</span> <span class="desc">Cash Reserve</span></span>
-                    <span class="right">Animation</span>
-                </div>
-            </a>
+            <div data-cursor><div data-swing="right">
+                <a href="betterment.html" class="work-item">
+                    <div class="work-thumb hover-swap" style="background:#f5b942;">
+                        <img class="img-default" src="assets/Betterment_03/thumb.jpg" alt="Betterment" loading="lazy" decoding="async" />
+                        <video class="img-hover" data-src="assets/Betterment_03/hover.mp4" muted loop playsinline preload="none"></video>
+                    </div>
+                    <div class="work-label">
+                        <span class="left">Betterment <span class="dash">—</span> <span class="desc">Cash Reserve</span></span>
+                        <span class="right">Animation</span>
+                    </div>
+                </a>
+            </div></div>
 
-            <a href="singleton.html" class="work-item reveal reveal-d2">
-                <div class="work-thumb hover-swap" style="background:#2a1208;">
-                    <img class="img-default" src="assets/Singleton/thumb.jpg" alt="Singleton" loading="lazy" decoding="async" />
-                    <video class="img-hover" data-src="assets/Singleton/hover.mp4" muted loop playsinline preload="none"></video>
-                </div>
-                <div class="work-label">
-                    <span class="left">Singleton <span class="dash">—</span> <span class="desc">Discover True Richness</span></span>
-                    <span class="right">Simulation · FX</span>
-                </div>
-            </a>
+            <div data-cursor><div data-swing="right">
+                <a href="singleton.html" class="work-item">
+                    <div class="work-thumb hover-swap" style="background:#2a1208;">
+                        <img class="img-default" src="assets/Singleton/thumb.jpg" alt="Singleton" loading="lazy" decoding="async" />
+                        <video class="img-hover" data-src="assets/Singleton/hover.mp4" muted loop playsinline preload="none"></video>
+                    </div>
+                    <div class="work-label">
+                        <span class="left">Singleton <span class="dash">—</span> <span class="desc">Discover True Richness</span></span>
+                        <span class="right">Simulation · FX</span>
+                    </div>
+                </a>
+            </div></div>
 
-            <a href="loop.html" class="work-item reveal reveal-d2">
-                <div class="work-thumb hover-swap" style="background:#1a1a1a;">
-                    <img class="img-default" src="assets/Loop-headphones/thumb.jpg" alt="Loop" loading="lazy" decoding="async" />
-                    <video class="img-hover" data-src="assets/Loop-headphones/hover.mp4" muted loop playsinline preload="none"></video>
-                </div>
-                <div class="work-label">
-                    <span class="left">Loop <span class="dash">—</span> <span class="desc">Shut Up The Noise</span></span>
-                    <span class="right">Animation · Lookdev</span>
-                </div>
-            </a>
+            <div data-cursor><div data-swing="right">
+                <a href="loop.html" class="work-item">
+                    <div class="work-thumb hover-swap" style="background:#1a1a1a;">
+                        <img class="img-default" src="assets/Loop-headphones/thumb.jpg" alt="Loop" loading="lazy" decoding="async" />
+                        <video class="img-hover" data-src="assets/Loop-headphones/hover.mp4" muted loop playsinline preload="none"></video>
+                    </div>
+                    <div class="work-label">
+                        <span class="left">Loop <span class="dash">—</span> <span class="desc">Shut Up The Noise</span></span>
+                        <span class="right">Animation · Lookdev</span>
+                    </div>
+                </a>
+            </div></div>
 
+          </div>
         </div>
 
     </div>
@@ -882,22 +954,24 @@
 <!-- ──────────────────────────────────────────────── ABOUT -->
 <section class="about" id="about">
 
-    <p class="about-tag reveal">/02 · About</p>
+    <p class="about-tag" data-reveal="up">/02 · About</p>
 
     <div class="about-grid">
 
         <!-- Portrait -->
-        <div class="about-image reveal">
-            <img src="assets/avatar2026.jpg" alt="Cesar Barbosa" loading="lazy" decoding="async" />
-            <span class="image-tag">+ CESAR · SP · 2026</span>
-        </div>
+        <div><div data-swing="fade">
+            <div class="about-image">
+                <img src="assets/avatar2026.jpg" alt="Cesar Barbosa" loading="lazy" decoding="async" data-parallax="-0.12" />
+                <span class="image-tag">+ CESAR · SP · 2026</span>
+            </div>
+        </div></div>
 
         <!-- Headline + body -->
         <div class="about-center">
-            <h2 class="about-h2 reveal reveal-d1">
-                Atmosphere, <em>restraint</em>, and materials you can <em>feel</em>.
+            <h2 class="about-h2" data-words>
+                <span data-w>Atmosphere,</span> <span data-w><em>restraint</em>,</span> <span data-w>and</span> <span data-w>materials</span> <span data-w>you</span> <span data-w>can</span> <span data-w><em>feel</em>.</span>
             </h2>
-            <div class="about-body reveal reveal-d2">
+            <div class="about-body" data-reveal="up" data-delay="120">
                 <p>
                     I'm Cesar Barbosa, a 3D designer and animator based in São Paulo, working remotely with studios and brands worldwide.
                 </p>
@@ -917,7 +991,7 @@
         </div>
 
         <!-- Info table + CTA -->
-        <div class="about-right reveal reveal-d3">
+        <div class="about-right" data-reveal="up" data-delay="220">
             <div class="info-table">
                 <div class="info-row">
                     <span class="key">Role</span>
@@ -952,13 +1026,16 @@
 
 
 <!-- ──────────────────────────────────────────────── FOOTER -->
+</main>
+
+<div data-foot>
 <footer id="contact">
-    <h2 class="footer-heading reveal">
+    <h2 class="footer-heading" data-reveal="up">
         Let's render<br>
         <em>something.</em>
     </h2>
-    <a href="mailto:cesar@cesoi.de?subject=Project%20inquiry" class="footer-cta-email reveal reveal-d1">cesar@cesoi.de</a>
-    <div class="footer-grid reveal reveal-d1">
+    <a href="mailto:cesar@cesoi.de?subject=Project%20inquiry" class="footer-cta-email" data-reveal="up" data-delay="80">cesar@cesoi.de</a>
+    <div class="footer-grid" data-reveal="up" data-delay="80">
         <div>
             <span class="footer-col-label">Get in touch</span>
             <a href="mailto:cesar@cesoi.de" class="footer-email">cesar@cesoi.de</a>
@@ -982,6 +1059,8 @@
         </div>
     </div>
 </footer>
+<div data-foot-shade></div>
+</div>
 
 
 <script>
@@ -1090,6 +1169,7 @@
         }
     })();
 </script>
+<script src="scroll-motion.js"></script>
 
 </body>
 </html>
